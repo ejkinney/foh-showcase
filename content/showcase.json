@@ -11,9 +11,11 @@
       "heroSupport": "A first impression as considered as the experience waiting inside.",
       "menuLine": "Your menu, worth lingering over.",
       "menuSupport": "A space for the dishes people come back for.",
-      "image": "/images/dining-v2.webp",
-      "smallImage": "/images/dining-sm-v2.webp",
-      "imageAlt": "Concept photograph of a softly lit dining room and plated food",
+      "image": "/images/dining-real.webp",
+      "smallImage": "/images/dining-real-sm.webp",
+      "imageAlt": "A dimly lit tavern dining room with a set table",
+      "photoCredit": "Todd Diemer",
+      "photoSource": "https://commons.wikimedia.org/wiki/File:In_a_vintage_tavern_(Unsplash).jpg",
       "tabs": [
         { "label": "At the table", "items": ["Your signature dish", "Your seasonal plate", "Your guests' favorite"] },
         { "label": "After dinner", "items": ["Something sweet", "A final pour", "One more reason to stay"] }
@@ -27,9 +29,11 @@
       "heroSupport": "Make the first bite happen before they even walk in.",
       "menuLine": "The menu they came to find.",
       "menuSupport": "Easy to scan. Hard to forget.",
-      "image": "/images/counter-v2.webp",
-      "smallImage": "/images/counter-sm-v2.webp",
-      "imageAlt": "Concept photograph of a freshly made sandwich on a bright counter",
+      "image": "/images/counter-real.webp",
+      "smallImage": "/images/counter-real-sm.webp",
+      "imageAlt": "A chicken sandwich with purple cabbage on a white plate",
+      "photoCredit": "Eaters Collective",
+      "photoSource": "https://commons.wikimedia.org/wiki/File:Chicken_Sandwich_(Unsplash).jpg",
       "tabs": [
         { "label": "Favorites", "items": ["Your crowd favorite", "Your signature bite", "Your go-to order"] },
         { "label": "More to love", "items": ["Your side of choice", "Your daily special", "A little something extra"] }
@@ -43,12 +47,68 @@
       "heroSupport": "Let the warmth of your room come through the screen.",
       "menuLine": "Make room for the good stuff.",
       "menuSupport": "The familiar favorites and the next thing they'll try.",
-      "image": "/images/cafe-v2.webp",
-      "smallImage": "/images/cafe-sm-v2.webp",
-      "imageAlt": "Concept photograph of coffee and pastry on a sunlit café table",
+      "image": "/images/cafe-real.webp",
+      "smallImage": "/images/cafe-real-sm.webp",
+      "imageAlt": "Coffee with latte art and a pastry on a café table",
+      "photoCredit": "Fabian Blank",
+      "photoSource": "https://commons.wikimedia.org/wiki/File:Di_Simo_Caff%C3%A8_e_Vino,_N%C3%BCrnberg_(Unsplash).jpg",
       "tabs": [
         { "label": "From the counter", "items": ["Your morning favorite", "Your freshly made treat", "Your house specialty"] },
         { "label": "Stay a while", "items": ["Your afternoon pick-me-up", "Something for the table", "Your little indulgence"] }
+      ]
+    },
+    {
+      "id": "pizza",
+      "number": "04",
+      "styleLabel": "Modern pizzeria",
+      "heroLine": "Your best slice, on full display.",
+      "heroSupport": "A site with the same energy as the room and the oven.",
+      "menuLine": "A menu they can almost taste.",
+      "menuSupport": "Give the favorites their moment in the spotlight.",
+      "image": "/images/pizza-real.webp",
+      "smallImage": "/images/pizza-real-sm.webp",
+      "imageAlt": "An overhead view of pizza topped with greens and shaved cheese",
+      "photoCredit": "Brenan Greene",
+      "photoSource": "https://commons.wikimedia.org/wiki/File:Pizza_for_High-End_Italian_Restaurant_(Unsplash).jpg",
+      "tabs": [
+        { "label": "From the oven", "items": ["Your house favorite", "Your seasonal creation", "The one everyone shares"] },
+        { "label": "For the table", "items": ["Start with something good", "A side worth passing", "Something sweet to finish"] }
+      ]
+    },
+    {
+      "id": "bar",
+      "number": "05",
+      "styleLabel": "Cocktail bar",
+      "heroLine": "Make the evening begin here.",
+      "heroSupport": "Set the mood before the first glass is poured.",
+      "menuLine": "Pour your point of view.",
+      "menuSupport": "A drinks list with the atmosphere built in.",
+      "image": "/images/bar-real.webp",
+      "smallImage": "/images/bar-real-sm.webp",
+      "imageAlt": "A bartender preparing a mint-garnished drink in a copper cup",
+      "photoCredit": "Adam Jaime",
+      "photoSource": "https://commons.wikimedia.org/wiki/File:Bartender_making_a_cocktail_(Unsplash).jpg",
+      "tabs": [
+        { "label": "At the bar", "items": ["Your signature pour", "Your fresh take", "A guest favorite"] },
+        { "label": "Stay a while", "items": ["Something to share", "One more round", "Your late-night pick"] }
+      ]
+    },
+    {
+      "id": "bakery",
+      "number": "06",
+      "styleLabel": "Artisan bakery",
+      "heroLine": "Let the good bread speak.",
+      "heroSupport": "The care you put into every loaf should show up online.",
+      "menuLine": "Fresh from your counter.",
+      "menuSupport": "Make it easy to see what makes a visit worthwhile.",
+      "image": "/images/bakery-real.webp",
+      "smallImage": "/images/bakery-real-sm.webp",
+      "imageAlt": "A person holding a round loaf of bread in a linen cloth",
+      "photoCredit": "Kate Remmer",
+      "photoSource": "https://commons.wikimedia.org/wiki/File:Man_holding_bread_(Unsplash).jpg",
+      "tabs": [
+        { "label": "Baked today", "items": ["Your daily loaf", "Your oven favorite", "Something warm for now"] },
+        { "label": "Take something home", "items": ["A little extra for later", "Your weekend favorite", "Something to bring along"] }
       ]
     }
   ]

@@ -13,6 +13,8 @@ type Scene = {
   image: string;
   smallImage: string;
   imageAlt: string;
+  photoCredit: string;
+  photoSource: string;
   tabs: Tab[];
 };
 
@@ -29,6 +31,7 @@ const escapeHtml = (value: string): string => value.replace(/[&<>"']/g, (char) =
 })[char] ?? char);
 
 const emailHref = `mailto:${site.contactEmail}?subject=${encodeURIComponent('Let’s make my restaurant site')}`;
+const sceneTotal = String(site.scenes.length).padStart(2, '0');
 const awning = `<span class="foh-mark" aria-hidden="true"><span class="foh-awning">${Array.from({ length: 9 }, () => '<i></i>').join('')}</span><strong>FOH</strong></span>`;
 const initialName = escapeHtml(site.defaultRestaurantName);
 
@@ -74,7 +77,7 @@ function chapter(scene: Scene, copy: number): string {
         <div class="menu__visual">${photo(scene, 'menu__photo')}<span class="menu__visual-label">VISUAL CONCEPT <span aria-hidden="true">↗</span></span></div>
         <div class="menu__paper"><div class="menu__masthead"><span class="restaurant-name">${initialName}</span><span>YOUR MENU</span></div>
           <p class="menu__small-label">The good stuff, all in one place</p>${menuTabs(scene, copy)}
-          <p class="menu__disclaimer">Menu wording is illustrative. Your real dishes take this space.</p>
+          <p class="menu__disclaimer">Menu wording is illustrative. Your real dishes take this space.<br />Real photograph by <a href="${escapeHtml(scene.photoSource)}" target="_blank" rel="noopener noreferrer"${copy !== 0 ? ' tabindex="-1"' : ''}>${escapeHtml(scene.photoCredit)}</a>, CC0.</p>
         </div>
       </div>
       <div class="menu__close"><span>Made for your restaurant, not a template.</span><a href="${emailHref}"${copy !== 0 ? ' tabindex="-1"' : ''}>Let’s make yours <span aria-hidden="true">↗</span></a></div>
@@ -90,7 +93,7 @@ function cycle(copy: number): string {
 
 app.innerHTML = `<header class="studio-header">
   <a class="studio-header__brand" href="https://fohrestaurants.com/" aria-label="Front of House home">${awning}<span class="studio-header__wordmark">FRONT <em>OF</em> HOUSE<small>RESTAURANT WEB STUDIO</small></span></a>
-  <div class="studio-header__right"><span class="studio-header__counter" id="scene-counter">01 / 03</span><a href="${emailHref}" class="studio-header__cta">Let’s make yours <span aria-hidden="true">↗</span></a></div>
+  <div class="studio-header__right"><span class="studio-header__counter" id="scene-counter">01 / ${sceneTotal}</span><a href="${emailHref}" class="studio-header__cta">Let’s make yours <span aria-hidden="true">↗</span></a></div>
 </header>
 <main class="showcase" aria-label="Restaurant website concepts">${cycle(-1)}${cycle(0)}${cycle(1)}</main>
 <aside class="contact-rail" aria-label="Contact Front of House"><span>YOUR WEBSITE IS YOUR NEW FRONT OF HOUSE</span><a href="${emailHref}">Let’s make yours <span aria-hidden="true">↗</span></a></aside>`;
@@ -111,7 +114,7 @@ function updateCounter(): void {
     const rect = chapter.getBoundingClientRect();
     if (rect.top <= probe && rect.bottom > probe) {
       const number = site.scenes.find((scene) => scene.id === chapter.dataset.scene)?.number;
-      if (number) document.querySelector('#scene-counter')!.textContent = `${number} / 03`;
+      if (number) document.querySelector('#scene-counter')!.textContent = `${number} / ${sceneTotal}`;
       break;
     }
   }

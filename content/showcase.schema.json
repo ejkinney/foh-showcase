@@ -14,7 +14,7 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["id", "number", "styleLabel", "heroLine", "heroSupport", "menuLine", "menuSupport", "image", "smallImage", "imageAlt", "tabs"],
+        "required": ["id", "number", "styleLabel", "heroLine", "heroSupport", "menuLine", "menuSupport", "image", "smallImage", "imageAlt", "photoCredit", "photoSource", "tabs"],
         "properties": {
           "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
           "number": { "type": "string", "pattern": "^[0-9]{2}$" },
@@ -26,6 +26,8 @@
           "image": { "type": "string", "pattern": "^/images/.*\\.webp$" },
           "smallImage": { "type": "string", "pattern": "^/images/.*\\.webp$" },
           "imageAlt": { "type": "string", "minLength": 1 },
+          "photoCredit": { "type": "string", "minLength": 1 },
+          "photoSource": { "type": "string", "format": "uri", "pattern": "^https://commons\\.wikimedia\\.org/wiki/File:" },
           "tabs": {
             "type": "array",
             "minItems": 2,
