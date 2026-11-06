@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "1.0.0",
+  "defaultRestaurantName": "Your restaurant",
+  "contactEmail": "hello@fohrestaurants.com",
+  "scenes": [
+    {
+      "id": "dining",
+      "number": "01",
+      "styleLabel": "Editorial dining",
+      "heroLine": "This could be your site.",
+      "heroSupport": "A first impression as considered as the experience waiting inside.",
+      "menuLine": "Your menu, worth lingering over.",
+      "menuSupport": "A space for the dishes people come back for.",
+      "image": "/images/dining-v2.webp",
+      "smallImage": "/images/dining-sm-v2.webp",
+      "imageAlt": "Concept photograph of a softly lit dining room and plated food",
+      "tabs": [
+        { "label": "At the table", "items": ["Your signature dish", "Your seasonal plate", "Your guests' favorite"] },
+        { "label": "After dinner", "items": ["Something sweet", "A final pour", "One more reason to stay"] }
+      ]
+    },
+    {
+      "id": "counter",
+      "number": "02",
+      "styleLabel": "Vibrant counter service",
+      "heroLine": "Your food. Front and center.",
+      "heroSupport": "Make the first bite happen before they even walk in.",
+      "menuLine": "The menu they came to find.",
+      "menuSupport": "Easy to scan. Hard to forget.",
+      "image": "/images/counter-v2.webp",
+      "smallImage": "/images/counter-sm-v2.webp",
+      "imageAlt": "Concept photograph of a freshly made sandwich on a bright counter",
+      "tabs": [
+        { "label": "Favorites", "items": ["Your crowd favorite", "Your signature bite", "Your go-to order"] },
+        { "label": "More to love", "items": ["Your side of choice", "Your daily special", "A little something extra"] }
+      ]
+    },
+    {
+      "id": "cafe",
+      "number": "03",
+      "styleLabel": "Neighborhood café",
+      "heroLine": "Your place, before they arrive.",
+      "heroSupport": "Let the warmth of your room come through the screen.",
+      "menuLine": "Make room for the good stuff.",
+      "menuSupport": "The familiar favorites and the next thing they'll try.",
+      "image": "/images/cafe-v2.webp",
+      "smallImage": "/images/cafe-sm-v2.webp",
+      "imageAlt": "Concept photograph of coffee and pastry on a sunlit café table",
+      "tabs": [
+        { "label": "From the counter", "items": ["Your morning favorite", "Your freshly made treat", "Your house specialty"] },
+        { "label": "Stay a while", "items": ["Your afternoon pick-me-up", "Something for the table", "Your little indulgence"] }
+      ]
+    }
+  ]
+}
