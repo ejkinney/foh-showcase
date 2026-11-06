@@ -5,6 +5,8 @@
   "scenes": [
     {
       "id": "dining",
+      "layout": "cinema",
+      "designSignature": "A full-bleed tavern portrait with a quiet lower-left editorial headline; the menu becomes an overlapping letterpress page beside the room photograph.",
       "number": "01",
       "styleLabel": "Editorial dining",
       "heroLine": "This could be your site.",
@@ -23,6 +25,8 @@
     },
     {
       "id": "counter",
+      "layout": "poster",
+      "designSignature": "A bright counter-service poster with a tilted food-photo frame, oversized block type, and menu items arranged like punchy takeaway tickets.",
       "number": "02",
       "styleLabel": "Vibrant counter service",
       "heroLine": "Your food. Front and center.",
@@ -41,6 +45,8 @@
     },
     {
       "id": "cafe",
+      "layout": "journal",
+      "designSignature": "A café journal spread with an arched window of coffee photography, a restrained serif column, and a notebook-like menu that sits beside a photo postcard.",
       "number": "03",
       "styleLabel": "Neighborhood café",
       "heroLine": "Your place, before they arrive.",
@@ -59,6 +65,8 @@
     },
     {
       "id": "pizza",
+      "layout": "table",
+      "designSignature": "A pizzeria tabletop composition with a circular overhead pizza photograph, headline orbiting the image, and a menu styled as a long oven ticket.",
       "number": "04",
       "styleLabel": "Modern pizzeria",
       "heroLine": "Your best slice, on full display.",
@@ -77,6 +85,8 @@
     },
     {
       "id": "bar",
+      "layout": "nocturne",
+      "designSignature": "A late-night doorway composition with a tall service photograph, vertical rule and italic headline; the drinks list appears over a full-bleed atmospheric image.",
       "number": "05",
       "styleLabel": "Cocktail bar",
       "heroLine": "Make the evening begin here.",
@@ -95,6 +105,8 @@
     },
     {
       "id": "bakery",
+      "layout": "market",
+      "designSignature": "A bakery market sheet with a wide human bread photograph, flour-paper headline panel, and a menu laid out like labeled counter shelves.",
       "number": "06",
       "styleLabel": "Artisan bakery",
       "heroLine": "Let the good bread speak.",

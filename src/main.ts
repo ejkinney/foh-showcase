@@ -4,6 +4,8 @@ import './style.css';
 type Tab = { label: string; items: string[] };
 type Scene = {
   id: string;
+  layout: 'cinema' | 'poster' | 'journal' | 'table' | 'nocturne' | 'market';
+  designSignature: string;
   number: string;
   styleLabel: string;
   heroLine: string;
@@ -59,10 +61,11 @@ function chapter(scene: Scene, copy: number): string {
   const first = scene.id === site.scenes[0].id;
   const headingTag = first && copy === 0 ? 'h1' : 'h2';
   const inputId = `restaurant-name-${copy}`;
-  return `<article class="chapter chapter--${scene.id}" data-scene="${scene.id}" aria-label="${escapeHtml(scene.styleLabel)} concept">
+  return `<article class="chapter chapter--${scene.id} layout--${scene.layout}" data-scene="${scene.id}" aria-label="${escapeHtml(scene.styleLabel)} concept">
     <section class="hero" aria-label="${escapeHtml(scene.styleLabel)} landing page concept">
-      ${photo(scene, 'hero__photo', first && copy === 0)}
+      <div class="hero__media">${photo(scene, 'hero__photo', first && copy === 0)}</div>
       <div class="hero__wash" aria-hidden="true"></div>
+      <div class="hero__ornament" aria-hidden="true"><span>${escapeHtml(scene.number)}</span><i></i></div>
       <div class="hero__inner">
         <div class="demo-header"><span class="demo-name restaurant-name">${initialName}</span><span class="demo-header__right"><span>Visual concept</span><button type="button" class="demo-menu-link" data-menu-jump${copy !== 0 ? ' tabindex="-1"' : ''}>View your menu <span aria-hidden="true">↗</span></button></span></div>
         <div class="hero__copy"><p class="eyebrow">${escapeHtml(scene.number)} / ${escapeHtml(scene.styleLabel)}</p><${headingTag}>${escapeHtml(scene.heroLine)}</${headingTag}><p class="hero__support">${escapeHtml(scene.heroSupport)}</p>
@@ -72,15 +75,17 @@ function chapter(scene: Scene, copy: number): string {
       </div>
     </section>
     <section class="menu" aria-label="${escapeHtml(scene.styleLabel)} menu concept">
-      <div class="menu__intro"><p class="eyebrow">Your food belongs here</p><h3>${escapeHtml(scene.menuLine)}</h3><p>${escapeHtml(scene.menuSupport)}</p></div>
-      <div class="menu__composition">
-        <div class="menu__visual">${photo(scene, 'menu__photo')}<span class="menu__visual-label">VISUAL CONCEPT <span aria-hidden="true">↗</span></span></div>
-        <div class="menu__paper"><div class="menu__masthead"><span class="restaurant-name">${initialName}</span><span>YOUR MENU</span></div>
-          <p class="menu__small-label">The good stuff, all in one place</p>${menuTabs(scene, copy)}
-          <p class="menu__disclaimer">Menu wording is illustrative. Your real dishes take this space.<br />Real photograph by <a href="${escapeHtml(scene.photoSource)}" target="_blank" rel="noopener noreferrer"${copy !== 0 ? ' tabindex="-1"' : ''}>${escapeHtml(scene.photoCredit)}</a>, CC0.</p>
+      <div class="menu__shell">
+        <div class="menu__intro"><p class="eyebrow">Your food belongs here</p><h3>${escapeHtml(scene.menuLine)}</h3><p>${escapeHtml(scene.menuSupport)}</p></div>
+        <div class="menu__composition">
+          <div class="menu__visual">${photo(scene, 'menu__photo')}<span class="menu__visual-label">VISUAL CONCEPT <span aria-hidden="true">↗</span></span></div>
+          <div class="menu__paper"><div class="menu__masthead"><span class="restaurant-name">${initialName}</span><span>YOUR MENU</span></div>
+            <p class="menu__small-label">The good stuff, all in one place</p>${menuTabs(scene, copy)}
+            <p class="menu__disclaimer">Menu wording is illustrative. Your real dishes take this space.<br />Real photograph by <a href="${escapeHtml(scene.photoSource)}" target="_blank" rel="noopener noreferrer"${copy !== 0 ? ' tabindex="-1"' : ''}>${escapeHtml(scene.photoCredit)}</a>, CC0.</p>
+          </div>
         </div>
+        <div class="menu__close"><span>Made for your restaurant, not a template.</span><a href="${emailHref}"${copy !== 0 ? ' tabindex="-1"' : ''}>Let’s make yours <span aria-hidden="true">↗</span></a></div>
       </div>
-      <div class="menu__close"><span>Made for your restaurant, not a template.</span><a href="${emailHref}"${copy !== 0 ? ' tabindex="-1"' : ''}>Let’s make yours <span aria-hidden="true">↗</span></a></div>
     </section>
   </article>`;
 }

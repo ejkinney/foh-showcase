@@ -6,15 +6,15 @@ Edit the copy, menu placeholders, contact address, and image paths in `content/s
 
 The restaurant name field is browser-only state. It defaults to “Your restaurant,” updates all visible name placements with text content, and is cleared on refresh. Sample menu rows are intentionally generic: they have no prices, service links, or claims about real clients. The only outgoing actions are the FOH home link and email links.
 
-The six scene IDs are also CSS theme keys in `src/style.css`. A new scene needs a corresponding theme style. Keep the content and all three rendered copies the same height so a scroll wrap preserves the visual position. Menu tab state is synchronized across copies for that reason.
+Each scene's `layout` selects its application-owned composition in `src/style.css`; `designSignature` records the intent behind that composition. The layout key is presentation data, not executable content. A new scene needs a corresponding layout style. Keep the content and all three rendered copies the same height so a scroll wrap preserves the visual position. Menu tab state is synchronized across copies for that reason.
 
 ## Visual direction
 
-- **Dining:** moody room photography, a high-contrast editorial serif, a spacious menu card. The atmospheric emphasis draws from the dining examples in Framer's restaurant roundup.
-- **Counter:** oversized display type, vivid food photography, quick menu scanning. The energy draws from the roundup's counter-service examples.
-- **Café:** sunlit product photography, soft curves, warm paper and cocoa tones. The inviting mood draws from the roundup's café and bakery examples.
-- **Pizzeria:** overhead food photography, tomato red and warm cream, expressive serif type.
-- **Cocktail bar:** a close-up service moment, dark plum and amber, italic editorial type.
-- **Bakery:** a human food moment, pale green and flour-toned paper, a calm menu-first composition.
+- **Dining / cinema:** full-room photography behind an editorial headline, then an overlapping letterpress menu page.
+- **Counter / poster:** a tilted food-photo poster, block type, and takeaway-ticket menu rows.
+- **Café / journal:** an arched photo window with a quiet type column, then a lined notebook and photo postcard.
+- **Pizzeria / table:** a circular overhead food photo against tomato red, then an oven-ticket menu beside a round pizza image.
+- **Cocktail bar / nocturne:** a tall doorway photo and late-night type, then a drinks list over a full-bleed service photograph.
+- **Bakery / market:** a broad bread photo and flour-paper headline panel, then shelf-like menu cards under a photo strip.
 
 The real photographs illustrate possible styles and do not represent FOH client work. No reference site's logo, screenshot, menu, or copy is used.
