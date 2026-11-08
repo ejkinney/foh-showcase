@@ -1,13 +1,16 @@
 import content from '../content/showcase.json';
+import assetContent from '../content/asset-library.json';
 import './style.css';
 import './vibes.css';
 import './expansion.css';
+import './expansion2.css';
 import './overview.css';
 
 type Tab = { label: string; items: string[] };
+type Asset = { id: string; alt: string; author: string; sourceUrl: string; image: string; smallImage: string; sourceWidth: number; sourceHeight: number };
 type Scene = {
   id: string;
-  layout: 'cinema' | 'poster' | 'journal' | 'table' | 'nocturne' | 'market' | 'noodle' | 'tide' | 'cellar' | 'checkered' | 'cantina' | 'ink' | 'fire' | 'patisserie' | 'botanical' | 'trattoria' | 'scoop' | 'harvest';
+  layout: 'cinema' | 'poster' | 'journal' | 'table' | 'nocturne' | 'market' | 'noodle' | 'tide' | 'cellar' | 'checkered' | 'cantina' | 'ink' | 'fire' | 'patisserie' | 'botanical' | 'trattoria' | 'scoop' | 'harvest' | 'fold' | 'daybreak' | 'roaster' | 'shell' | 'ember' | 'linen' | 'ritual' | 'sticker' | 'mosaic' | 'signage' | 'bonbon' | 'pass';
   designSignature: string;
   number: string;
   styleLabel: string;
@@ -16,11 +19,8 @@ type Scene = {
   heroSupport: string;
   menuLine: string;
   menuSupport: string;
-  image: string;
-  smallImage: string;
-  imageAlt: string;
-  photoCredit: string;
-  photoSource: string;
+  heroAssetId: string;
+  menuAssetId: string;
   tabs: Tab[];
 };
 
@@ -30,6 +30,12 @@ const site = content as {
   contactEmail: string;
   scenes: Scene[];
 };
+const assets = new Map((assetContent.assets as Asset[]).map((asset) => [asset.id, asset]));
+function getAsset(id: string): Asset {
+  const asset = assets.get(id);
+  if (!asset) throw new Error(`Missing asset: ${id}`);
+  return asset;
+}
 document.documentElement.dataset.vibe = 'custom';
 const app = document.querySelector<HTMLDivElement>('#app');
 if (!app) throw new Error('Showcase mount was not found');
@@ -43,11 +49,15 @@ const sceneTotal = String(site.scenes.length).padStart(2, '0');
 const awning = `<span class="foh-mark" aria-hidden="true"><span class="foh-awning">${Array.from({ length: 9 }, () => '<i></i>').join('')}</span><strong>FOH</strong></span>`;
 const initialName = escapeHtml(site.defaultRestaurantName);
 
-function photo(scene: Scene, extraClass: string, eager = false): string {
+function photo(asset: Asset, extraClass: string, eager = false, decorative = false): string {
   return `<picture class="${extraClass}">
-    <source media="(max-width: 700px)" srcset="${scene.smallImage}" />
-    <img src="${scene.image}" alt="${escapeHtml(scene.imageAlt)}" width="1536" height="1024" loading="${eager ? 'eager' : 'lazy'}" decoding="async"${eager ? ' fetchpriority="high"' : ''} />
+    <source media="(max-width: 700px)" srcset="${asset.smallImage}" />
+    <img src="${asset.image}" alt="${decorative ? '' : escapeHtml(asset.alt)}" width="${asset.sourceWidth}" height="${asset.sourceHeight}" loading="${eager ? 'eager' : 'lazy'}" decoding="async"${eager ? ' fetchpriority="high"' : ''} />
   </picture>`;
+}
+
+function credit(asset: Asset, copy: number): string {
+  return `<a href="${escapeHtml(asset.sourceUrl)}" target="_blank" rel="noopener noreferrer"${copy !== 0 ? ' tabindex="-1"' : ''}>${escapeHtml(asset.author)}</a>`;
 }
 
 function menuTabs(scene: Scene, copy: number): string {
@@ -66,9 +76,13 @@ function menuTabs(scene: Scene, copy: number): string {
 function chapter(scene: Scene, copy: number): string {
   const first = scene.id === site.scenes[0].id;
   const headingTag = first && copy === 0 ? 'h1' : 'h2';
+  const heroAsset = getAsset(scene.heroAssetId);
+  const menuAsset = getAsset(scene.menuAssetId);
+  const twoPhotos = heroAsset.id !== menuAsset.id;
   return `<article class="chapter chapter--${scene.id} layout--${scene.layout}" data-scene="${scene.id}" aria-label="${escapeHtml(scene.styleLabel)} concept">
     <section class="hero" aria-label="${escapeHtml(scene.styleLabel)} landing page concept">
-      <div class="hero__media">${photo(scene, 'hero__photo', first && copy === 0)}</div>
+      <div class="hero__media">${photo(heroAsset, 'hero__photo', first && copy === 0)}</div>
+      ${twoPhotos ? `<div class="hero__accent" aria-hidden="true">${photo(menuAsset, 'hero__accent-photo', false, true)}</div>` : ''}
       <div class="hero__wash" aria-hidden="true"></div>
       <div class="hero__ornament" aria-hidden="true"><span>${escapeHtml(scene.number)}</span><i></i></div>
       <div class="hero__inner">
@@ -81,10 +95,10 @@ function chapter(scene: Scene, copy: number): string {
       <div class="menu__shell">
         <div class="menu__intro"><p class="eyebrow">Your food belongs here</p><h3>${escapeHtml(scene.menuLine)}</h3><p>${escapeHtml(scene.menuSupport)}</p></div>
         <div class="menu__composition">
-          <div class="menu__visual">${photo(scene, 'menu__photo')}<span class="menu__visual-label">VISUAL CONCEPT <span aria-hidden="true">↗</span></span></div>
+          <div class="menu__visual">${photo(menuAsset, 'menu__photo')}<span class="menu__visual-label">VISUAL CONCEPT <span aria-hidden="true">↗</span></span></div>
           <div class="menu__paper"><div class="menu__masthead"><span class="restaurant-name">${initialName}</span><span>YOUR MENU</span></div>
             <p class="menu__small-label">The good stuff, all in one place</p>${menuTabs(scene, copy)}
-            <p class="menu__disclaimer">Menu wording is illustrative. Your real dishes take this space.<br />Real photograph by <a href="${escapeHtml(scene.photoSource)}" target="_blank" rel="noopener noreferrer"${copy !== 0 ? ' tabindex="-1"' : ''}>${escapeHtml(scene.photoCredit)}</a>, CC0.</p>
+            <p class="menu__disclaimer">Menu wording is illustrative. Your real dishes take this space.<br />Real ${twoPhotos ? 'photographs' : 'photograph'} by ${credit(heroAsset, copy)}${twoPhotos ? ` and ${credit(menuAsset, copy)}` : ''}, CC0.</p>
           </div>
         </div>
         <div class="menu__close"><span>Made for your restaurant, not a template.</span><a href="${emailHref}"${copy !== 0 ? ' tabindex="-1"' : ''}>Let’s make yours <span aria-hidden="true">↗</span></a></div>
@@ -100,8 +114,9 @@ function cycle(copy: number): string {
 }
 
 function overviewCard(scene: Scene): string {
+  const heroAsset = getAsset(scene.heroAssetId);
   return `<article class="overview-card layout--${scene.layout}" data-scene="${scene.id}">
-    <img class="overview-card__image" src="${scene.smallImage}" alt="" width="720" height="480" loading="eager" decoding="sync" fetchpriority="high" />
+    <img class="overview-card__image" src="${heroAsset.smallImage}" alt="" width="${heroAsset.sourceWidth}" height="${heroAsset.sourceHeight}" loading="eager" decoding="sync" fetchpriority="high" />
     <div class="overview-card__top"><span class="restaurant-name">${initialName}</span><span>${escapeHtml(scene.number)}</span></div>
     <div class="overview-card__bottom"><strong>${escapeHtml(scene.previewLabel)}</strong><span class="overview-card__menu" aria-hidden="true"><i></i><i></i><i></i></span></div>
   </article>`;
@@ -250,7 +265,7 @@ function applyColors(): void {
 function showOverview(): void {
   if (document.documentElement.classList.contains('is-overview')) return;
   const current = Number(document.querySelector('#scene-counter')?.textContent?.slice(0, 2)) - 1;
-  const columns = window.innerWidth < 700 ? 3 : window.innerWidth < 1100 ? 4 : 6;
+  const columns = window.innerWidth < 700 ? 5 : 6;
   const index = Number.isFinite(current) && current >= 0 ? current : 0;
   overview.style.setProperty('--overview-origin-x', `${((index % columns) + .5) / columns * 100}%`);
   overview.style.setProperty('--overview-origin-y', `${(Math.floor(index / columns) + .5) / Math.ceil(site.scenes.length / columns) * 100}%`);

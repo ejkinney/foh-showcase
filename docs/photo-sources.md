@@ -1,6 +1,8 @@
 # Photo sources and reuse terms
 
-Checked November 6 and November 8, 2026. All 18 photographs were downloaded from Wikimedia Commons file pages that identify them as **CC0 1.0 Universal Public Domain Dedication**. They were first published on Unsplash before its June 5, 2017 license change. CC0 permits copying, modification, and commercial use without attribution. We retain author credits and source links for transparency.
+Checked November 8, 2026. The full 66-photo inventory, with an individual source page, author, CC0 license URL, verification date, alt text, and local files for every asset, is in [`content/asset-library.json`](../content/asset-library.json). Each file's Wikimedia Commons record was checked for **CC0 1.0 Universal Public Domain Dedication**. CC0 permits copying, modification, and commercial use without attribution. We retain author credits and source links for transparency. See the [Commons reuse guidance](https://commons.wikimedia.org/wiki/Commons:Reusing_content_outside_Wikimedia/en) and [CC0 terms](https://creativecommons.org/publicdomain/zero/1.0/).
+
+The table below records the original 18 photographs. The 48 additional photographs are listed in the asset catalog and grouped by subject in [`docs/asset-library.md`](asset-library.md).
 
 | Concept | Photographer | Wikimedia Commons source | Local WebP files |
 |---|---|---|---|

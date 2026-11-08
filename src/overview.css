@@ -23,7 +23,7 @@
 .overview__heading{flex:none;display:flex;align-items:baseline;justify-content:space-between;gap:12px;min-height:28px}
 .overview__heading strong{font:600 clamp(21px,5vw,33px)/1 'Cormorant Garamond',Georgia,serif;letter-spacing:-.035em}
 .overview__heading span{max-width:130px;text-align:right;font-size:9px;line-height:1.2;font-weight:700;letter-spacing:.09em;text-transform:uppercase}
-.overview__grid{flex:1;min-height:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(6,minmax(0,1fr));gap:4px}
+.overview__grid{flex:1;min-height:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));grid-template-rows:repeat(6,minmax(0,1fr));gap:4px}
 .overview-card{position:relative;min-width:0;min-height:0;overflow:hidden;border:1px solid color-mix(in srgb,var(--scheme-hero-ink) 38%,transparent);background:var(--scheme-hero);color:var(--scheme-hero-ink);box-shadow:0 4px 11px #241d1826}
 .overview-card__image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .overview-card__top{position:absolute;z-index:2;inset:4px 5px auto;display:flex;justify-content:space-between;align-items:start;gap:5px;font-size:7px;line-height:1.05;font-weight:700;text-shadow:0 1px 4px #0009}
@@ -42,14 +42,14 @@
 @media(min-width:700px){
   .overview{gap:14px;padding:clamp(18px,2.3vw,34px)}
   .overview__heading{min-height:42px}.overview__heading span{max-width:none;font-size:11px}
-  .overview__grid{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(5,minmax(0,1fr));gap:8px}
+  .overview__grid{grid-template-columns:repeat(6,minmax(0,1fr));grid-template-rows:repeat(5,minmax(0,1fr));gap:8px}
   .overview-card__top{inset:7px 8px auto;font-size:8px}
   .overview-card__bottom{min-height:28px;padding:5px 7px;gap:3px}
   .overview-card__bottom strong{font-size:11px}
   .overview-card__menu i{height:3px}
 }
 @media(min-width:1100px){
-  .overview__grid{grid-template-columns:repeat(6,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr));gap:12px}
+  .overview__grid{grid-template-columns:repeat(6,minmax(0,1fr));grid-template-rows:repeat(5,minmax(0,1fr));gap:10px}
   .overview-card__top{inset:9px 10px auto;font-size:9px}
   .overview-card__bottom{min-height:38px;padding:7px 10px;gap:4px}
   .overview-card__bottom strong{font-size:14px}
