@@ -1,8 +1,8 @@
 # This Could Be Your Site
 
-A standalone Front of House showcase with six repeating restaurant website concepts. Built with Vite, TypeScript, and static content. No account, backend, analytics, or visitor data storage is required.
+A standalone Front of House showcase with 18 repeating restaurant website concepts. Built with Vite, TypeScript, and static content. No account, backend, analytics, or visitor data storage is required.
 
-A small fixed studio bar lets visitors try their restaurant name and switch all six concepts between five color vibes. These changes stay in the current browser view only.
+A small fixed studio bar lets visitors try their restaurant name and adjust the main and accent colors with two sliders. Moving either slider smoothly opens an 18-concept overview; releasing it returns to the same scroll position. These changes stay in the current browser view only.
 
 ## Run locally
 

@@ -2,23 +2,18 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Front of House showcase content",
   "type": "object",
-  "required": ["schemaVersion", "defaultRestaurantName", "defaultVibe", "vibes", "contactEmail", "scenes"],
+  "required": ["schemaVersion", "defaultRestaurantName", "defaultColors", "contactEmail", "scenes"],
   "additionalProperties": false,
   "properties": {
-    "schemaVersion": { "const": "2.0.0" },
+    "schemaVersion": { "const": "4.0.0" },
     "defaultRestaurantName": { "type": "string", "minLength": 1 },
-    "defaultVibe": { "enum": ["signature", "coastal", "garden", "after-dark", "electric"] },
-    "vibes": {
-      "type": "array",
-      "minItems": 2,
-      "items": {
-        "type": "object",
-        "required": ["id", "label"],
-        "additionalProperties": false,
-        "properties": {
-          "id": { "enum": ["signature", "coastal", "garden", "after-dark", "electric"] },
-          "label": { "type": "string", "minLength": 1 }
-        }
+    "defaultColors": {
+      "type": "object",
+      "required": ["baseHue", "accentHue"],
+      "additionalProperties": false,
+      "properties": {
+        "baseHue": { "type": "integer", "minimum": 0, "maximum": 359 },
+        "accentHue": { "type": "integer", "minimum": 0, "maximum": 359 }
       }
     },
     "contactEmail": { "type": "string", "format": "email" },
@@ -28,13 +23,14 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["id", "layout", "designSignature", "number", "styleLabel", "heroLine", "heroSupport", "menuLine", "menuSupport", "image", "smallImage", "imageAlt", "photoCredit", "photoSource", "tabs"],
+        "required": ["id", "layout", "designSignature", "number", "styleLabel", "previewLabel", "heroLine", "heroSupport", "menuLine", "menuSupport", "image", "smallImage", "imageAlt", "photoCredit", "photoSource", "tabs"],
         "properties": {
           "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
-          "layout": { "enum": ["cinema", "poster", "journal", "table", "nocturne", "market"] },
+          "layout": { "enum": ["cinema", "poster", "journal", "table", "nocturne", "market", "noodle", "tide", "cellar", "checkered", "cantina", "ink", "fire", "patisserie", "botanical", "trattoria", "scoop", "harvest"] },
           "designSignature": { "type": "string", "minLength": 1 },
           "number": { "type": "string", "pattern": "^[0-9]{2}$" },
           "styleLabel": { "type": "string", "minLength": 1 },
+          "previewLabel": { "type": "string", "minLength": 1 },
           "heroLine": { "type": "string", "minLength": 1 },
           "heroSupport": { "type": "string", "minLength": 1 },
           "menuLine": { "type": "string", "minLength": 1 },

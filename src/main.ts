@@ -1,14 +1,17 @@
 import content from '../content/showcase.json';
 import './style.css';
 import './vibes.css';
+import './expansion.css';
+import './overview.css';
 
 type Tab = { label: string; items: string[] };
 type Scene = {
   id: string;
-  layout: 'cinema' | 'poster' | 'journal' | 'table' | 'nocturne' | 'market';
+  layout: 'cinema' | 'poster' | 'journal' | 'table' | 'nocturne' | 'market' | 'noodle' | 'tide' | 'cellar' | 'checkered' | 'cantina' | 'ink' | 'fire' | 'patisserie' | 'botanical' | 'trattoria' | 'scoop' | 'harvest';
   designSignature: string;
   number: string;
   styleLabel: string;
+  previewLabel: string;
   heroLine: string;
   heroSupport: string;
   menuLine: string;
@@ -23,12 +26,11 @@ type Scene = {
 
 const site = content as {
   defaultRestaurantName: string;
-  defaultVibe: string;
-  vibes: { id: string; label: string }[];
+  defaultColors: { baseHue: number; accentHue: number };
   contactEmail: string;
   scenes: Scene[];
 };
-document.documentElement.dataset.vibe = site.defaultVibe;
+document.documentElement.dataset.vibe = 'custom';
 const app = document.querySelector<HTMLDivElement>('#app');
 if (!app) throw new Error('Showcase mount was not found');
 
@@ -97,16 +99,27 @@ function cycle(copy: number): string {
   </div>`;
 }
 
+function overviewCard(scene: Scene): string {
+  return `<article class="overview-card layout--${scene.layout}" data-scene="${scene.id}">
+    <img class="overview-card__image" src="${scene.smallImage}" alt="" width="720" height="480" loading="eager" decoding="sync" fetchpriority="high" />
+    <div class="overview-card__top"><span class="restaurant-name">${initialName}</span><span>${escapeHtml(scene.number)}</span></div>
+    <div class="overview-card__bottom"><strong>${escapeHtml(scene.previewLabel)}</strong><span class="overview-card__menu" aria-hidden="true"><i></i><i></i><i></i></span></div>
+  </article>`;
+}
+
 app.innerHTML = `<header class="studio-header">
   <div class="studio-header__identity"><a class="studio-header__brand" href="https://fohrestaurants.com/" aria-label="Front of House home">${awning}<span class="studio-header__wordmark">FRONT <em>OF</em> HOUSE<small>RESTAURANT WEB STUDIO</small></span></a><span class="studio-header__counter" id="scene-counter">01 / ${sceneTotal}</span></div>
   <div class="personalizer" role="group" aria-label="Personalize the website examples">
     <label class="personalizer__field personalizer__field--name" for="restaurant-name"><span>Restaurant name</span><input id="restaurant-name" class="name-input" type="text" maxlength="48" autocomplete="off" spellcheck="false" placeholder="Your restaurant" aria-describedby="personalizer-note" /></label>
-    <label class="personalizer__field personalizer__field--vibe" for="vibe-select"><span>Vibe</span><span class="personalizer__select"><i class="personalizer__swatch" aria-hidden="true"></i><select id="vibe-select" class="vibe-select">${site.vibes.map((vibe) => `<option value="${escapeHtml(vibe.id)}"${vibe.id === site.defaultVibe ? ' selected' : ''}>${escapeHtml(vibe.label)}</option>`).join('')}</select></span></label>
-    <span class="sr-only" id="personalizer-note">Changes only this preview. Nothing is saved or sent.</span>
+    <label class="personalizer__field personalizer__field--range" for="base-hue"><span><i class="color-swatch color-swatch--base" aria-hidden="true"></i>Main color</span><input id="base-hue" class="color-slider" type="range" min="0" max="359" step="1" value="${site.defaultColors.baseHue}" aria-describedby="personalizer-note" /></label>
+    <label class="personalizer__field personalizer__field--range" for="accent-hue"><span><i class="color-swatch color-swatch--accent" aria-hidden="true"></i>Accent</span><input id="accent-hue" class="color-slider" type="range" min="0" max="359" step="1" value="${site.defaultColors.accentHue}" aria-describedby="personalizer-note" /></label>
+    <span class="sr-only" id="personalizer-note">Changes only this preview. Drag a color slider to see all six sites. Nothing is saved or sent.</span>
+    <span class="sr-only" id="color-preview-status" role="status" aria-live="polite"></span>
   </div>
   <a href="${emailHref}" class="studio-header__cta">Let’s make yours <span aria-hidden="true">↗</span></a>
 </header>
 <main class="showcase" aria-label="Restaurant website concepts">${cycle(-1)}${cycle(0)}${cycle(1)}</main>
+<div class="overview" aria-hidden="true" inert><div class="overview__heading"><strong>All ${site.scenes.length}, your colors.</strong><span>Release to return to the site</span></div><div class="overview__grid">${site.scenes.map(overviewCard).join('')}</div></div>
 <aside class="contact-rail" aria-label="Contact Front of House"><span>YOUR WEBSITE IS YOUR NEW FRONT OF HOUSE</span><a href="${emailHref}">Let’s make yours <span aria-hidden="true">↗</span></a></aside>`;
 
 const middle = document.querySelector<HTMLElement>('.cycle[data-copy="0"]')!;
@@ -198,11 +211,76 @@ document.addEventListener('input', (event) => {
   document.querySelectorAll<HTMLElement>('.restaurant-name').forEach((element) => { element.textContent = name; });
 });
 
-document.querySelector<HTMLSelectElement>('.vibe-select')?.addEventListener('change', (event) => {
-  const target = event.currentTarget;
-  if (!(target instanceof HTMLSelectElement)) return;
-  if (site.vibes.some((vibe) => vibe.id === target.value)) document.documentElement.dataset.vibe = target.value;
-});
+const baseSlider = document.querySelector<HTMLInputElement>('#base-hue')!;
+const accentSlider = document.querySelector<HTMLInputElement>('#accent-hue')!;
+const overview = document.querySelector<HTMLElement>('.overview')!;
+const previewStatus = document.querySelector<HTMLElement>('#color-preview-status')!;
+const colorKeys = new Set(['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End', 'PageUp', 'PageDown']);
+let pointerAdjusting = false;
+let keyboardAdjusting = false;
+
+function colorName(hue: number): string {
+  if (hue < 15 || hue >= 345) return 'red';
+  if (hue < 45) return 'orange';
+  if (hue < 70) return 'yellow';
+  if (hue < 165) return 'green';
+  if (hue < 195) return 'teal';
+  if (hue < 255) return 'blue';
+  if (hue < 290) return 'violet';
+  return 'pink';
+}
+
+function applyColors(): void {
+  const base = Number(baseSlider.value);
+  const accent = Number(accentSlider.value);
+  const style = document.documentElement.style;
+  style.setProperty('--v-deep', `hsl(${base} 38% 17%)`);
+  style.setProperty('--v-mid', `hsl(${base} 40% 33%)`);
+  style.setProperty('--v-light', `hsl(${base} 38% 93%)`);
+  style.setProperty('--v-bright', `hsl(${base} 62% 77%)`);
+  style.setProperty('--v-paper', `hsl(${base} 38% 97%)`);
+  style.setProperty('--v-accent', `hsl(${accent} 76% 53%)`);
+  style.setProperty('--v-swatch', `hsl(${base} 44% 43%)`);
+  style.setProperty('--base-swatch', `hsl(${base} 55% 45%)`);
+  style.setProperty('--accent-swatch', `hsl(${accent} 76% 53%)`);
+  baseSlider.setAttribute('aria-valuetext', `Main color: ${colorName(base)}`);
+  accentSlider.setAttribute('aria-valuetext', `Accent color: ${colorName(accent)}`);
+}
+
+function showOverview(): void {
+  if (document.documentElement.classList.contains('is-overview')) return;
+  const current = Number(document.querySelector('#scene-counter')?.textContent?.slice(0, 2)) - 1;
+  const columns = window.innerWidth < 700 ? 3 : window.innerWidth < 1100 ? 4 : 6;
+  const index = Number.isFinite(current) && current >= 0 ? current : 0;
+  overview.style.setProperty('--overview-origin-x', `${((index % columns) + .5) / columns * 100}%`);
+  overview.style.setProperty('--overview-origin-y', `${(Math.floor(index / columns) + .5) / Math.ceil(site.scenes.length / columns) * 100}%`);
+  document.documentElement.classList.add('is-overview');
+  previewStatus.textContent = `Color overview open. All ${site.scenes.length} examples are changing together.`;
+}
+
+function hideOverview(): void {
+  if (!document.documentElement.classList.contains('is-overview')) return;
+  document.documentElement.classList.remove('is-overview');
+  previewStatus.textContent = 'Returned to the restaurant page.';
+}
+
+for (const slider of [baseSlider, accentSlider]) {
+  slider.addEventListener('pointerdown', () => { pointerAdjusting = true; showOverview(); });
+  slider.addEventListener('input', () => { applyColors(); showOverview(); });
+  slider.addEventListener('keydown', (event) => {
+    if (colorKeys.has(event.key)) { keyboardAdjusting = true; showOverview(); }
+  });
+  slider.addEventListener('keyup', (event) => {
+    if (colorKeys.has(event.key)) { keyboardAdjusting = false; hideOverview(); }
+  });
+  slider.addEventListener('change', () => { if (!pointerAdjusting && !keyboardAdjusting) hideOverview(); });
+  slider.addEventListener('blur', () => { pointerAdjusting = false; keyboardAdjusting = false; hideOverview(); });
+}
+window.addEventListener('pointerup', () => { pointerAdjusting = false; hideOverview(); });
+window.addEventListener('pointercancel', () => { pointerAdjusting = false; hideOverview(); });
+window.addEventListener('blur', hideOverview);
+document.addEventListener('visibilitychange', () => { if (document.hidden) hideOverview(); });
+applyColors();
 
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 window.scrollTo({ top: middle.offsetTop, behavior: 'instant' });

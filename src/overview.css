@@ -1,0 +1,67 @@
+/* A three-control studio bar, with full-width touch tracks on small screens. */
+.studio-header{height:118px}
+.personalizer__field{min-height:60px}
+.personalizer__field--name{flex:1.25}
+.personalizer__field--range{flex:1;gap:0;padding:5px 7px 3px}
+.personalizer__field--range>span:first-child{display:flex;align-items:center;gap:4px;white-space:nowrap;font-size:7px;letter-spacing:.08em}
+.color-swatch{display:inline-block;flex:none;width:9px;height:9px;border-radius:50%;box-shadow:0 0 0 1px #241d1833}
+.color-swatch--base{background:var(--base-swatch,#a66542)}
+.color-swatch--accent{background:var(--accent-swatch,#d35b3c)}
+.personalizer__field .color-slider{appearance:none;width:100%;height:40px;min-height:40px;padding:0;background:transparent;cursor:pointer;touch-action:none}
+.color-slider::-webkit-slider-runnable-track{height:8px;border-radius:999px;background:linear-gradient(90deg,#d84d4d,#eab744,#9ec765,#43b8ae,#4789d3,#975fd2,#d84d99,#d84d4d)}
+.color-slider::-webkit-slider-thumb{appearance:none;width:19px;height:19px;margin-top:-5.5px;border:3px solid white;border-radius:50%;background:var(--base-swatch,#a66542);box-shadow:0 0 0 1px #241d1866,0 2px 4px #241d183d}
+#accent-hue::-webkit-slider-thumb{background:var(--accent-swatch,#d35b3c)}
+.color-slider::-moz-range-track{height:8px;border-radius:999px;background:linear-gradient(90deg,#d84d4d,#eab744,#9ec765,#43b8ae,#4789d3,#975fd2,#d84d99,#d84d4d)}
+.color-slider::-moz-range-thumb{width:13px;height:13px;border:3px solid white;border-radius:50%;background:var(--base-swatch,#a66542);box-shadow:0 0 0 1px #241d1866}
+#accent-hue::-moz-range-thumb{background:var(--accent-swatch,#d35b3c)}
+.hero__inner{padding-top:143px}
+.menu{scroll-margin-top:118px}
+
+/* Each card is a miniature expression of its scene, not a second focusable site. */
+.overview{position:fixed;z-index:25;inset:118px 0 64px;display:flex;flex-direction:column;gap:9px;padding:13px;overflow:hidden;background:radial-gradient(circle at 50% 0%,var(--v-paper,#fbf7f0),color-mix(in srgb,var(--v-light,#fbf7f0) 82%,var(--v-mid,#8c6d5f)));color:var(--v-deep,#241d18);opacity:0;visibility:hidden;pointer-events:none;transform:scale(1.55);transform-origin:var(--overview-origin-x,50%) var(--overview-origin-y,50%);transition:transform .58s cubic-bezier(.18,.8,.2,1),opacity .42s ease,visibility 0s linear .58s}
+.is-overview .overview{opacity:1;visibility:visible;pointer-events:auto;transform:scale(1);transition:transform .58s cubic-bezier(.18,.8,.2,1),opacity .3s ease,visibility 0s}
+.overview__heading{flex:none;display:flex;align-items:baseline;justify-content:space-between;gap:12px;min-height:28px}
+.overview__heading strong{font:600 clamp(21px,5vw,33px)/1 'Cormorant Garamond',Georgia,serif;letter-spacing:-.035em}
+.overview__heading span{max-width:130px;text-align:right;font-size:9px;line-height:1.2;font-weight:700;letter-spacing:.09em;text-transform:uppercase}
+.overview__grid{flex:1;min-height:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(6,minmax(0,1fr));gap:4px}
+.overview-card{position:relative;min-width:0;min-height:0;overflow:hidden;border:1px solid color-mix(in srgb,var(--scheme-hero-ink) 38%,transparent);background:var(--scheme-hero);color:var(--scheme-hero-ink);box-shadow:0 4px 11px #241d1826}
+.overview-card__image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.overview-card__top{position:absolute;z-index:2;inset:4px 5px auto;display:flex;justify-content:space-between;align-items:start;gap:5px;font-size:7px;line-height:1.05;font-weight:700;text-shadow:0 1px 4px #0009}
+.overview-card__top .restaurant-name{max-width:80%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.overview-card__bottom{position:absolute;z-index:2;inset:auto 0 0;min-height:24px;display:flex;flex-direction:column;justify-content:center;gap:2px;padding:3px 5px;background:var(--scheme-paper);color:var(--scheme-paper-ink)}
+.overview-card__bottom strong{font-size:8px;line-height:1.05;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.overview-card__menu{display:flex;gap:3px;width:100%}.overview-card__menu i{display:block;height:3px;flex:1;background:var(--scheme-accent);opacity:.75}.overview-card__menu i:nth-child(2){opacity:.42}.overview-card__menu i:nth-child(3){opacity:.2}
+.overview-card.layout--cinema .overview-card__image{object-position:65% center}.overview-card.layout--cinema .overview-card__bottom{background:linear-gradient(0deg,var(--scheme-hero),color-mix(in srgb,var(--scheme-hero) 85%,transparent));color:var(--scheme-hero-ink)}
+.overview-card.layout--poster .overview-card__image{inset:12% -6% auto auto;width:91%;height:61%;border:3px solid var(--v-deep);transform:rotate(4deg)}.overview-card.layout--poster .overview-card__top{text-shadow:none}
+.overview-card.layout--journal .overview-card__image{inset:8px 9px auto;width:calc(100% - 18px);height:61%;border:3px solid var(--v-paper);border-radius:45% 45% 0 0}.overview-card.layout--journal .overview-card__top{color:var(--v-deep);text-shadow:0 1px 3px #fff}
+.overview-card.layout--table .overview-card__image{inset:8% auto auto 15%;width:70%;height:65%;border:5px solid var(--v-accent);border-radius:50%}.overview-card.layout--table .overview-card__top{color:var(--v-light)}
+.overview-card.layout--nocturne .overview-card__image{width:70%;object-position:center}.overview-card.layout--nocturne .overview-card__bottom{background:linear-gradient(0deg,var(--scheme-hero),color-mix(in srgb,var(--scheme-hero) 88%,transparent));color:var(--scheme-hero-ink)}
+.overview-card.layout--market .overview-card__image{height:67%;object-position:center 55%}.overview-card.layout--market .overview-card__top{color:var(--v-light)}
+@media(max-width:699px){.overview-card__top .restaurant-name,.overview-card__menu{display:none}}
+
+@media(min-width:700px){
+  .overview{gap:14px;padding:clamp(18px,2.3vw,34px)}
+  .overview__heading{min-height:42px}.overview__heading span{max-width:none;font-size:11px}
+  .overview__grid{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(5,minmax(0,1fr));gap:8px}
+  .overview-card__top{inset:7px 8px auto;font-size:8px}
+  .overview-card__bottom{min-height:28px;padding:5px 7px;gap:3px}
+  .overview-card__bottom strong{font-size:11px}
+  .overview-card__menu i{height:3px}
+}
+@media(min-width:1100px){
+  .overview__grid{grid-template-columns:repeat(6,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr));gap:12px}
+  .overview-card__top{inset:9px 10px auto;font-size:9px}
+  .overview-card__bottom{min-height:38px;padding:7px 10px;gap:4px}
+  .overview-card__bottom strong{font-size:14px}
+}
+@media(min-width:760px) and (max-width:899px){.hero__inner{padding-top:158px}}
+@media(min-width:900px){
+  .studio-header{height:78px}
+  .personalizer{width:min(520px,49vw)}
+  .personalizer__field{min-height:60px}
+  .personalizer__field--range>span:first-child{font-size:8px}
+  .hero__inner{padding-top:117px}.menu{scroll-margin-top:78px}
+  .overview{top:78px;bottom:66px}
+}
+@media(max-width:360px){.personalizer{gap:5px}.personalizer__field--name{flex:1.15}.personalizer__field--range{padding-left:5px;padding-right:5px}.personalizer__field--range>span:first-child{font-size:6.5px;letter-spacing:.03em}.overview{padding:9px;gap:6px}.overview__heading strong{font-size:20px}.overview__heading span{font-size:8px}.overview__grid{gap:3px}}
+@media(prefers-reduced-motion:reduce){.overview,.is-overview .overview{transition:none;transform:none}}
