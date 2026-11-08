@@ -1,6 +1,14 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "2.0.0",
   "defaultRestaurantName": "Your restaurant",
+  "defaultVibe": "signature",
+  "vibes": [
+    { "id": "signature", "label": "Signature" },
+    { "id": "coastal", "label": "Coastal" },
+    { "id": "garden", "label": "Garden" },
+    { "id": "after-dark", "label": "After dark" },
+    { "id": "electric", "label": "Electric" }
+  ],
   "contactEmail": "hello@fohrestaurants.com",
   "scenes": [
     {

@@ -4,7 +4,9 @@
 
 Edit the copy, menu placeholders, contact address, and image paths in `content/showcase.json`, then run `npm run build`. Images live under `public/images`; each scene has a desktop WebP and a smaller mobile WebP. Keep meaningful alt text, `photoCredit`, and a verified `photoSource` link. See `docs/photo-sources.md` for the current license record.
 
-The restaurant name field is browser-only state. It defaults to “Your restaurant,” updates all visible name placements with text content, and is cleared on refresh. Sample menu rows are intentionally generic: they have no prices, service links, or claims about real clients. The only outgoing actions are the FOH home link and email links.
+The compact restaurant name field and vibe selector stay in the fixed studio header while the gallery scrolls. The name defaults to “Your restaurant” and updates all name placements with text content. Both controls are browser-only state, are cleared on refresh, and are never saved or sent. Sample menu rows are intentionally generic: they have no prices, service links, or claims about real clients. The only outgoing actions are the FOH home link and email links.
+
+`defaultVibe` and `vibes` define the selector in `content/showcase.json`. The five supported IDs are `signature`, `coastal`, `garden`, `after-dark`, and `electric`. Their palettes live in `src/vibes.css`; adding a vibe requires a CSS palette and a schema enum update. The signature option preserves each scene's original colors. Other options apply one coordinated palette across all six scenes, including their frames, menu surfaces, and typography colors. They do not alter photo assets or layout geometry.
 
 Each scene's `layout` selects its application-owned composition in `src/style.css`; `designSignature` records the intent behind that composition. The layout key is presentation data, not executable content. A new scene needs a corresponding layout style. Keep the content and all three rendered copies the same height so a scroll wrap preserves the visual position. Menu tab state is synchronized across copies for that reason.
 

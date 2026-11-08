@@ -1,5 +1,6 @@
 import content from '../content/showcase.json';
 import './style.css';
+import './vibes.css';
 
 type Tab = { label: string; items: string[] };
 type Scene = {
@@ -22,9 +23,12 @@ type Scene = {
 
 const site = content as {
   defaultRestaurantName: string;
+  defaultVibe: string;
+  vibes: { id: string; label: string }[];
   contactEmail: string;
   scenes: Scene[];
 };
+document.documentElement.dataset.vibe = site.defaultVibe;
 const app = document.querySelector<HTMLDivElement>('#app');
 if (!app) throw new Error('Showcase mount was not found');
 
@@ -60,7 +64,6 @@ function menuTabs(scene: Scene, copy: number): string {
 function chapter(scene: Scene, copy: number): string {
   const first = scene.id === site.scenes[0].id;
   const headingTag = first && copy === 0 ? 'h1' : 'h2';
-  const inputId = `restaurant-name-${copy}`;
   return `<article class="chapter chapter--${scene.id} layout--${scene.layout}" data-scene="${scene.id}" aria-label="${escapeHtml(scene.styleLabel)} concept">
     <section class="hero" aria-label="${escapeHtml(scene.styleLabel)} landing page concept">
       <div class="hero__media">${photo(scene, 'hero__photo', first && copy === 0)}</div>
@@ -68,9 +71,7 @@ function chapter(scene: Scene, copy: number): string {
       <div class="hero__ornament" aria-hidden="true"><span>${escapeHtml(scene.number)}</span><i></i></div>
       <div class="hero__inner">
         <div class="demo-header"><span class="demo-name restaurant-name">${initialName}</span><span class="demo-header__right"><span>Visual concept</span><button type="button" class="demo-menu-link" data-menu-jump${copy !== 0 ? ' tabindex="-1"' : ''}>View your menu <span aria-hidden="true">↗</span></button></span></div>
-        <div class="hero__copy"><p class="eyebrow">${escapeHtml(scene.number)} / ${escapeHtml(scene.styleLabel)}</p><${headingTag}>${escapeHtml(scene.heroLine)}</${headingTag}><p class="hero__support">${escapeHtml(scene.heroSupport)}</p>
-          ${first ? `<div class="name-panel"><label for="${inputId}">Try your name here</label><div class="name-panel__field"><input id="${inputId}" class="name-input" type="text" maxlength="48" autocomplete="off" spellcheck="false" placeholder="Your restaurant" value=""${copy !== 0 ? ' disabled' : ''} /><span aria-hidden="true">↗</span></div><p>Just for this visit. Nothing is saved.</p></div>` : ''}
-        </div>
+        <div class="hero__copy"><p class="eyebrow">${escapeHtml(scene.number)} / ${escapeHtml(scene.styleLabel)}</p><${headingTag}>${escapeHtml(scene.heroLine)}</${headingTag}><p class="hero__support">${escapeHtml(scene.heroSupport)}</p></div>
         <div class="hero__foot"><span>Picture your place here</span><span class="scroll-cue">Scroll to explore <span aria-hidden="true">↓</span></span></div>
       </div>
     </section>
@@ -97,8 +98,13 @@ function cycle(copy: number): string {
 }
 
 app.innerHTML = `<header class="studio-header">
-  <a class="studio-header__brand" href="https://fohrestaurants.com/" aria-label="Front of House home">${awning}<span class="studio-header__wordmark">FRONT <em>OF</em> HOUSE<small>RESTAURANT WEB STUDIO</small></span></a>
-  <div class="studio-header__right"><span class="studio-header__counter" id="scene-counter">01 / ${sceneTotal}</span><a href="${emailHref}" class="studio-header__cta">Let’s make yours <span aria-hidden="true">↗</span></a></div>
+  <div class="studio-header__identity"><a class="studio-header__brand" href="https://fohrestaurants.com/" aria-label="Front of House home">${awning}<span class="studio-header__wordmark">FRONT <em>OF</em> HOUSE<small>RESTAURANT WEB STUDIO</small></span></a><span class="studio-header__counter" id="scene-counter">01 / ${sceneTotal}</span></div>
+  <div class="personalizer" role="group" aria-label="Personalize the website examples">
+    <label class="personalizer__field personalizer__field--name" for="restaurant-name"><span>Restaurant name</span><input id="restaurant-name" class="name-input" type="text" maxlength="48" autocomplete="off" spellcheck="false" placeholder="Your restaurant" aria-describedby="personalizer-note" /></label>
+    <label class="personalizer__field personalizer__field--vibe" for="vibe-select"><span>Vibe</span><span class="personalizer__select"><i class="personalizer__swatch" aria-hidden="true"></i><select id="vibe-select" class="vibe-select">${site.vibes.map((vibe) => `<option value="${escapeHtml(vibe.id)}"${vibe.id === site.defaultVibe ? ' selected' : ''}>${escapeHtml(vibe.label)}</option>`).join('')}</select></span></label>
+    <span class="sr-only" id="personalizer-note">Changes only this preview. Nothing is saved or sent.</span>
+  </div>
+  <a href="${emailHref}" class="studio-header__cta">Let’s make yours <span aria-hidden="true">↗</span></a>
 </header>
 <main class="showcase" aria-label="Restaurant website concepts">${cycle(-1)}${cycle(0)}${cycle(1)}</main>
 <aside class="contact-rail" aria-label="Contact Front of House"><span>YOUR WEBSITE IS YOUR NEW FRONT OF HOUSE</span><a href="${emailHref}">Let’s make yours <span aria-hidden="true">↗</span></a></aside>`;
@@ -190,7 +196,12 @@ document.addEventListener('input', (event) => {
   const value = target.value.replace(/\s+/g, ' ').trim();
   const name = value || site.defaultRestaurantName;
   document.querySelectorAll<HTMLElement>('.restaurant-name').forEach((element) => { element.textContent = name; });
-  document.querySelectorAll<HTMLInputElement>('.name-input:disabled').forEach((input) => { input.value = target.value; });
+});
+
+document.querySelector<HTMLSelectElement>('.vibe-select')?.addEventListener('change', (event) => {
+  const target = event.currentTarget;
+  if (!(target instanceof HTMLSelectElement)) return;
+  if (site.vibes.some((vibe) => vibe.id === target.value)) document.documentElement.dataset.vibe = target.value;
 });
 
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';

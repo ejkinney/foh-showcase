@@ -2,6 +2,8 @@
 
 A standalone Front of House showcase with six repeating restaurant website concepts. Built with Vite, TypeScript, and static content. No account, backend, analytics, or visitor data storage is required.
 
+A small fixed studio bar lets visitors try their restaurant name and switch all six concepts between five color vibes. These changes stay in the current browser view only.
+
 ## Run locally
 
 ```sh

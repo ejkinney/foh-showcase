@@ -2,11 +2,25 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Front of House showcase content",
   "type": "object",
-  "required": ["schemaVersion", "defaultRestaurantName", "contactEmail", "scenes"],
+  "required": ["schemaVersion", "defaultRestaurantName", "defaultVibe", "vibes", "contactEmail", "scenes"],
   "additionalProperties": false,
   "properties": {
-    "schemaVersion": { "const": "1.0.0" },
+    "schemaVersion": { "const": "2.0.0" },
     "defaultRestaurantName": { "type": "string", "minLength": 1 },
+    "defaultVibe": { "enum": ["signature", "coastal", "garden", "after-dark", "electric"] },
+    "vibes": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["id", "label"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "enum": ["signature", "coastal", "garden", "after-dark", "electric"] },
+          "label": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
     "contactEmail": { "type": "string", "format": "email" },
     "scenes": {
       "type": "array",
