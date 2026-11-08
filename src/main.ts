@@ -113,7 +113,7 @@ app.innerHTML = `<header class="studio-header">
     <label class="personalizer__field personalizer__field--name" for="restaurant-name"><span>Restaurant name</span><input id="restaurant-name" class="name-input" type="text" maxlength="48" autocomplete="off" spellcheck="false" placeholder="Your restaurant" aria-describedby="personalizer-note" /></label>
     <label class="personalizer__field personalizer__field--range" for="base-hue"><span><i class="color-swatch color-swatch--base" aria-hidden="true"></i>Main color</span><input id="base-hue" class="color-slider" type="range" min="0" max="359" step="1" value="${site.defaultColors.baseHue}" aria-describedby="personalizer-note" /></label>
     <label class="personalizer__field personalizer__field--range" for="accent-hue"><span><i class="color-swatch color-swatch--accent" aria-hidden="true"></i>Accent</span><input id="accent-hue" class="color-slider" type="range" min="0" max="359" step="1" value="${site.defaultColors.accentHue}" aria-describedby="personalizer-note" /></label>
-    <span class="sr-only" id="personalizer-note">Changes only this preview. Drag a color slider to see all six sites. Nothing is saved or sent.</span>
+    <span class="sr-only" id="personalizer-note">Changes only this preview. Drag a color slider to see all ${site.scenes.length} sites. Nothing is saved or sent.</span>
     <span class="sr-only" id="color-preview-status" role="status" aria-live="polite"></span>
   </div>
   <a href="${emailHref}" class="studio-header__cta">Let’s make yours <span aria-hidden="true">↗</span></a>

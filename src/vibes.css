@@ -27,7 +27,7 @@
 @media(min-width:760px) and (max-width:899px){.hero__inner{padding-top:155px}}
 @media(max-width:360px){.studio-header{padding-left:10px;padding-right:10px}.personalizer{gap:6px}.personalizer__field{padding-left:8px;padding-right:8px}.personalizer__field input,.personalizer__field select{font-size:13px}}
 
-/* Vibe controls only the palette. The six compositions and real photos stay fixed. */
+/* Color controls only the palette. The compositions and real photos stay fixed. */
 html[data-vibe='signature']{--v-swatch:#c75b39}
 html[data-vibe='coastal']{--v-deep:#153b4a;--v-mid:#326a74;--v-light:#f0f8f2;--v-bright:#a9d9d0;--v-paper:#f8faf4;--v-accent:#e69368;--v-swatch:#326a74}
 html[data-vibe='garden']{--v-deep:#263d32;--v-mid:#496447;--v-light:#f5f3df;--v-bright:#d4dda1;--v-paper:#fbf8e9;--v-accent:#d47b50;--v-swatch:#496447}
