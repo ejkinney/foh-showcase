@@ -1,10 +1,8 @@
 import content from '../content/showcase.json';
 import assetContent from '../content/asset-library.json';
-import './style.css';
-import './vibes.css';
-import './expansion.css';
-import './expansion2.css';
-import './overview.css';
+import './foundation.css';
+import './layouts.css';
+import './gallery.css';
 
 type Tab = { label: string; items: string[] };
 type Asset = { id: string; alt: string; author: string; sourceUrl: string; image: string; smallImage: string; sourceWidth: number; sourceHeight: number };
@@ -68,7 +66,7 @@ function menuTabs(scene: Scene, copy: number): string {
       data-scene="${scene.id}" data-tab="${index}">${escapeHtml(tab.label)}</button>`).join('')}
   </div>
   ${scene.tabs.map((tab, index) => `<div class="menu-panel" role="tabpanel"
-    id="panel-${scene.id}-${copy}-${index}" aria-labelledby="tab-${scene.id}-${copy}-${index}"${index ? ' hidden' : ''}>
+    id="panel-${scene.id}-${copy}-${index}" aria-labelledby="tab-${scene.id}-${copy}-${index}" tabindex="${copy === 0 ? '0' : '-1'}"${index ? ' hidden' : ''}>
     ${tab.items.map((item, itemIndex) => `<div class="menu-item"><span class="menu-item__number">0${itemIndex + 1}</span><span class="menu-item__name">${escapeHtml(item)}</span><span class="menu-item__glyph" aria-hidden="true">✳</span></div>`).join('')}
   </div>`).join('')}`;
 }
@@ -81,13 +79,15 @@ function chapter(scene: Scene, copy: number): string {
   const twoPhotos = heroAsset.id !== menuAsset.id;
   return `<article class="chapter chapter--${scene.id} layout--${scene.layout}" data-scene="${scene.id}" aria-label="${escapeHtml(scene.styleLabel)} concept">
     <section class="hero" aria-label="${escapeHtml(scene.styleLabel)} landing page concept">
-      <div class="hero__media">${photo(heroAsset, 'hero__photo', first && copy === 0)}</div>
-      ${twoPhotos ? `<div class="hero__accent" aria-hidden="true">${photo(menuAsset, 'hero__accent-photo', false, true)}</div>` : ''}
-      <div class="hero__wash" aria-hidden="true"></div>
-      <div class="hero__ornament" aria-hidden="true"><span>${escapeHtml(scene.number)}</span><i></i></div>
       <div class="hero__inner">
-        <div class="demo-header"><span class="demo-name restaurant-name">${initialName}</span><span class="demo-header__right"><span>Visual concept</span><button type="button" class="demo-menu-link" data-menu-jump${copy !== 0 ? ' tabindex="-1"' : ''}>View your menu <span aria-hidden="true">↗</span></button></span></div>
-        <div class="hero__copy"><p class="eyebrow">${escapeHtml(scene.number)} / ${escapeHtml(scene.styleLabel)}</p><${headingTag}>${escapeHtml(scene.heroLine)}</${headingTag}><p class="hero__support">${escapeHtml(scene.heroSupport)}</p></div>
+        <div class="demo-header"><span class="demo-name restaurant-name">${initialName}</span><span class="demo-header__right"><span>Visual concept</span><button type="button" class="demo-menu-link" data-menu-jump${copy !== 0 ? ' tabindex="-1"' : ''}>View menu <span aria-hidden="true">↗</span></button></span></div>
+        <div class="hero__stage">
+          <div class="hero__media">${photo(heroAsset, 'hero__photo', first && copy === 0)}</div>
+          ${twoPhotos ? `<div class="hero__accent" aria-hidden="true">${photo(menuAsset, 'hero__accent-photo', false, true)}</div>` : ''}
+          <div class="hero__wash" aria-hidden="true"></div>
+          <div class="hero__ornament" aria-hidden="true"><span>${escapeHtml(scene.number)}</span><i></i></div>
+        </div>
+        <div class="hero__copy"><p class="eyebrow">${escapeHtml(scene.number)} / ${escapeHtml(scene.styleLabel)}</p><${headingTag} class="hero__title">${escapeHtml(scene.heroLine)}</${headingTag}><p class="hero__support">${escapeHtml(scene.heroSupport)}</p></div>
         <div class="hero__foot"><span>Picture your place here</span><span class="scroll-cue">Scroll to explore <span aria-hidden="true">↓</span></span></div>
       </div>
     </section>
@@ -116,14 +116,14 @@ function cycle(copy: number): string {
 function overviewCard(scene: Scene): string {
   const heroAsset = getAsset(scene.heroAssetId);
   return `<article class="overview-card layout--${scene.layout}" data-scene="${scene.id}">
-    <img class="overview-card__image" src="${heroAsset.smallImage}" alt="" width="${heroAsset.sourceWidth}" height="${heroAsset.sourceHeight}" loading="eager" decoding="sync" fetchpriority="high" />
+    <img class="overview-card__image" src="${heroAsset.smallImage}" alt="" width="${heroAsset.sourceWidth}" height="${heroAsset.sourceHeight}" loading="lazy" decoding="async" />
     <div class="overview-card__top"><span class="restaurant-name">${initialName}</span><span>${escapeHtml(scene.number)}</span></div>
     <div class="overview-card__bottom"><strong>${escapeHtml(scene.previewLabel)}</strong><span class="overview-card__menu" aria-hidden="true"><i></i><i></i><i></i></span></div>
   </article>`;
 }
 
 app.innerHTML = `<header class="studio-header">
-  <div class="studio-header__identity"><a class="studio-header__brand" href="https://fohrestaurants.com/" aria-label="Front of House home">${awning}<span class="studio-header__wordmark">FRONT <em>OF</em> HOUSE<small>RESTAURANT WEB STUDIO</small></span></a><span class="studio-header__counter" id="scene-counter">01 / ${sceneTotal}</span></div>
+  <div class="studio-header__identity"><a class="studio-header__brand" href="https://fohrestaurants.com/" aria-label="Front of House home">${awning}<span class="studio-header__wordmark">FRONT <em>OF</em> HOUSE<small>RESTAURANT WEB STUDIO</small></span></a><button class="browse-button" type="button" data-browse aria-haspopup="dialog">Browse styles <span id="scene-counter">01 / ${sceneTotal}</span><span aria-hidden="true">▦</span></button></div>
   <div class="personalizer" role="group" aria-label="Personalize the website examples">
     <label class="personalizer__field personalizer__field--name" for="restaurant-name"><span>Restaurant name</span><input id="restaurant-name" class="name-input" type="text" maxlength="48" autocomplete="off" spellcheck="false" placeholder="Your restaurant" aria-describedby="personalizer-note" /></label>
     <label class="personalizer__field personalizer__field--range" for="base-hue"><span><i class="color-swatch color-swatch--base" aria-hidden="true"></i>Main color</span><input id="base-hue" class="color-slider" type="range" min="0" max="359" step="1" value="${site.defaultColors.baseHue}" aria-describedby="personalizer-note" /></label>
@@ -137,9 +137,27 @@ app.innerHTML = `<header class="studio-header">
 <div class="overview" aria-hidden="true" inert><div class="overview__heading"><strong>All ${site.scenes.length}, your colors.</strong><span>Release to return to the site</span></div><div class="overview__grid">${site.scenes.map(overviewCard).join('')}</div></div>
 <aside class="contact-rail" aria-label="Contact Front of House"><span>YOUR WEBSITE IS YOUR NEW FRONT OF HOUSE</span><a href="${emailHref}">Let’s make yours <span aria-hidden="true">↗</span></a></aside>`;
 
+app.insertAdjacentHTML('beforeend', `<dialog class="style-browser" aria-labelledby="style-browser-title">
+  <div class="style-browser__header"><div><p class="eyebrow">Find your point of view</p><h2 id="style-browser-title">Thirty ways to make an entrance.</h2></div><button type="button" class="style-browser__close" aria-label="Close style browser">✕</button></div>
+  <div class="style-browser__grid">${site.scenes.map(scene => `<button type="button" class="style-choice" data-choose-scene="${scene.id}"><img src="${getAsset(scene.heroAssetId).smallImage}" alt="" width="360" height="240" loading="lazy" decoding="async" /><span><small>${scene.number}</small><strong>${escapeHtml(scene.styleLabel)}</strong><i aria-hidden="true">↗</i></span></button>`).join('')}</div>
+</dialog>`);
+
 const middle = document.querySelector<HTMLElement>('.cycle[data-copy="0"]')!;
 const last = document.querySelector<HTMLElement>('.cycle[data-copy="1"]')!;
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const styleBrowser = document.querySelector<HTMLDialogElement>('.style-browser')!;
+const browseButton = document.querySelector<HTMLButtonElement>('[data-browse]')!;
+browseButton.addEventListener('click', () => { styleBrowser.showModal(); document.documentElement.classList.add('is-browsing'); });
+styleBrowser.querySelector('.style-browser__close')!.addEventListener('click', () => styleBrowser.close());
+styleBrowser.addEventListener('close', () => { document.documentElement.classList.remove('is-browsing'); });
+styleBrowser.addEventListener('click', (event) => {
+  const choice = (event.target as Element).closest<HTMLElement>('[data-choose-scene]');
+  if (!choice) return;
+  const chapter = middle.querySelector<HTMLElement>(`.chapter[data-scene="${choice.dataset.chooseScene}"]`);
+  styleBrowser.close();
+  chapter?.scrollIntoView({ behavior: 'instant', block: 'start' });
+  chapter?.querySelector<HTMLButtonElement>('[data-menu-jump]')?.focus({ preventScroll: true });
+});
 let scrollTicking = false;
 let userInteracted = false;
 for (const eventName of ['wheel', 'touchstart', 'pointerdown', 'keydown']) {
@@ -160,8 +178,9 @@ function updateCounter(): void {
 }
 
 function keepLooping(): void {
-  const start = middle.offsetTop;
-  const end = last.offsetTop;
+  const headerHeight = document.querySelector('.studio-header')!.getBoundingClientRect().height;
+  const start = middle.offsetTop - headerHeight;
+  const end = last.offsetTop - headerHeight;
   const length = end - start;
   const y = window.scrollY;
   if (length > 0 && y < start - 1) window.scrollTo({ top: y + length, behavior: 'instant' });
@@ -178,6 +197,7 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 function setTab(sceneId: string, selected: number): void {
+  const anchor = captureReadingPosition();
   document.querySelectorAll<HTMLElement>(`.chapter[data-scene="${sceneId}"]`).forEach((chapter) => {
     const central = chapter.closest('.cycle')?.getAttribute('data-copy') === '0';
     chapter.querySelectorAll<HTMLButtonElement>('.menu-tab').forEach((button, index) => {
@@ -188,6 +208,20 @@ function setTab(sceneId: string, selected: number): void {
       panel.hidden = index !== selected;
     });
   });
+  restoreReadingPosition(anchor);
+}
+
+function captureReadingPosition(): { element: HTMLElement; top: number } | undefined {
+  const probe = document.querySelector('.studio-header')!.getBoundingClientRect().bottom + 16;
+  const element = [...middle.querySelectorAll<HTMLElement>('.hero, .menu')].find(el => {
+    const rect = el.getBoundingClientRect();
+    return rect.top <= probe && rect.bottom > probe;
+  });
+  return element ? { element, top: element.getBoundingClientRect().top } : undefined;
+}
+
+function restoreReadingPosition(anchor: ReturnType<typeof captureReadingPosition>): void {
+  if (anchor) window.scrollBy({ top: anchor.element.getBoundingClientRect().top - anchor.top, behavior: 'instant' });
 }
 
 document.addEventListener('click', (event) => {
@@ -223,7 +257,9 @@ document.addEventListener('input', (event) => {
   if (!(target instanceof HTMLInputElement) || !target.matches('.name-input')) return;
   const value = target.value.replace(/\s+/g, ' ').trim();
   const name = value || site.defaultRestaurantName;
+  const anchor = captureReadingPosition();
   document.querySelectorAll<HTMLElement>('.restaurant-name').forEach((element) => { element.textContent = name; });
+  restoreReadingPosition(anchor);
 });
 
 const baseSlider = document.querySelector<HTMLInputElement>('#base-hue')!;
@@ -250,7 +286,7 @@ function applyColors(): void {
   const accent = Number(accentSlider.value);
   const style = document.documentElement.style;
   style.setProperty('--v-deep', `hsl(${base} 38% 17%)`);
-  style.setProperty('--v-mid', `hsl(${base} 40% 33%)`);
+  style.setProperty('--v-mid', `hsl(${base} 40% 26%)`);
   style.setProperty('--v-light', `hsl(${base} 38% 93%)`);
   style.setProperty('--v-bright', `hsl(${base} 62% 77%)`);
   style.setProperty('--v-paper', `hsl(${base} 38% 97%)`);
@@ -298,12 +334,15 @@ document.addEventListener('visibilitychange', () => { if (document.hidden) hideO
 applyColors();
 
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-window.scrollTo({ top: middle.offsetTop, behavior: 'instant' });
+function scrollToOpening(): void {
+  window.scrollTo({ top: middle.offsetTop - document.querySelector('.studio-header')!.getBoundingClientRect().height, behavior: 'instant' });
+}
+scrollToOpening();
 window.requestAnimationFrame(() => {
-  window.scrollTo({ top: middle.offsetTop, behavior: 'instant' });
+  scrollToOpening();
   document.documentElement.classList.add('ready');
   updateCounter();
 });
 document.fonts.ready.then(() => {
-  if (!userInteracted) window.scrollTo({ top: middle.offsetTop, behavior: 'instant' });
+  if (!userInteracted) scrollToOpening();
 });

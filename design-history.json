@@ -1,0 +1,316 @@
+[
+  {
+    "date": "2026-11-08",
+    "sourceVersion": 7,
+    "kind": "observed-before-review",
+    "scenes": [
+      {
+        "id": "dining",
+        "layout": "cinema",
+        "designSignature": "A full-bleed tavern portrait with a quiet lower-left editorial headline; the menu becomes an overlapping letterpress page beside the room photograph."
+      },
+      {
+        "id": "counter",
+        "layout": "poster",
+        "designSignature": "A bright counter-service poster with a tilted food-photo frame, oversized block type, and menu items arranged like punchy takeaway tickets."
+      },
+      {
+        "id": "cafe",
+        "layout": "journal",
+        "designSignature": "A café journal spread with an arched window of coffee photography, a restrained serif column, and a notebook-like menu that sits beside a photo postcard."
+      },
+      {
+        "id": "pizza",
+        "layout": "table",
+        "designSignature": "A pizzeria tabletop composition with a circular overhead pizza photograph, headline orbiting the image, and a menu styled as a long oven ticket."
+      },
+      {
+        "id": "bar",
+        "layout": "nocturne",
+        "designSignature": "A late-night doorway composition with a tall service photograph, vertical rule and italic headline; the drinks list appears over a full-bleed atmospheric image."
+      },
+      {
+        "id": "bakery",
+        "layout": "market",
+        "designSignature": "A bakery market sheet with a wide human bread photograph, flour-paper headline panel, and a menu laid out like labeled counter shelves."
+      },
+      {
+        "id": "noodle",
+        "layout": "noodle",
+        "designSignature": "A chopstick-thin vertical stripe and a circular overhead bowl create a compact street-poster landing; the menu reads like a column of paper order slips."
+      },
+      {
+        "id": "seafood",
+        "layout": "tide",
+        "designSignature": "A wide scalloped ocean window and fine rule lines make the seafood photograph feel like a contemporary harbor poster; the menu becomes an airy dockside ledger."
+      },
+      {
+        "id": "wine",
+        "layout": "cellar",
+        "designSignature": "A narrow cinematic wine-glass panel sits beside oversized italic editorial type; the menu is a restrained dark tasting card with fine metallic rules."
+      },
+      {
+        "id": "diner",
+        "layout": "checkered",
+        "designSignature": "A checkerboard rail frames a sunny overhead toast photograph and condensed marquee type; the menu is a stack of cheerful receipt-style rows."
+      },
+      {
+        "id": "taco",
+        "layout": "cantina",
+        "designSignature": "A bright cantina interior becomes a full-bleed collage behind staggered headline blocks; the menu uses bold color-banded cards inspired by lively restaurant graphics."
+      },
+      {
+        "id": "sushi",
+        "layout": "ink",
+        "designSignature": "A minimal ink-on-paper introduction leaves a long, low sashimi photograph as the focal line; the menu is a quiet ruled sheet with deliberate spacing."
+      },
+      {
+        "id": "steak",
+        "layout": "fire",
+        "designSignature": "An angular hard-edged food photograph cuts through a charcoal field under monumental slab type; the menu is a high-contrast grill ledger."
+      },
+      {
+        "id": "dessert",
+        "layout": "patisserie",
+        "designSignature": "A circular dessert portrait floats over a pale gradient with tiny offset labels; the menu becomes a patisserie display of delicate ruled rows."
+      },
+      {
+        "id": "garden",
+        "layout": "botanical",
+        "designSignature": "A soft leaf-shaped salad photograph overlaps an airy botanical field; the menu uses a split garden-journal composition with generous white space."
+      },
+      {
+        "id": "pasta",
+        "layout": "trattoria",
+        "designSignature": "A sweeping diagonal gnocchi photograph interrupts an oversized old-world serif headline; the menu is a warm tablecloth-style page beside the plate."
+      },
+      {
+        "id": "icecream",
+        "layout": "scoop",
+        "designSignature": "A striped storefront-style canopy crowns a bold cone photograph and bouncy rounded type; the menu is a row of flavor cards with playful rule marks."
+      },
+      {
+        "id": "farm",
+        "layout": "harvest",
+        "designSignature": "A market produce photograph is framed like a torn newspaper clipping against an earthy field; the menu reads as a simple harvest bulletin with stacked cards."
+      },
+      {
+        "id": "dimsum",
+        "layout": "fold",
+        "designSignature": "A folded-paper menu motif surrounds a close-up dumpling portrait; a second food frame peeks through like another page, while the sample menu unfolds in two offset columns."
+      },
+      {
+        "id": "brunch",
+        "layout": "daybreak",
+        "designSignature": "A sunny overhead breakfast table anchors a diagonal sunrise panel; a second waffle photograph sits like a clipped postcard and the menu becomes a cheerful weekend newspaper."
+      },
+      {
+        "id": "roastery",
+        "layout": "roaster",
+        "designSignature": "Industrial coffee equipment fills a strong vertical frame beside small technical labels; a creamy espresso inset softens the composition and the menu reads like a roaster tasting card."
+      },
+      {
+        "id": "oyster",
+        "layout": "shell",
+        "designSignature": "An oyster platter sits inside a scalloped shell frame with a second seafood image as a small tide-window; the menu uses fine coastal rules and a broad photographic edge."
+      },
+      {
+        "id": "smokehouse",
+        "layout": "ember",
+        "designSignature": "A dark charcoal field and an angled grilling photograph bring the fire forward; a narrow skewer strip cuts across the headline and the menu is built from bold butcher-paper rows."
+      },
+      {
+        "id": "shared",
+        "layout": "linen",
+        "designSignature": "A colorful shared plate and a bread-basket inset sit on an open linen-like gradient; a quiet invitation leads to a generous menu arranged like place cards."
+      },
+      {
+        "id": "tea",
+        "layout": "ritual",
+        "designSignature": "A teapot photograph is framed as a narrow ritual panel and balanced by a second cup image; the menu rests on quiet paper with fine vertical measure marks."
+      },
+      {
+        "id": "burger",
+        "layout": "sticker",
+        "designSignature": "A double-burger hero becomes a punchy sticker over a playful checker field; a second food photo overlaps like a takeaway card and the menu is a stack of bold numbered tickets."
+      },
+      {
+        "id": "vegetable",
+        "layout": "mosaic",
+        "designSignature": "A fresh dish and a second plate form an asymmetrical mosaic with botanical rules; the menu uses an airy two-panel composition that keeps ingredients in view."
+      },
+      {
+        "id": "foodhall",
+        "layout": "signage",
+        "designSignature": "A bustling stall photograph is cropped into stacked signboards while a second cooking scene animates the lower edge; the menu becomes a wayfinding board of bold rows."
+      },
+      {
+        "id": "sweetshop",
+        "layout": "bonbon",
+        "designSignature": "A dramatic pastry photograph floats in a rounded display window with a second sweet vignette; the menu uses patisserie labels and a polished counter rhythm."
+      },
+      {
+        "id": "openkitchen",
+        "layout": "pass",
+        "designSignature": "A documentary cooking photograph leads a split-screen pass with a second kitchen-detail window; the menu sits like a clear chef’s board beside the work."
+      }
+    ]
+  },
+  {
+    "date": "2026-11-08",
+    "kind": "layout-review",
+    "rationale": "Compared the existing thirty local compositions. Retained their food and place motifs while replacing fixed mobile positions with content-driven grids. Chose immersive photography, framed food portraits, and headline-first editorial sequences. Desktop menus use letterpress overlaps, ledgers, tickets, and shelves. No claim of global originality.",
+    "scenes": [
+      {
+        "id": "dining",
+        "layout": "cinema",
+        "designSignature": "An uninterrupted dining-room photograph introduces a large editorial headline. On mobile the invitation sits over a directional scrim; desktop pairs an overlapping letterpress menu with the room, keeping the table visible."
+      },
+      {
+        "id": "counter",
+        "layout": "poster",
+        "designSignature": "A tilted sandwich poster leads the mobile page, followed by compact block type; desktop gives each its own column. The menu uses a broad masthead and numbered takeaway tickets with offset accent edges."
+      },
+      {
+        "id": "cafe",
+        "layout": "journal",
+        "designSignature": "An arched café photograph leads a quiet mobile reading sequence and a left-hand desktop portrait. The menu is a ruled notebook beside a photographic postcard, with room for the restaurant name to grow."
+      },
+      {
+        "id": "pizza",
+        "layout": "table",
+        "designSignature": "A circular overhead pizza photograph forms a tabletop motif. Mobile places the invitation beneath the plate; desktop separates it from the headline and pairs a round menu photograph with a slightly tilted order sheet."
+      },
+      {
+        "id": "bar",
+        "layout": "nocturne",
+        "designSignature": "A tall arched cocktail photograph and italic invitation establish an evening doorway. The menu sits on translucent dark paper over bar photography, with consistent readable text and fine light borders."
+      },
+      {
+        "id": "bakery",
+        "layout": "market",
+        "designSignature": "A bread photograph meets an overlapping counter card on mobile and a staggered photograph-and-card composition on desktop. A panoramic menu photograph leads three shelf-like menu labels on wider screens."
+      },
+      {
+        "id": "noodle",
+        "layout": "noodle",
+        "designSignature": "A bowl photograph forms a round noodle-shop sign beside a chopstick rule. Compact block type stays below the image on mobile; the menu is a narrow order slip with dashed rows and a separate food photograph."
+      },
+      {
+        "id": "seafood",
+        "layout": "tide",
+        "designSignature": "A scalloped seafood photograph makes a broad mobile horizon. Desktop places the photo before the invitation and stretches a coastal menu photograph beside a compact, finely ruled ledger."
+      },
+      {
+        "id": "wine",
+        "layout": "cellar",
+        "designSignature": "A narrow wine-glass portrait and italic headline create a cellar-like opening. The desktop photograph occupies a smaller column; the menu is a dark tasting card beside a luminous vertical strip."
+      },
+      {
+        "id": "diner",
+        "layout": "checkered",
+        "designSignature": "Checker trim sits above a tilted breakfast postcard and short block headline. The mobile menu stays easy to scan; desktop gives the receipt-style rows and breakfast photograph separate columns under a broad masthead."
+      },
+      {
+        "id": "taco",
+        "layout": "cantina",
+        "designSignature": "A lively restaurant interior fills the opening behind a dark scrim and a high-contrast signboard headline. The menu contrasts a tilted room photograph with banded food rows; the accent hue never determines text contrast."
+      },
+      {
+        "id": "sushi",
+        "layout": "ink",
+        "designSignature": "Quiet typography leads both screen sizes, followed by a long sashimi photograph. Desktop puts supporting copy beside the headline; the menu uses double rules, restrained paper, and a separate photographic strip."
+      },
+      {
+        "id": "steak",
+        "layout": "fire",
+        "designSignature": "An angular steak photograph is separated from monumental type. The mobile menu uses an accent-edged grill ledger; desktop aligns the photograph and ledger beneath an oversized masthead."
+      },
+      {
+        "id": "dessert",
+        "layout": "patisserie",
+        "designSignature": "A rounded dessert portrait and fine italic number form a delicate display. The photograph and invitation sit in separate desktop columns; a dotted menu list is paired with a tall pastry window."
+      },
+      {
+        "id": "garden",
+        "layout": "botanical",
+        "designSignature": "A leaf-shaped food photograph leads the mobile page and the left side of the desktop opening. The menu uses a field-notebook edge and a second leaf-shaped photograph, keeping ingredients present throughout."
+      },
+      {
+        "id": "pasta",
+        "layout": "trattoria",
+        "designSignature": "A diagonal pasta photograph sets a warm tabletop mood without crossing the text. The menu pairs a framed photograph with a subtly striped linen sheet; each grows with its content."
+      },
+      {
+        "id": "icecream",
+        "layout": "scoop",
+        "designSignature": "A striped canopy frames a cone portrait above a cheerful mobile invitation. Desktop expands the portrait beside the headline; rounded flavor labels and a curved menu photograph repeat the ice-cream-counter motif."
+      },
+      {
+        "id": "farm",
+        "layout": "harvest",
+        "designSignature": "A produce photograph is framed as a newspaper clipping with a dashed stamp. The mobile invitation follows the image; desktop pairs a market bulletin with a tall produce photograph."
+      },
+      {
+        "id": "dimsum",
+        "layout": "fold",
+        "designSignature": "Two food photographs overlap as folded cards inside a reserved image area. The mobile headline stays below both cards; desktop gives image and copy separate columns, followed by a dashed menu sheet and food portrait."
+      },
+      {
+        "id": "brunch",
+        "layout": "daybreak",
+        "designSignature": "A diagonal breakfast panorama and a clipped waffle postcard form a sunrise composition. An accent rule anchors the headline; the menu combines a broad food photograph and a bright breakfast card."
+      },
+      {
+        "id": "roastery",
+        "layout": "roaster",
+        "designSignature": "A commercial coffee-machine strip and a cream-topped espresso inset form a measured industrial composition. Block type remains separate; a compact tasting card and coffee photograph sit beneath a broad desktop menu masthead."
+      },
+      {
+        "id": "oyster",
+        "layout": "shell",
+        "designSignature": "A scalloped oyster photograph overlaps a circular seafood detail within one image area. The coastal invitation stays clear of both; the menu pairs fine rules with a broad shell-like photograph."
+      },
+      {
+        "id": "smokehouse",
+        "layout": "ember",
+        "designSignature": "A grill photograph fills the opening, with a small skewer detail above the headline on mobile and to its right on desktop. The menu uses butcher-paper rules and an accent edge beside the grilling photograph."
+      },
+      {
+        "id": "shared",
+        "layout": "linen",
+        "designSignature": "A relaxed tabletop photograph and circular bread-basket detail share a contained linen composition. The invitation stays separate; a framed menu photograph balances a generous, quiet menu sheet."
+      },
+      {
+        "id": "tea",
+        "layout": "ritual",
+        "designSignature": "The invitation leads before a teapot and cup pair on mobile. Desktop places the quiet headline beside tall vessel photographs; the menu uses fine double rules alongside a softly arched tea image."
+      },
+      {
+        "id": "burger",
+        "layout": "sticker",
+        "designSignature": "Checker trim and two food-photo stickers form a punchy burger-stand composition. Text stays below the photos on mobile and beside them on desktop; bold numbered tickets carry the menu."
+      },
+      {
+        "id": "vegetable",
+        "layout": "mosaic",
+        "designSignature": "Two ingredient photographs form an asymmetric mosaic, with a deliberate focal crop and botanical rule. The menu pairs a lightly ruled sheet with a large curved food photograph."
+      },
+      {
+        "id": "foodhall",
+        "layout": "signage",
+        "designSignature": "A street-market cooking photograph fills the opening behind a clear wayfinding sign. A second cooking detail stays above the mobile headline or beside it on desktop; the menu uses bold rules beneath a broad masthead."
+      },
+      {
+        "id": "sweetshop",
+        "layout": "bonbon",
+        "designSignature": "A curved pastry window overlaps a small circular dessert detail within the image area. The invitation follows on mobile and sits alongside on desktop; dotted menu rules echo patisserie labels."
+      },
+      {
+        "id": "openkitchen",
+        "layout": "pass",
+        "designSignature": "A documentary cooking photograph fills the opening, with a separate kitchen-detail window and a clear text scrim. The menu places the working kitchen beside an accent-edged chef’s pass sheet."
+      }
+    ]
+  }
+]
