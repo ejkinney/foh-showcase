@@ -15,9 +15,14 @@ for (const [data, schema] of [[site, 'content/showcase.schema.json'], [library, 
 const assets = new Map(library.assets.map(asset => [asset.id, asset]));
 assert.equal(assets.size, library.assets.length, 'Asset IDs must be unique');
 assert.equal(new Set(site.scenes.map(scene => scene.id)).size, site.scenes.length, 'Scene IDs must be unique');
-const styles = fs.readFileSync(new URL('../src/layouts.css', import.meta.url), 'utf8');
-for (const scene of site.scenes) {
-  assert(styles.includes(`.layout--${scene.layout}`), `Missing layout: ${scene.layout}`);
+assert.equal(new Set(site.scenes.map(scene => scene.layout)).size, site.scenes.length, 'Each scene must have its own layout');
+const layouts = new Set(['layouts.css', 'new-layouts.css'].flatMap(file => {
+  const styles = fs.readFileSync(new URL(`../src/${file}`, import.meta.url), 'utf8');
+  return Array.from(styles.matchAll(/\.layout--([a-z-]+)\b/g), match => match[1]);
+}));
+for (const [index, scene] of site.scenes.entries()) {
+  assert.equal(scene.number, String(index + 1).padStart(2, '0'), `Incorrect scene number: ${scene.id}`);
+  assert(layouts.has(scene.layout), `Missing layout: ${scene.layout}`);
   for (const id of [scene.heroAssetId, scene.menuAssetId]) {
     const asset = assets.get(id);
     assert(asset, `Missing asset: ${id}`);

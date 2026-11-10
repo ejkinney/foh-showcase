@@ -966,6 +966,241 @@
           ]
         }
       ]
+    },
+    {
+      "id": "market-dispatch",
+      "layout": "broadsheet",
+      "number": "31",
+      "styleLabel": "Market dispatch",
+      "previewLabel": "Market dispatch",
+      "heroLine": "Fresh off the market.",
+      "heroSupport": "A market kitchen shaped by the stalls, growers, and flavors around it.",
+      "menuLine": "The market menu",
+      "menuSupport": "Start with something bright, then see what came in for the hot line.",
+      "heroAssetId": "asian-market",
+      "menuAssetId": "market-blueberries",
+      "designSignature": "A centered newspaper headline sits above an edge-aligned market photo spread, with the introduction below the photography. Menu items read in broadsheet columns followed by an ingredient photograph. Street and produce photography replace the signboard-and-inset treatment of Food Hall and the clipping motif of Farm Table.",
+      "tabs": [
+        {
+          "label": "Market plates",
+          "items": [
+            "Pickled market cucumbers",
+            "Herbs and greens with sesame",
+            "Roasted squash with chile crisp",
+            "Blueberries and lemon cream"
+          ]
+        },
+        {
+          "label": "Hot line",
+          "items": [
+            "Ginger-scallion rice bowl",
+            "Charred cabbage with black vinegar",
+            "Mushroom and tofu skewers",
+            "Sesame noodles with crisp shallots"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "listening-bar",
+      "layout": "record-sleeve",
+      "number": "32",
+      "styleLabel": "Listening bar",
+      "previewLabel": "Listening bar",
+      "heroLine": "Good drinks. Deep cuts.",
+      "heroSupport": "Settle in for a round and stay for the next side of the record.",
+      "menuLine": "The drinks list",
+      "menuSupport": "Pick a category to find your next pour.",
+      "heroAssetId": "bar-shelf",
+      "menuAssetId": "bar",
+      "designSignature": "A bar photograph becomes square sleeve art with a visible grooved record. On the menu, a vertical selector and numbered track list share the same panel. The square silhouette and track navigation distinguish it from the arched Cocktail Bar doorway and overlapping drinks sheet.",
+      "tabs": [
+        {
+          "label": "Stirred",
+          "items": [
+            "Black walnut old fashioned",
+            "Cacao and amaro Manhattan",
+            "Lemon peel martini"
+          ]
+        },
+        {
+          "label": "Shaken",
+          "items": [
+            "Grapefruit and rosemary sour",
+            "Ginger daiquiri",
+            "Passion fruit and lime"
+          ]
+        },
+        {
+          "label": "Zero proof",
+          "items": [
+            "Juniper and tonic",
+            "Black tea and stone fruit",
+            "Mint and cucumber fizz"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "curry-counter",
+      "layout": "order-board",
+      "number": "33",
+      "styleLabel": "Curry counter",
+      "previewLabel": "Curry counter",
+      "heroLine": "Curry by the bowl.",
+      "heroSupport": "Rich broth, springy noodles, and something sharp on the side.",
+      "menuLine": "Build your order",
+      "menuSupport": "Browse the bowls first, then add a side or something cool to drink.",
+      "heroAssetId": "curry-noodles",
+      "menuAssetId": "asian-noodles",
+      "designSignature": "A backlit sign leads straight into a rectangular curry panorama. The menu opens on a flat counter order board with large category switches, then closes with a photograph at the table. It uses a different order and geometry from Noodle House’s round bowl sign and order slip.",
+      "tabs": [
+        {
+          "label": "Bowls",
+          "items": [
+            "Coconut curry noodles with tofu",
+            "Chicken curry noodles",
+            "Dry curry noodles with greens"
+          ]
+        },
+        {
+          "label": "Sides",
+          "items": [
+            "Crisp shallot fritters",
+            "Quick pickled mustard greens",
+            "Cucumber with lime and chile"
+          ]
+        },
+        {
+          "label": "Drinks",
+          "items": [
+            "Iced black tea",
+            "Ginger-lime soda",
+            "Cold soy milk"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "flatbread-house",
+      "layout": "table-runner",
+      "number": "34",
+      "styleLabel": "Flatbread house",
+      "previewLabel": "Flatbread house",
+      "heroLine": "Tear, dip, pass it on.",
+      "heroSupport": "Warm flatbreads and generous bowls meant for the middle of the table.",
+      "menuLine": "For the middle",
+      "menuSupport": "Choose a bread, then find something to scoop up or pass around.",
+      "heroAssetId": "roti-flatbread",
+      "menuAssetId": "winter-hummus",
+      "designSignature": "Two full-width table photographs bookend a woven invitation on mobile. On desktop the invitation forms a horizontal runner laid between the dishes. The menu follows a shared-plate grid, distinct from Shared Table’s small bread inset and quiet menu sheet.",
+      "tabs": [
+        {
+          "label": "Breads",
+          "items": [
+            "Layered roti",
+            "Sesame griddle bread",
+            "Garlic and herb flatbread"
+          ]
+        },
+        {
+          "label": "Dips",
+          "items": [
+            "Lemon hummus with toasted seeds",
+            "Smoky eggplant with olive oil",
+            "Yogurt with mint and cucumber"
+          ]
+        },
+        {
+          "label": "For the table",
+          "items": [
+            "Charred carrots with sumac",
+            "Chickpeas with roasted peppers",
+            "Crisp greens with lemon"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chocolate-atelier",
+      "layout": "tasting-box",
+      "number": "35",
+      "styleLabel": "Chocolate atelier",
+      "previewLabel": "Chocolate atelier",
+      "heroLine": "Open the chocolate box.",
+      "heroSupport": "A small collection of bonbons and baked chocolate to taste one piece at a time.",
+      "menuLine": "The tasting box",
+      "menuSupport": "Explore the fillings, choose a bar, or head straight to the bake case.",
+      "heroAssetId": "chocolates",
+      "menuAssetId": "brownies",
+      "designSignature": "The introduction is the lid of a rigid confectionery box with two edge-aligned chocolate compartments. The menu turns dish names into separate wells in a tray. The square grid and compartmentalized reading rhythm differ from the rounded display windows and ruled menus of the dessert and sweet-shop concepts.",
+      "tabs": [
+        {
+          "label": "Bonbons",
+          "items": [
+            "Dark chocolate and orange",
+            "Hazelnut praline",
+            "Salted caramel",
+            "Coffee ganache"
+          ]
+        },
+        {
+          "label": "Bars",
+          "items": [
+            "Dark chocolate and cocoa nib",
+            "Milk chocolate and almond",
+            "Bittersweet chocolate and sea salt"
+          ]
+        },
+        {
+          "label": "Bake case",
+          "items": [
+            "Brown butter brownie",
+            "Dark chocolate sablé",
+            "Cocoa and sour cherry cake"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "breakfast-club",
+      "layout": "sunburst",
+      "number": "36",
+      "styleLabel": "Breakfast club",
+      "previewLabel": "Breakfast club",
+      "heroLine": "Morning, together.",
+      "heroSupport": "A breakfast table made for another cup and one more story.",
+      "menuLine": "Breakfast is on",
+      "menuSupport": "Find something for the table, then pick what’s going in your cup.",
+      "heroAssetId": "brunch-friends",
+      "menuAssetId": "banana-pancakes",
+      "designSignature": "A radiating sunrise leads into a diagonal social-table photograph, with an oversized typographic invitation above it on mobile and across its upper edge on desktop. The rounded menu selector and food-first menu entry use a different rhythm from Brunch’s panorama and postcard.",
+      "tabs": [
+        {
+          "label": "From the griddle",
+          "items": [
+            "Banana pancakes with maple syrup",
+            "Buttermilk pancakes with berries",
+            "Cinnamon French toast"
+          ]
+        },
+        {
+          "label": "Savory",
+          "items": [
+            "Egg and cheddar breakfast roll",
+            "Hash with peppers and onions",
+            "Tomato toast with herbs"
+          ]
+        },
+        {
+          "label": "In your cup",
+          "items": [
+            "Filter coffee",
+            "Iced oat latte",
+            "Orange juice"
+          ]
+        }
+      ]
     }
   ]
 }

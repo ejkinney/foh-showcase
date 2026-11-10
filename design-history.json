@@ -312,5 +312,41 @@
         "designSignature": "A documentary cooking photograph fills the opening, with a separate kitchen-detail window and a clear text scrim. The menu places the working kitchen beside an accent-edged chef’s pass sheet."
       }
     ]
+  },
+  {
+    "date": "2026-11-10",
+    "kind": "distinct-layout-additions",
+    "scenes": [
+      {
+        "id": "market-dispatch",
+        "layout": "broadsheet",
+        "designSignature": "A centered newspaper headline sits above an edge-aligned market photo spread, with the introduction below the photography. Menu items read in broadsheet columns followed by an ingredient photograph. Street and produce photography replace the signboard-and-inset treatment of Food Hall and the clipping motif of Farm Table."
+      },
+      {
+        "id": "listening-bar",
+        "layout": "record-sleeve",
+        "designSignature": "A bar photograph becomes square sleeve art with a visible grooved record. On the menu, a vertical selector and numbered track list share the same panel. The square silhouette and track navigation distinguish it from the arched Cocktail Bar doorway and overlapping drinks sheet."
+      },
+      {
+        "id": "curry-counter",
+        "layout": "order-board",
+        "designSignature": "A backlit sign leads straight into a rectangular curry panorama. The menu opens on a flat counter order board with large category switches, then closes with a photograph at the table. It uses a different order and geometry from Noodle House’s round bowl sign and order slip."
+      },
+      {
+        "id": "flatbread-house",
+        "layout": "table-runner",
+        "designSignature": "Two full-width table photographs bookend a woven invitation on mobile. On desktop the invitation forms a horizontal runner laid between the dishes. The menu follows a shared-plate grid, distinct from Shared Table’s small bread inset and quiet menu sheet."
+      },
+      {
+        "id": "chocolate-atelier",
+        "layout": "tasting-box",
+        "designSignature": "The introduction is the lid of a rigid confectionery box with two edge-aligned chocolate compartments. The menu turns dish names into separate wells in a tray. The square grid and compartmentalized reading rhythm differ from the rounded display windows and ruled menus of the dessert and sweet-shop concepts."
+      },
+      {
+        "id": "breakfast-club",
+        "layout": "sunburst",
+        "designSignature": "A radiating sunrise leads into a diagonal social-table photograph, with an oversized typographic invitation above it on mobile and across its upper edge on desktop. The rounded menu selector and food-first menu entry use a different rhythm from Brunch’s panorama and postcard."
+      }
+    ]
   }
 ]

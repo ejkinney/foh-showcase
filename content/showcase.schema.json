@@ -26,7 +26,7 @@
         "required": ["id", "layout", "designSignature", "number", "styleLabel", "previewLabel", "heroLine", "heroSupport", "menuLine", "menuSupport", "heroAssetId", "menuAssetId", "tabs"],
         "properties": {
           "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
-          "layout": { "enum": ["cinema", "poster", "journal", "table", "nocturne", "market", "noodle", "tide", "cellar", "checkered", "cantina", "ink", "fire", "patisserie", "botanical", "trattoria", "scoop", "harvest", "fold", "daybreak", "roaster", "shell", "ember", "linen", "ritual", "sticker", "mosaic", "signage", "bonbon", "pass"] },
+          "layout": { "enum": ["cinema", "poster", "journal", "table", "nocturne", "market", "noodle", "tide", "cellar", "checkered", "cantina", "ink", "fire", "patisserie", "botanical", "trattoria", "scoop", "harvest", "fold", "daybreak", "roaster", "shell", "ember", "linen", "ritual", "sticker", "mosaic", "signage", "bonbon", "pass", "broadsheet", "record-sleeve", "order-board", "table-runner", "tasting-box", "sunburst"] },
           "designSignature": { "type": "string", "minLength": 1 },
           "number": { "type": "string", "pattern": "^[0-9]{2}$" },
           "styleLabel": { "type": "string", "minLength": 1 },

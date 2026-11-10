@@ -1,14 +1,16 @@
 import content from '../content/showcase.json';
 import assetContent from '../content/asset-library.json';
+import { sceneCompositions } from './scene-compositions';
 import './foundation.css';
 import './layouts.css';
 import './gallery.css';
+import './new-layouts.css';
 
 type Tab = { label: string; items: string[] };
 type Asset = { id: string; alt: string; author: string; sourceUrl: string; image: string; smallImage: string; sourceWidth: number; sourceHeight: number };
 type Scene = {
   id: string;
-  layout: 'cinema' | 'poster' | 'journal' | 'table' | 'nocturne' | 'market' | 'noodle' | 'tide' | 'cellar' | 'checkered' | 'cantina' | 'ink' | 'fire' | 'patisserie' | 'botanical' | 'trattoria' | 'scoop' | 'harvest' | 'fold' | 'daybreak' | 'roaster' | 'shell' | 'ember' | 'linen' | 'ritual' | 'sticker' | 'mosaic' | 'signage' | 'bonbon' | 'pass';
+  layout: string;
   designSignature: string;
   number: string;
   styleLabel: string;
@@ -58,17 +60,18 @@ function credit(asset: Asset, copy: number): string {
   return `<a href="${escapeHtml(asset.sourceUrl)}" target="_blank" rel="noopener noreferrer"${copy !== 0 ? ' tabindex="-1"' : ''}>${escapeHtml(asset.author)}</a>`;
 }
 
-function menuTabs(scene: Scene, copy: number): string {
-  return `<div class="menu-tabs" role="tablist" aria-label="${escapeHtml(scene.styleLabel)} sample menu">
+function menuTabs(scene: Scene, copy: number, numbered: boolean, vertical: boolean): { tabs: string; panels: string } {
+  const tabs = `<div class="menu-tabs" role="tablist" aria-label="${escapeHtml(scene.styleLabel)} sample menu"${vertical ? ' aria-orientation="vertical"' : ''}>
     ${scene.tabs.map((tab, index) => `<button class="menu-tab" type="button" role="tab"
       id="tab-${scene.id}-${copy}-${index}" aria-controls="panel-${scene.id}-${copy}-${index}"
       aria-selected="${index === 0}" tabindex="${copy === 0 && index === 0 ? '0' : '-1'}"
       data-scene="${scene.id}" data-tab="${index}">${escapeHtml(tab.label)}</button>`).join('')}
-  </div>
-  ${scene.tabs.map((tab, index) => `<div class="menu-panel" role="tabpanel"
+  </div>`;
+  const panels = scene.tabs.map((tab, index) => `<div class="menu-panel" role="tabpanel"
     id="panel-${scene.id}-${copy}-${index}" aria-labelledby="tab-${scene.id}-${copy}-${index}" tabindex="${copy === 0 ? '0' : '-1'}"${index ? ' hidden' : ''}>
-    ${tab.items.map((item, itemIndex) => `<div class="menu-item"><span class="menu-item__number">0${itemIndex + 1}</span><span class="menu-item__name">${escapeHtml(item)}</span><span class="menu-item__glyph" aria-hidden="true">✳</span></div>`).join('')}
-  </div>`).join('')}`;
+    ${tab.items.map((item, itemIndex) => `<div class="menu-item">${numbered ? `<span class="menu-item__number" aria-hidden="true">${String(itemIndex + 1).padStart(2, '0')}</span>` : ''}<span class="menu-item__name">${escapeHtml(item)}</span>${numbered ? '<span class="menu-item__glyph" aria-hidden="true">✳</span>' : ''}</div>`).join('')}
+  </div>`).join('');
+  return { tabs, panels };
 }
 
 function chapter(scene: Scene, copy: number): string {
@@ -77,28 +80,49 @@ function chapter(scene: Scene, copy: number): string {
   const heroAsset = getAsset(scene.heroAssetId);
   const menuAsset = getAsset(scene.menuAssetId);
   const twoPhotos = heroAsset.id !== menuAsset.id;
+  const header = `<div class="demo-header"><span class="demo-name restaurant-name">${initialName}</span><span class="demo-header__right"><span>Visual concept</span><button type="button" class="demo-menu-link" data-menu-jump${copy !== 0 ? ' tabindex="-1"' : ''}>View menu <span aria-hidden="true">↗</span></button></span></div>`;
+  const title = `<${headingTag} class="hero__title">${escapeHtml(scene.heroLine)}</${headingTag}>`;
+  const support = `<p class="hero__support">${escapeHtml(scene.heroSupport)}</p>`;
+  const menuTitle = `<h3>${escapeHtml(scene.menuLine)}</h3>`;
+  const menuSupport = `<p>${escapeHtml(scene.menuSupport)}</p>`;
+  const credits = `<p class="menu__disclaimer">Menu wording is illustrative. Your real dishes take this space.<br />Real ${twoPhotos ? 'photographs' : 'photograph'} by ${credit(heroAsset, copy)}${twoPhotos ? ` and ${credit(menuAsset, copy)}` : ''}, CC0.</p>`;
+  const close = `<div class="menu__close"><a href="${emailHref}"${copy !== 0 ? ' tabindex="-1"' : ''}>Let’s make yours <span aria-hidden="true">↗</span></a></div>`;
+  const compose = sceneCompositions.get(scene.layout);
+  if (compose) {
+    const recordSleeve = scene.layout === 'record-sleeve';
+    const composition = compose({
+      header, title, support, menuTitle, menuSupport, credits, close,
+      lead: photo(heroAsset, 'scene-lead', first && copy === 0),
+      detail: photo(menuAsset, 'scene-detail', false, true),
+      menuPhoto: photo(menuAsset, 'scene-menu-photo'),
+      controls: menuTabs(scene, copy, recordSleeve, recordSleeve),
+    });
+    return `<article class="chapter chapter--${scene.id} layout--${scene.layout} chapter--composed" data-scene="${scene.id}" aria-label="${escapeHtml(scene.styleLabel)} concept">${composition}</article>`;
+  }
+
+  const { tabs, panels } = menuTabs(scene, copy, true, false);
   return `<article class="chapter chapter--${scene.id} layout--${scene.layout}" data-scene="${scene.id}" aria-label="${escapeHtml(scene.styleLabel)} concept">
     <section class="hero" aria-label="${escapeHtml(scene.styleLabel)} landing page concept">
       <div class="hero__inner">
-        <div class="demo-header"><span class="demo-name restaurant-name">${initialName}</span><span class="demo-header__right"><span>Visual concept</span><button type="button" class="demo-menu-link" data-menu-jump${copy !== 0 ? ' tabindex="-1"' : ''}>View menu <span aria-hidden="true">↗</span></button></span></div>
+        ${header}
         <div class="hero__stage">
           <div class="hero__media">${photo(heroAsset, 'hero__photo', first && copy === 0)}</div>
           ${twoPhotos ? `<div class="hero__accent" aria-hidden="true">${photo(menuAsset, 'hero__accent-photo', false, true)}</div>` : ''}
           <div class="hero__wash" aria-hidden="true"></div>
           <div class="hero__ornament" aria-hidden="true"><span>${escapeHtml(scene.number)}</span><i></i></div>
         </div>
-        <div class="hero__copy"><p class="eyebrow">${escapeHtml(scene.number)} / ${escapeHtml(scene.styleLabel)}</p><${headingTag} class="hero__title">${escapeHtml(scene.heroLine)}</${headingTag}><p class="hero__support">${escapeHtml(scene.heroSupport)}</p></div>
+        <div class="hero__copy"><p class="eyebrow">${escapeHtml(scene.number)} / ${escapeHtml(scene.styleLabel)}</p>${title}${support}</div>
         <div class="hero__foot"><span>Picture your place here</span><span class="scroll-cue">Scroll to explore <span aria-hidden="true">↓</span></span></div>
       </div>
     </section>
     <section class="menu" aria-label="${escapeHtml(scene.styleLabel)} menu concept">
       <div class="menu__shell">
-        <div class="menu__intro"><p class="eyebrow">Your food belongs here</p><h3>${escapeHtml(scene.menuLine)}</h3><p>${escapeHtml(scene.menuSupport)}</p></div>
+        <div class="menu__intro"><p class="eyebrow">Your food belongs here</p>${menuTitle}${menuSupport}</div>
         <div class="menu__composition">
           <div class="menu__visual">${photo(menuAsset, 'menu__photo')}<span class="menu__visual-label">VISUAL CONCEPT <span aria-hidden="true">↗</span></span></div>
           <div class="menu__paper"><div class="menu__masthead"><span class="restaurant-name">${initialName}</span><span>YOUR MENU</span></div>
-            <p class="menu__small-label">The good stuff, all in one place</p>${menuTabs(scene, copy)}
-            <p class="menu__disclaimer">Menu wording is illustrative. Your real dishes take this space.<br />Real ${twoPhotos ? 'photographs' : 'photograph'} by ${credit(heroAsset, copy)}${twoPhotos ? ` and ${credit(menuAsset, copy)}` : ''}, CC0.</p>
+            <p class="menu__small-label">The good stuff, all in one place</p>${tabs}${panels}
+            ${credits}
           </div>
         </div>
         <div class="menu__close"><span>Made for your restaurant, not a template.</span><a href="${emailHref}"${copy !== 0 ? ' tabindex="-1"' : ''}>Let’s make yours <span aria-hidden="true">↗</span></a></div>
@@ -138,7 +162,7 @@ app.innerHTML = `<header class="studio-header">
 <aside class="contact-rail" aria-label="Contact Front of House"><span>YOUR WEBSITE IS YOUR NEW FRONT OF HOUSE</span><a href="${emailHref}">Let’s make yours <span aria-hidden="true">↗</span></a></aside>`;
 
 app.insertAdjacentHTML('beforeend', `<dialog class="style-browser" aria-labelledby="style-browser-title">
-  <div class="style-browser__header"><div><p class="eyebrow">Find your point of view</p><h2 id="style-browser-title">Thirty ways to make an entrance.</h2></div><button type="button" class="style-browser__close" aria-label="Close style browser">✕</button></div>
+  <div class="style-browser__header"><h2 id="style-browser-title">Browse ${site.scenes.length} restaurant styles</h2><button type="button" class="style-browser__close" aria-label="Close style browser">✕</button></div>
   <div class="style-browser__grid">${site.scenes.map(scene => `<button type="button" class="style-choice" data-choose-scene="${scene.id}"><img src="${getAsset(scene.heroAssetId).smallImage}" alt="" width="360" height="240" loading="lazy" decoding="async" /><span><small>${scene.number}</small><strong>${escapeHtml(scene.styleLabel)}</strong><i aria-hidden="true">↗</i></span></button>`).join('')}</div>
 </dialog>`);
 
@@ -241,15 +265,19 @@ document.addEventListener('click', (event) => {
 document.addEventListener('keydown', (event) => {
   const target = event.target;
   if (!(target instanceof HTMLButtonElement) || !target.matches('.menu-tab')) return;
-  if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+  const tablist = target.closest('.menu-tabs');
+  const vertical = tablist?.getAttribute('aria-orientation') === 'vertical';
+  const previousKey = vertical ? 'ArrowUp' : 'ArrowLeft';
+  const nextKey = vertical ? 'ArrowDown' : 'ArrowRight';
+  if (![previousKey, nextKey, 'Home', 'End'].includes(event.key)) return;
   event.preventDefault();
   const scene = site.scenes.find((item) => item.id === target.dataset.scene);
   if (!scene) return;
   const current = Number(target.dataset.tab);
   const next = event.key === 'Home' ? 0 : event.key === 'End' ? scene.tabs.length - 1
-    : (current + (event.key === 'ArrowRight' ? 1 : -1) + scene.tabs.length) % scene.tabs.length;
+    : (current + (event.key === nextKey ? 1 : -1) + scene.tabs.length) % scene.tabs.length;
   setTab(scene.id, next);
-  target.closest('.menu-tabs')?.querySelectorAll<HTMLButtonElement>('.menu-tab')[next]?.focus();
+  tablist?.querySelectorAll<HTMLButtonElement>('.menu-tab')[next]?.focus();
 });
 
 document.addEventListener('input', (event) => {

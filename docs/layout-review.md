@@ -61,3 +61,18 @@ The production build validates both existing JSON schemas with Ajv 2020-12, chec
 - No browser console errors were observed in the final session.
 
 Review images and geometry results are local artifacts under `G:\thisYourSite\layout-review`. `final-mobile` contains hero, menu, and menu-paper viewport captures for all thirty concepts; `final-desktop` contains all thirty heroes and menus. Browser QA was performed in Chromium; a separate Safari/Firefox device pass was not performed.
+
+## Six additional layouts — November 10, 2026
+
+Compared the new landing and menu views with the contact sheets of the original thirty. The new layouts use dedicated section markup, with shared controls for the showcase name, colors, style picker, and menu navigation.
+
+| Concept | Structural choice |
+| --- | --- |
+| 31 Market dispatch | Newspaper headline, adjacent market photographs, and a columnar menu. |
+| 32 Listening bar | Square photo sleeve and grooved record, with a vertical drinks selector and numbered track list. |
+| 33 Curry counter | Illuminated title above a food panorama, followed by a counter board with large category buttons. |
+| 34 Flatbread house | The invitation sits between two dish photographs, stacked on a phone and side by side on desktop. Menu items form a shared-plate grid. |
+| 35 Chocolate atelier | A rectangular box-lid composition carries into divided tasting wells. |
+| 36 Breakfast club | Oversized sunrise lettering and an angled table photograph, with a pill-shaped menu selector. |
+
+Inspected the six landing and menu views at 390px and 1440px in Chromium. Checked geometry from 320px to 1920px, all 36 entries in the style picker and color overview, menu selection by click and keyboard, reduced-motion menu jumps, focus after choosing a style, and equal heights for the three scrolling copies. A 320 × 568 touch fixture rendered an edited headline, long dish name, and alternate photo from the JSON import.
