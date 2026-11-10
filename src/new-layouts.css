@@ -17,10 +17,6 @@
   border-color: var(--scene-rule);
 }
 
-.chapter--composed .demo-header__right > span {
-  display: none;
-}
-
 .chapter--composed .demo-menu-link {
   font-size: 12px;
 }

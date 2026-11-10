@@ -80,7 +80,7 @@ function chapter(scene: Scene, copy: number): string {
   const heroAsset = getAsset(scene.heroAssetId);
   const menuAsset = getAsset(scene.menuAssetId);
   const twoPhotos = heroAsset.id !== menuAsset.id;
-  const header = `<div class="demo-header"><span class="demo-name restaurant-name">${initialName}</span><span class="demo-header__right"><span>Visual concept</span><button type="button" class="demo-menu-link" data-menu-jump${copy !== 0 ? ' tabindex="-1"' : ''}>View menu <span aria-hidden="true">↗</span></button></span></div>`;
+  const header = `<div class="demo-header"><span class="demo-name restaurant-name">${initialName}</span><button type="button" class="demo-menu-link" data-menu-jump${copy !== 0 ? ' tabindex="-1"' : ''}>View menu <span aria-hidden="true">↗</span></button></div>`;
   const title = `<${headingTag} class="hero__title">${escapeHtml(scene.heroLine)}</${headingTag}>`;
   const support = `<p class="hero__support">${escapeHtml(scene.heroSupport)}</p>`;
   const menuTitle = `<h3>${escapeHtml(scene.menuLine)}</h3>`;
@@ -100,8 +100,9 @@ function chapter(scene: Scene, copy: number): string {
     return `<article class="chapter chapter--${scene.id} layout--${scene.layout} chapter--composed" data-scene="${scene.id}" aria-label="${escapeHtml(scene.styleLabel)} concept">${composition}</article>`;
   }
 
-  const { tabs, panels } = menuTabs(scene, copy, true, false);
-  return `<article class="chapter chapter--${scene.id} layout--${scene.layout}" data-scene="${scene.id}" aria-label="${escapeHtml(scene.styleLabel)} concept">
+  const numberedMenu = ['poster', 'noodle', 'checkered', 'roaster', 'pass'].includes(scene.layout);
+  const { tabs, panels } = menuTabs(scene, copy, numberedMenu, false);
+  return `<article class="chapter chapter--${scene.id} layout--${scene.layout} chapter--original" data-scene="${scene.id}" aria-label="${escapeHtml(scene.styleLabel)} concept">
     <section class="hero" aria-label="${escapeHtml(scene.styleLabel)} landing page concept">
       <div class="hero__inner">
         ${header}
@@ -109,23 +110,17 @@ function chapter(scene: Scene, copy: number): string {
           <div class="hero__media">${photo(heroAsset, 'hero__photo', first && copy === 0)}</div>
           ${twoPhotos ? `<div class="hero__accent" aria-hidden="true">${photo(menuAsset, 'hero__accent-photo', false, true)}</div>` : ''}
           <div class="hero__wash" aria-hidden="true"></div>
-          <div class="hero__ornament" aria-hidden="true"><span>${escapeHtml(scene.number)}</span><i></i></div>
         </div>
-        <div class="hero__copy"><p class="eyebrow">${escapeHtml(scene.number)} / ${escapeHtml(scene.styleLabel)}</p>${title}${support}</div>
-        <div class="hero__foot"><span>Picture your place here</span><span class="scroll-cue">Scroll to explore <span aria-hidden="true">↓</span></span></div>
+        <div class="hero__copy"><p class="eyebrow">${escapeHtml(scene.styleLabel)}</p>${title}${support}</div>
       </div>
     </section>
     <section class="menu" aria-label="${escapeHtml(scene.styleLabel)} menu concept">
       <div class="menu__shell">
-        <div class="menu__intro"><p class="eyebrow">Your food belongs here</p>${menuTitle}${menuSupport}</div>
-        <div class="menu__composition">
-          <div class="menu__visual">${photo(menuAsset, 'menu__photo')}<span class="menu__visual-label">VISUAL CONCEPT <span aria-hidden="true">↗</span></span></div>
-          <div class="menu__paper"><div class="menu__masthead"><span class="restaurant-name">${initialName}</span><span>YOUR MENU</span></div>
-            <p class="menu__small-label">The good stuff, all in one place</p>${tabs}${panels}
-            ${credits}
-          </div>
-        </div>
-        <div class="menu__close"><span>Made for your restaurant, not a template.</span><a href="${emailHref}"${copy !== 0 ? ' tabindex="-1"' : ''}>Let’s make yours <span aria-hidden="true">↗</span></a></div>
+        <div class="menu__intro">${menuTitle}${menuSupport}</div>
+        ${tabs}${panels}
+        <div class="menu__visual">${photo(menuAsset, 'menu__photo')}</div>
+        ${credits}
+        ${close}
       </div>
     </section>
   </article>`;

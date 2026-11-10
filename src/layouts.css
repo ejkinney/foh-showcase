@@ -1,133 +1,1198 @@
-/* Readable light/dark pairs are retained at every user-selected hue. */
-[class*='layout--']{--scheme-hero:var(--v-light);--scheme-hero-ink:var(--v-deep);--scheme-menu:var(--v-mid);--scheme-menu-ink:var(--v-paper);--scheme-paper:var(--v-paper);--scheme-paper-ink:var(--v-deep);--scheme-accent:var(--v-accent);--display-font:'Cormorant Garamond',Georgia,serif}
-:is(.layout--cinema,.layout--nocturne,.layout--noodle,.layout--cellar,.layout--fire,.layout--roaster,.layout--ember,.layout--pass){--scheme-hero:var(--v-deep);--scheme-hero-ink:var(--v-paper);--scheme-menu:var(--v-deep);--scheme-menu-ink:var(--v-paper)}
-:is(.layout--table,.layout--trattoria,.layout--harvest,.layout--signage){--scheme-hero:var(--v-mid);--scheme-hero-ink:var(--v-paper)}
-:is(.layout--poster,.layout--checkered,.layout--scoop,.layout--fold,.layout--sticker){--scheme-hero:var(--v-bright)}
-:is(.layout--ink,.layout--botanical,.layout--linen,.layout--mosaic){--scheme-hero:var(--v-paper)}
-:is(.layout--journal,.layout--market,.layout--patisserie,.layout--bonbon){--scheme-menu:var(--v-bright);--scheme-menu-ink:var(--v-deep)}
-:is(.layout--checkered,.layout--trattoria,.layout--ink,.layout--ritual){--scheme-menu:var(--v-light);--scheme-menu-ink:var(--v-deep)}
-:is(.layout--cellar,.layout--nocturne){--scheme-paper:var(--v-deep);--scheme-paper-ink:var(--v-paper)}
-:is(.layout--cantina,.layout--sticker,.layout--signage){--scheme-paper:var(--v-bright)}
-:is(.layout--poster,.layout--noodle,.layout--checkered,.layout--cantina,.layout--fire,.layout--roaster,.layout--ember,.layout--sticker,.layout--signage){--display-font:'Archivo Black',Arial,sans-serif;--display-weight:400}
-:is(.layout--table,.layout--market,.layout--botanical,.layout--scoop,.layout--harvest,.layout--fold,.layout--daybreak,.layout--mosaic,.layout--pass){--display-font:'Fraunces',Georgia,serif}
-:is(.layout--poster,.layout--noodle,.layout--checkered,.layout--cantina,.layout--fire,.layout--roaster,.layout--ember,.layout--sticker,.layout--signage) :is(.hero__title,.menu__intro h3){font-size:clamp(35px,9.6vw,52px);text-transform:uppercase;line-height:1.04;letter-spacing:-.055em}
-:is(.layout--poster,.layout--noodle,.layout--checkered,.layout--cantina,.layout--fire,.layout--roaster,.layout--ember,.layout--sticker,.layout--signage) .menu-item__name{font:700 16px/1.35 'DM Sans',Arial,sans-serif}
-:is(.layout--poster,.layout--noodle,.layout--checkered,.layout--cantina,.layout--fire,.layout--roaster,.layout--ember,.layout--sticker,.layout--signage) :is(.demo-name,.menu__masthead .restaurant-name){font-family:'DM Sans',Arial,sans-serif;font-weight:700}
+/* Colors remain responsive to the studio controls. Each concept adds a material tint. */
+[class*='layout--'] {
+  --light: color-mix(in srgb, var(--v-paper) 77%, var(--material, var(--v-light)));
+  --bright: color-mix(in srgb, var(--v-bright) 58%, var(--material, var(--v-bright)));
+  --dark: color-mix(in srgb, var(--v-deep) 73%, color-mix(in srgb, var(--material, var(--v-mid)) 70%, #17151c));
+  --scheme-hero: var(--light);
+  --scheme-hero-ink: var(--v-deep);
+  --scheme-menu: var(--light);
+  --scheme-menu-ink: var(--v-deep);
+  --scheme-paper: var(--scheme-menu);
+  --scheme-paper-ink: var(--scheme-menu-ink);
+  --scheme-accent: var(--v-accent);
+  --display-font: 'Cormorant Garamond', Georgia, serif;
+}
 
-/* 01 Dining: uninterrupted room photography and an overlapping letterpress page. */
-.layout--cinema .hero__inner{grid-template-areas:'header' '.' 'copy' 'foot';grid-template-rows:auto minmax(160px,1fr) auto auto;min-height:max(720px,100svh);padding-bottom:calc(var(--rail-height) + 28px)}.layout--cinema .hero__stage{position:absolute;z-index:-1;inset:0;height:auto}.layout--cinema .hero__photo img{object-position:63% center}.layout--cinema .hero__wash{background:linear-gradient(0deg,var(--v-deep),color-mix(in srgb,var(--v-deep) 78%,transparent) 40%,#100d0940 74%,#100d0999)}.layout--cinema .hero__ornament{display:none}.layout--cinema .hero__title{font-size:clamp(62px,16vw,85px);max-width:11ch}.layout--cinema .menu__paper{margin:-45px 10px 0;box-shadow:0 15px 40px #0003}.layout--cinema .menu__visual{height:280px}
-/* 02 Counter: tilted food poster and takeaway tickets. */
-.layout--poster .hero__media{inset:9px 4px 13px 12px;transform:rotate(3deg);border:6px solid var(--v-deep);box-shadow:8px 8px 0 var(--v-accent)}.layout--poster .hero__ornament{top:0;left:0;right:auto;width:52px;height:52px;background:var(--v-deep);color:var(--v-paper)}.layout--poster .menu__paper{background:transparent;color:var(--v-paper);padding:0}.layout--poster .menu-item{background:var(--v-bright);color:var(--v-deep);margin:0 6px 12px 0;padding:16px 12px;box-shadow:6px 6px 0 var(--v-accent)}.layout--poster .menu__visual{transform:rotate(-2deg);border:6px solid var(--v-bright)}
-/* 03 Café: an arched window and a ruled notebook. */
-.layout--journal .hero__media{inset:0 20px 8px;border-radius:48% 48% 0 0;border:8px solid var(--v-paper);box-shadow:8px 8px 0 color-mix(in srgb,var(--v-mid) 30%,transparent)}.layout--journal .hero__ornament{top:auto;bottom:0}.layout--journal .menu__paper{padding-left:30px;background:repeating-linear-gradient(0deg,var(--v-paper),var(--v-paper) 35px,color-mix(in srgb,var(--v-deep) 9%,var(--v-paper)) 36px)}.layout--journal .menu__paper::before{content:'';position:absolute;inset:0 auto 0 16px;border-left:1px solid var(--v-accent)}.layout--journal .menu__visual{border:8px solid var(--v-paper);transform:rotate(2deg)}
-/* 04 Pizza: a round tabletop crop and a place-setting menu. */
-.layout--table .hero__media{width:260px;max-width:86%;aspect-ratio:1;height:auto;inset:0;margin:auto;border-radius:50%;border:9px solid var(--v-accent);box-shadow:0 0 0 7px var(--v-deep)}.layout--table .hero__ornament{top:auto;bottom:8px;border:0;font-size:60px;width:auto;height:auto;background:transparent}.layout--table .menu__visual{width:245px;height:245px;max-width:90%;margin:auto;border-radius:50%;border:9px solid var(--v-accent)}.layout--table .menu__paper{border:1px solid var(--v-deep);box-shadow:7px 7px 0 var(--v-mid)}
-/* 05 Cocktail bar: a doorway and a menu layered over the bar. */
-.layout--nocturne .hero__media{inset:0 28px;border:1px solid var(--v-bright);border-radius:48% 48% 0 0}.layout--nocturne :is(.hero__title,.menu__intro h3){font-style:italic}.layout--nocturne .hero__ornament{left:0;right:auto;background:var(--v-deep)}.layout--nocturne .menu__shell{grid-template-areas:'intro' 'paper' 'close'}.layout--nocturne .menu__visual{grid-area:paper;height:100%;min-height:520px}.layout--nocturne .menu__paper{margin:28px 14px 56px;border:1px solid var(--v-bright);background:color-mix(in srgb,var(--v-deep) 94%,transparent)}
-/* 06 Bakery: a bread portrait and a counter card that touches the photo. */
-.layout--market .hero__media{inset:0 -20px}.layout--market .hero__photo img{object-position:center 58%}.layout--market .hero__copy{margin:-55px 0 0 12px;padding:23px;background:var(--v-paper);border:1px solid var(--v-mid);box-shadow:6px 6px 0 color-mix(in srgb,var(--v-mid) 40%,transparent)}.layout--market .hero__ornament{top:12px;right:0;background:var(--v-deep);color:var(--v-paper)}.layout--market .menu__paper{margin:-40px 10px 0}.layout--market .menu-item__name{font-family:'Fraunces',Georgia,serif;font-size:20px}
-/* 07 Noodles: bowl sign, chopstick rule, and order slip. */
-.layout--noodle .hero__media{inset:4px 30px;border-radius:50%;border:7px solid var(--v-accent)}.layout--noodle .hero__ornament{top:12px;right:0;height:80%;width:12px;border:0;border-left:8px double var(--v-bright);border-radius:0;background:none}.layout--noodle .hero__ornament span{display:none}.layout--noodle .menu__visual{height:180px}.layout--noodle .menu__paper{border-left:8px solid var(--v-accent)}.layout--noodle .menu-item{border-bottom-style:dashed}
-/* 08 Seafood: a broad scalloped horizon and coastal ledger. */
-.layout--tide .hero__media{border-radius:48% 48% 0 0/25% 25% 0 0;border:6px solid var(--v-paper)}.layout--tide .hero__ornament{top:auto;bottom:0}.layout--tide .menu__visual{height:180px;border-radius:48% 48% 0 0/25% 25% 0 0}.layout--tide .menu__paper{border:1px solid var(--v-mid)}.layout--tide .menu-item__glyph{font-size:9px}
-/* 09 Wine: a luminous portrait and a dark tasting card. */
-.layout--cellar .hero__media{inset:0 25px 8px 35px;border:1px solid var(--v-bright);box-shadow:8px 8px 0 color-mix(in srgb,var(--v-accent) 40%,transparent)}.layout--cellar .hero__photo img{object-position:60% center}.layout--cellar :is(.hero__title,.menu__intro h3){font-style:italic}.layout--cellar .hero__ornament{left:0;right:auto;top:auto;bottom:0}.layout--cellar .menu__paper{border:1px solid var(--v-bright)}.layout--cellar .menu__visual{height:190px;filter:saturate(.75)}
-/* 10 Diner: checker trim, breakfast postcard, receipt rules. */
-.layout--checkered .hero__stage::before,.layout--sticker .hero__stage::before{content:'';position:absolute;inset:0 -20px auto;height:16px;background:conic-gradient(var(--v-deep) 25%,var(--v-paper) 0 50%,var(--v-deep) 0 75%,var(--v-paper) 0) 0 0/24px 24px}.layout--checkered .hero__media{inset:30px 9px 6px;transform:rotate(-2deg);border:7px solid var(--v-paper);box-shadow:7px 7px 0 var(--v-accent)}.layout--checkered .hero__ornament{display:none}.layout--checkered .menu__paper{border:2px solid var(--v-deep)}.layout--checkered .menu-item{border-bottom:1px dashed currentColor}.layout--checkered .menu__visual{height:180px;border:5px solid var(--v-deep)}
-/* 11 Cantina: room photography and a readable signboard. */
-.layout--cantina{--scheme-hero:var(--v-deep);--scheme-hero-ink:var(--v-paper)}
-:is(.layout--cantina,.layout--ember,.layout--signage,.layout--pass) .hero__inner{grid-template-areas:'header' 'stage' 'copy' 'foot';min-height:max(740px,100svh);grid-template-rows:auto minmax(190px,1fr) auto auto;padding-bottom:calc(var(--rail-height) + 24px)}
-:is(.layout--cantina,.layout--ember,.layout--signage,.layout--pass) .hero__stage{position:static;height:auto}
-:is(.layout--cantina,.layout--ember,.layout--signage,.layout--pass) .hero__media{z-index:-2;inset:0}
-:is(.layout--cantina,.layout--ember,.layout--signage,.layout--pass) .hero__wash{z-index:-1;background:linear-gradient(0deg,var(--v-deep) 3%,color-mix(in srgb,var(--v-deep) 88%,transparent) 40%,#17120c20 75%,#17120ca6)}
-:is(.layout--cantina,.layout--ember,.layout--signage,.layout--pass) .hero__ornament{display:none}
-.layout--cantina .hero__title{padding:14px;background:var(--v-bright);color:var(--v-deep);transform:rotate(-1deg)}.layout--cantina .menu__visual{border:6px solid var(--v-accent);transform:rotate(2deg)}.layout--cantina .menu-item{margin-bottom:9px;padding:13px;background:var(--v-paper);border:0}
-/* 12 Sushi: the headline leads a precise horizontal strip. */
-.layout--ink .hero__inner{grid-template-areas:'header' 'copy' 'stage' 'foot'}.layout--ink .hero__stage{height:210px}.layout--ink .hero__media{inset:0 -20px;border-block:1px solid var(--v-mid)}.layout--ink .hero__ornament{display:none}.layout--ink .menu{border-top:1px solid var(--v-mid)}.layout--ink .menu__visual{height:160px;filter:saturate(.7)}.layout--ink .menu__paper{padding-inline:0;border-block:4px double var(--v-deep)}
-/* 13 Steak: an angular cut and a grill ledger. */
-.layout--fire .hero__media{clip-path:polygon(12% 0,100% 0,100% 100%,0 100%)}.layout--fire .hero__ornament{left:0;right:auto;border-radius:0;background:var(--v-deep)}.layout--fire .menu__paper{border-top:8px solid var(--v-accent)}.layout--fire .menu__visual{clip-path:polygon(0 0,100% 0,88% 100%,0 100%)}
-/* 14 Dessert: a plate silhouette and delicate display rules. */
-.layout--patisserie .hero__media{inset:0 35px;border-radius:50%;border:8px solid var(--v-paper);box-shadow:0 0 0 1px var(--v-mid)}.layout--patisserie .hero__ornament{top:auto;bottom:0;border:0;font-style:italic;font-size:38px}.layout--patisserie .menu__visual{border-radius:50% 50% 0 0;border:8px solid var(--v-paper)}.layout--patisserie .menu__paper{border:1px solid var(--v-mid)}.layout--patisserie .menu-item{border-bottom-style:dotted}
-/* 15 Garden: leaf silhouette and field notebook. */
-.layout--botanical .hero__media{inset:0 10px 10px 0;border-radius:48% 0 48% 0;box-shadow:10px 10px 0 color-mix(in srgb,var(--v-mid) 35%,transparent)}.layout--botanical .hero__ornament{top:auto;bottom:0;border-radius:0 60% 0 60%}.layout--botanical .menu__visual{border-radius:40% 0 40% 0}.layout--botanical .menu__paper{border-left:4px solid var(--v-mid)}
-/* 16 Trattoria: an angled table photo and striped linen. */
-.layout--trattoria .hero__media{inset:10px -30px;transform:rotate(-4deg);border:8px solid var(--v-paper)}.layout--trattoria .hero__ornament{top:auto;bottom:0}.layout--trattoria .menu__paper{background:repeating-linear-gradient(90deg,var(--v-paper),var(--v-paper) 38px,color-mix(in srgb,var(--v-mid) 9%,var(--v-paper)) 39px);box-shadow:6px 6px 0 var(--v-mid)}.layout--trattoria .menu__visual{border:8px solid var(--v-paper);transform:rotate(2deg)}
-/* 17 Ice cream: awning, cone portrait, rounded flavor labels. */
-.layout--scoop .hero__stage::before{content:'';position:absolute;inset:0 -20px auto;height:20px;background:repeating-linear-gradient(90deg,var(--v-accent) 0 24px,var(--v-paper) 24px 48px);border-radius:0 0 14px 14px}.layout--scoop .hero__media{inset:32px 28px 8px;border:7px solid var(--v-paper);border-radius:48% 48% 8px 8px;box-shadow:0 8px 0 var(--v-accent)}.layout--scoop .hero__ornament{top:auto;bottom:0;background:var(--v-deep);color:var(--v-paper)}.layout--scoop .menu__visual{border-radius:100px 100px 8px 8px}.layout--scoop .menu__paper{border-radius:24px 24px 6px 6px}.layout--scoop .menu-item{margin-bottom:8px;padding:14px 10px;border:1px solid var(--v-mid);border-radius:12px}
-/* 18 Farm table: produce clipping and market bulletin. */
-.layout--harvest .hero__media{inset:7px 10px 12px;border:9px solid var(--v-paper);transform:rotate(2deg);box-shadow:7px 7px 0 var(--v-deep)}.layout--harvest .hero__photo img{object-position:65% center}.layout--harvest .hero__ornament{border:2px dashed var(--v-bright)}.layout--harvest .menu__paper{border:2px solid var(--v-mid)}.layout--harvest .menu-item{border-bottom-style:dashed}.layout--harvest .menu__visual{height:180px;border:7px solid var(--v-paper)}
-/* 19 Dim sum: paired folded cards keep text outside their bounds. */
-.layout--fold .hero__media{inset:10px 38px 20px 8px;border:7px solid var(--v-paper);transform:rotate(-3deg);box-shadow:6px 6px 0 var(--v-deep)}.layout--fold .hero__accent{transform:rotate(5deg);right:5px;bottom:4px}.layout--fold .hero__ornament{top:0;right:0}.layout--fold .menu__paper{border-left:8px solid var(--v-accent);box-shadow:6px 6px 0 var(--v-mid)}.layout--fold .menu-item{border-bottom-style:dashed}.layout--fold .menu__visual{border:7px solid var(--v-paper);transform:rotate(1deg)}
-/* 20 Brunch: breakfast panorama and clipped waffle postcard. */
-.layout--daybreak .hero__media{inset:0 -20px 20px;clip-path:polygon(0 0,100% 0,100% 85%,0 100%)}.layout--daybreak .hero__accent{left:0;right:auto;width:32%;height:42%;transform:rotate(-5deg)}.layout--daybreak .hero__ornament{top:auto;bottom:0}.layout--daybreak .hero__copy{padding-left:15px;border-left:3px solid var(--v-accent)}.layout--daybreak .menu__visual{height:200px;border-radius:80px 0 0 0}.layout--daybreak .menu__paper{border-top:8px solid var(--v-accent)}
-/* 21 Roastery: measured industrial strips and a tasting card. */
-.layout--roaster .hero__media{right:31%;border:1px solid var(--v-bright)}.layout--roaster .hero__accent{width:40%;height:76%}.layout--roaster .hero__ornament{top:0;right:0;border-radius:0}.layout--roaster .menu__visual{height:190px;border:7px solid var(--v-mid)}.layout--roaster .menu__paper{border:1px solid var(--v-mid)}.layout--roaster .menu-item__number{font-family:monospace}
-/* 22 Oyster bar: shell frame and circular tide detail. */
-.layout--shell .hero__media{inset:0 15px 18px 0;border:6px solid var(--v-paper);border-radius:48% 48% 4px 4px/30% 30% 4px 4px}.layout--shell .hero__accent{width:38%;height:46%;border-radius:50%}.layout--shell .hero__ornament{left:0;right:auto}.layout--shell .menu__visual{height:185px;border-radius:48% 48% 0 0/25% 25% 0 0}.layout--shell .menu__paper{border:1px solid var(--v-mid)}
-/* 23 Smokehouse: the grill fills the canvas; detail stays above the type. */
-.layout--ember .hero__accent{top:calc(var(--studio-height) + 105px);right:24px;bottom:auto;width:31%;height:145px;transform:rotate(4deg);border-color:var(--v-accent)}.layout--ember .menu__visual{height:210px}.layout--ember .menu__paper{border-top:9px solid var(--v-accent)}.layout--ember .menu-item{border-bottom-style:dashed}
-/* 24 Shared table: relaxed linen photograph and bread-basket inset. */
-.layout--linen .hero__media{inset:8px 24px 20px 4px;border:8px solid var(--v-paper);transform:rotate(-2deg);box-shadow:7px 7px 0 var(--v-mid)}.layout--linen .hero__accent{width:35%;height:45%;border-radius:50%}.layout--linen .hero__ornament{display:none}.layout--linen .menu__visual{border:8px solid var(--v-paper);transform:rotate(2deg)}.layout--linen .menu__paper{box-shadow:7px 7px 0 var(--v-mid)}
-/* 25 Tea: the invitation leads; vessels follow in normal flow. */
-.layout--ritual .hero__inner{grid-template-areas:'header' 'copy' 'stage' 'foot'}.layout--ritual .hero__stage{height:265px}.layout--ritual .hero__media{left:36%;border:1px solid var(--v-mid);border-radius:48% 48% 0 0}.layout--ritual .hero__accent{left:0;right:auto;bottom:20px;width:40%;height:60%}.layout--ritual .hero__ornament{left:0;right:auto;border:0;background:none}.layout--ritual .menu__visual{height:190px;border-radius:50% 50% 0 0}.layout--ritual .menu__paper{border-left:3px double var(--v-mid)}
-/* 26 Burger: checker trim, food stickers, and bold order tickets. */
-.layout--sticker .hero__media{inset:32px 18px 18px 8px;border:7px solid var(--v-paper);border-radius:18px;transform:rotate(-3deg);box-shadow:7px 7px 0 var(--v-deep)}.layout--sticker .hero__accent{bottom:0;right:4px;height:40%;transform:rotate(5deg)}.layout--sticker .hero__ornament{top:20px;background:var(--v-deep);color:var(--v-paper)}.layout--sticker .menu__paper{box-shadow:7px 7px 0 var(--v-accent)}.layout--sticker .menu-item{border:2px solid var(--v-deep);margin-bottom:9px;padding:14px 10px}.layout--sticker .menu__visual{height:195px;border:6px solid var(--v-paper);transform:rotate(-2deg)}
-/* 27 Vegetable kitchen: two ingredient windows form a mosaic. */
-.layout--mosaic .hero__media{right:36%;bottom:25px;border-radius:46% 0 0 0}.layout--mosaic .hero__accent{width:32%;height:85%;border:0;border-radius:0 0 45% 0;box-shadow:none}.layout--mosaic .hero__ornament{top:auto;bottom:0;left:0;right:auto;width:60px;height:8px;border:0;border-top:3px solid var(--v-mid);border-radius:0}.layout--mosaic .hero__ornament span{display:none}.layout--mosaic .menu__visual{border-radius:40% 0 40% 0}.layout--mosaic .menu__paper{border:1px solid var(--v-mid)}
-/* 28 Food hall: documentary street photography and clear wayfinding. */
-.layout--signage .hero__title{padding:12px;background:var(--v-paper);color:var(--v-deep);transform:rotate(-1deg)}.layout--signage .hero__accent{top:calc(var(--studio-height) + 105px);right:20px;bottom:auto;width:31%;height:145px;border-color:var(--v-accent)}.layout--signage .menu__paper{border:2px solid var(--v-deep)}.layout--signage .menu-item{border-bottom:2px solid var(--v-deep)}.layout--signage .menu__visual{height:190px;border:6px solid var(--v-paper)}
-/* 29 Sweet counter: a pastry window with a small bonbon detail. */
-.layout--bonbon .hero__media{inset:0 24px 18px 10px;border:8px solid var(--v-paper);border-radius:45% 45% 6px 6px}.layout--bonbon .hero__accent{border-radius:50%;width:37%;height:47%}.layout--bonbon .hero__ornament{left:0;right:auto;background:var(--v-paper)}.layout--bonbon .menu__paper{border:1px solid var(--v-mid)}.layout--bonbon .menu-item{border-bottom-style:dotted}.layout--bonbon .menu__visual{height:220px;border:7px solid var(--v-paper);border-radius:45% 45% 0 0}
-/* 30 Open kitchen: a view into service and a chef's pass menu. */
-.layout--pass .hero__photo img{object-position:60% center}.layout--pass .hero__accent{top:calc(var(--studio-height) + 105px);right:20px;bottom:auto;width:31%;height:145px;border:1px solid var(--v-bright)}.layout--pass .menu__visual{border:6px solid var(--v-paper)}.layout--pass .menu__paper{border-top:7px solid var(--v-accent)}
+.chapter--original {
+  --gutter: clamp(16px, 4.4vw, 64px);
+  --rule: color-mix(in srgb, currentColor 28%, transparent);
+  --menu-block: clamp(128px, 52vw, 280px);
+}
 
-/* Keep cinematic details in the image interval, clear of the headline. */
-:is(.layout--ember,.layout--signage,.layout--pass) .hero__accent{top:105px}
-:is(.layout--cinema,.layout--cantina,.layout--ember,.layout--signage,.layout--pass) .hero__inner{min-height:max(620px,calc(100svh - var(--studio-height)))}
-.layout--cinema .hero__photo img{object-position:35% center}
-.layout--mosaic .hero__photo img{object-position:75% center}
+.chapter--original .hero__inner,
+.chapter--original .menu__shell {
+  width: min(100% - 2 * var(--gutter), 1360px);
+  margin-inline: auto;
+}
 
-/* Wider screens extend the mobile sequence with distinct editorial arrangements. */
-@media(min-width:900px){
- :is(.layout--poster,.layout--noodle,.layout--checkered,.layout--cantina,.layout--fire,.layout--roaster,.layout--ember,.layout--sticker,.layout--signage) :is(.hero__title,.menu__intro h3){font-size:clamp(49px,4.8vw,84px);line-height:1.02}
- :is(.layout--journal,.layout--tide,.layout--cellar,.layout--patisserie,.layout--botanical,.layout--harvest,.layout--fold,.layout--mosaic,.layout--bonbon) .hero__inner{grid-template-areas:'header header' 'stage copy' 'foot foot'}
- .layout--cinema .hero__inner{grid-template-areas:'header header' '. .' 'copy copy' 'foot foot';grid-template-rows:auto minmax(80px,1fr) auto auto;align-items:end;min-height:max(660px,calc(100svh - var(--studio-height)));padding-bottom:calc(var(--rail-height) + 26px)}
- .layout--cinema .hero__stage{width:auto;height:auto}.layout--cinema .hero__title{font-size:clamp(90px,8.8vw,152px);max-width:10ch}.layout--cinema .hero__photo img{object-position:center 63%}.layout--cinema .hero__wash{background:linear-gradient(90deg,color-mix(in srgb,var(--v-deep) 80%,transparent),#17100930 75%),linear-gradient(0deg,var(--v-deep),transparent 70%)}
- .layout--cinema .menu__shell{grid-template-areas:'intro intro' 'visual paper' 'close close';grid-template-columns:1.1fr .9fr;gap:36px 0;align-items:center}.layout--cinema .menu__intro{display:grid;grid-template-columns:1.2fr .8fr;gap:0 8%;align-items:end}.layout--cinema .menu__intro .eyebrow{grid-column:1/-1}.layout--cinema .menu__intro>p:last-child{padding-bottom:20px}.layout--cinema .menu__visual{height:550px;min-height:0}.layout--cinema .menu__paper{margin:0 0 0 -55px;padding-block:42px}
- .layout--poster .hero__media{inset:20px 0 22px 8px;border-width:9px;transform:rotate(3deg)}.layout--poster .hero__ornament{width:72px;height:72px;font-size:28px}
- .layout--journal .hero__media{inset:0 8px 10px;border-width:12px}.layout--journal .hero__stage{height:540px}.layout--journal .menu__paper{padding-left:40px}
- .layout--table .hero__media{width:min(100%,540px);max-width:none;inset:0;margin:auto;border-width:16px}.layout--table .hero__ornament{font-size:100px;bottom:0;right:0}.layout--table .menu__visual{width:100%;height:auto;aspect-ratio:1;max-width:none;min-height:0;align-self:center}.layout--table .menu__paper{transform:rotate(-1deg)}
- .layout--nocturne .hero__inner{grid-template-areas:'header header' 'stage copy' 'foot foot';grid-template-columns:.9fr 1.1fr}.layout--nocturne .hero__stage{height:580px}.layout--nocturne .hero__media{inset:0 20px}.layout--nocturne .hero__title{font-size:clamp(80px,7vw,120px)}.layout--nocturne .menu__shell{grid-template-areas:'intro intro' 'paper paper' 'close close'}.layout--nocturne .menu__visual{min-height:600px}.layout--nocturne .menu__paper{width:52%;margin:40px 0 80px 5%;padding:38px}.layout--nocturne .menu__intro{max-width:65%}
- .layout--market .hero__inner{grid-template-columns:.9fr 1.1fr;gap:30px 0}.layout--market .hero__copy{margin:0 -60px 0 0;padding:36px;align-self:end;margin-bottom:45px}.layout--market .hero__media{inset:0}.layout--market .hero__stage{height:550px}.layout--market .menu__shell{grid-template-areas:'intro intro' 'visual visual' 'paper paper' 'close close';gap:25px}.layout--market .menu__intro{display:grid;grid-template-columns:1.4fr 1fr;gap:0 8%;align-items:end}.layout--market .menu__intro .eyebrow{grid-column:1/-1}.layout--market .menu__intro>p:last-child{padding-bottom:20px}.layout--market .menu__visual{height:300px;min-height:0}.layout--market .menu__paper{margin:-65px 35px 0}.layout--market .menu-panel:not([hidden]){display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.layout--market .menu-item{grid-template-columns:1fr 15px;padding:18px 14px;border:1px solid color-mix(in srgb,currentColor 25%,transparent)}.layout--market .menu-item__number{grid-column:1/-1}.layout--market .menu-item__name{font-size:24px}
- .layout--noodle .hero__media{inset:25px 35px;border-width:10px}.layout--noodle .hero__ornament{height:80%;top:10%;right:0}
- .layout--tide .hero__stage{height:440px}.layout--tide .hero__media{border-width:10px}.layout--tide .menu__visual{height:100%;min-height:600px;border-radius:45% 45% 0 0 / 20% 20% 0 0}
- .layout--cellar .hero__inner{grid-template-columns:.8fr 1.2fr}.layout--cellar .hero__stage{height:570px}.layout--cellar .hero__media{inset:0 20px 8px}.layout--cellar .hero__title{font-size:clamp(84px,7.3vw,126px)}.layout--cellar .menu__shell{grid-template-columns:1.2fr .8fr}.layout--cellar .menu__visual{height:100%;min-height:600px}
- :is(.layout--checkered,.layout--sticker,.layout--scoop) .hero__stage::before{inset:0 0 auto}.layout--checkered .hero__media{inset:36px 10px 15px;border-width:10px}
- :is(.layout--cantina,.layout--ember,.layout--signage,.layout--pass) .hero__inner{grid-template-areas:'header header' '. .' 'copy copy' 'foot foot';grid-template-rows:auto minmax(50px,1fr) auto auto;min-height:max(670px,calc(100svh - var(--studio-height)));padding-bottom:calc(var(--rail-height) + 25px)}
- :is(.layout--cantina,.layout--ember,.layout--signage,.layout--pass) .hero__copy{max-width:58%}
- :is(.layout--cantina,.layout--ember,.layout--signage,.layout--pass) .hero__stage{height:auto;width:auto}
- :is(.layout--ember,.layout--signage,.layout--pass) .hero__accent{top:130px;right:6%;width:25%;height:260px}
- .layout--cantina .hero__title{max-width:14ch;padding:20px}.layout--cantina .hero__wash,.layout--signage .hero__wash{background:linear-gradient(0deg,var(--v-deep),color-mix(in srgb,var(--v-deep) 75%,transparent) 40%,#17120c20 78%,#17120ca6)}
- .layout--ink .hero__inner{grid-template-areas:'header header' 'copy copy' 'stage stage' 'foot foot';grid-template-rows:auto auto auto auto;gap:25px}.layout--ink .hero__copy{max-width:80%;display:grid;grid-template-columns:1.4fr 1fr;gap:0 10%;align-items:center}.layout--ink .hero__copy .eyebrow{grid-column:1/-1}.layout--ink .hero__title{font-size:clamp(76px,7vw,118px)}.layout--ink .hero__stage{height:280px}.layout--ink .hero__media{inset:0}.layout--ink .menu__visual{height:100%;min-height:480px}
- .layout--fire .hero__media{clip-path:polygon(12% 0,100% 0,100% 100%,0 100%)}.layout--fire .hero__ornament{top:15px;left:0}.layout--fire .menu__visual{height:100%;min-height:550px}
- .layout--patisserie .hero__stage{height:490px}.layout--patisserie .hero__media{inset:20px 5px;border-width:14px}.layout--patisserie .hero__ornament{font-size:58px}.layout--patisserie .menu__visual{height:100%;min-height:530px}
- .layout--botanical .hero__media{inset:0 15px 15px 0}.layout--botanical .hero__ornament{height:65px;width:65px}.layout--botanical .menu__visual{height:100%;min-height:580px}
- .layout--trattoria .hero__media{inset:25px -40px 25px 0;border-width:12px}.layout--trattoria .hero__title{font-size:clamp(75px,6.5vw,115px)}
- .layout--scoop .hero__media{inset:38px 30px 12px;border-width:10px}.layout--scoop .hero__stage{height:510px}.layout--scoop .menu__visual{height:100%;min-height:520px}
- .layout--harvest .hero__media{border-width:12px}.layout--harvest .menu__visual{height:100%;min-height:560px}
- .layout--fold .hero__media{inset:10px 35px 50px 10px;border-width:10px}.layout--fold .hero__accent{height:40%;width:40%}.layout--fold .menu__visual{height:100%;min-height:570px}
- .layout--daybreak .hero__media{inset:0 -30px 35px 0}.layout--daybreak .hero__accent{height:35%;width:36%}.layout--daybreak .hero__copy{padding-left:26px}.layout--daybreak .menu__visual{height:100%;min-height:550px}
- .layout--roaster .hero__stage{height:530px}.layout--roaster .hero__accent{height:66%;width:42%}.layout--roaster .menu__visual{height:100%;min-height:520px}
- .layout--shell .hero__stage{height:490px}.layout--shell .hero__accent{height:42%;width:40%}.layout--shell .menu__visual{height:100%;min-height:580px}
- .layout--ember .menu__visual{height:100%;min-height:550px}.layout--linen .hero__stage{height:480px}.layout--linen .hero__accent{height:42%;width:40%}.layout--linen .menu__visual{height:100%;min-height:560px}
- .layout--ritual .hero__inner{grid-template-areas:'header header' 'copy stage' 'foot foot';grid-template-columns:1.1fr .9fr}.layout--ritual .hero__stage{height:540px}.layout--ritual .hero__title{font-size:clamp(85px,7.5vw,130px)}.layout--ritual .hero__media{left:28%}.layout--ritual .hero__accent{width:42%;height:48%;bottom:25px}.layout--ritual .menu__visual{height:100%;min-height:580px}
- .layout--sticker .hero__stage{height:510px}.layout--sticker .hero__media{inset:38px 25px 40px 8px}.layout--sticker .hero__accent{width:42%;height:37%}
- .layout--mosaic .hero__stage{height:500px}.layout--mosaic .hero__accent{height:80%}.layout--mosaic .menu__visual{height:100%;min-height:600px}
- .layout--signage .menu__visual{height:100%;min-height:520px}.layout--bonbon .hero__stage{height:490px}.layout--bonbon .hero__accent{height:42%;width:38%}.layout--bonbon .menu__visual{height:100%;min-height:560px}.layout--pass .menu__visual{height:100%;min-height:560px}
- /* Ticket/wayfinding menus get a broad masthead and side-by-side working area. */
- :is(.layout--poster,.layout--noodle,.layout--checkered,.layout--cantina,.layout--fire,.layout--roaster,.layout--ember,.layout--sticker,.layout--signage,.layout--ink,.layout--pass) .menu__shell{grid-template-areas:'intro intro' 'visual paper' 'close close';grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}
- :is(.layout--poster,.layout--noodle,.layout--checkered,.layout--cantina,.layout--fire,.layout--roaster,.layout--ember,.layout--sticker,.layout--signage,.layout--ink,.layout--pass) .menu__intro{display:grid;grid-template-columns:1.4fr 1fr;gap:0 10%;align-items:end}
- :is(.layout--poster,.layout--noodle,.layout--checkered,.layout--cantina,.layout--fire,.layout--roaster,.layout--ember,.layout--sticker,.layout--signage,.layout--ink,.layout--pass) .menu__intro .eyebrow{grid-column:1/-1}
- :is(.layout--poster,.layout--noodle,.layout--checkered,.layout--cantina,.layout--fire,.layout--roaster,.layout--ember,.layout--sticker,.layout--signage,.layout--ink,.layout--pass) .menu__intro>p:last-child{padding-bottom:20px}
- :is(.layout--poster,.layout--noodle,.layout--checkered,.layout--cantina,.layout--sticker) .menu__visual{height:100%;min-height:480px}
+.chapter--original .hero__inner {
+  grid-template-columns: var(--hero-mobile-columns, minmax(0, 1fr));
+  grid-template-rows: auto;
+  grid-template-areas: var(--hero-mobile, 'header' 'stage' 'copy');
+  align-items: stretch;
+  gap: var(--hero-gap, 17px);
+  min-height: 0;
+  padding: 10px 0 30px;
+}
+
+.chapter--original .demo-header {
+  border-color: var(--rule);
+  padding-block: 0 5px;
+}
+
+.chapter--original .demo-menu-link { font-size: 12px; }
+.chapter--original .hero__stage { width: 100%; height: var(--stage, clamp(180px, 58vw, 340px)); }
+.chapter--original .hero__copy { align-self: center; }
+.chapter--original .hero__copy .eyebrow { margin-bottom: 8px; }
+.chapter--original .hero__title {
+  max-width: var(--title-width, 15ch);
+  margin-bottom: 10px;
+  font-size: var(--title-size, clamp(40px, 12vw, 68px));
+  line-height: var(--title-leading, .94);
+  text-wrap: var(--title-wrap, balance);
+}
+.chapter--original .hero__support { max-width: var(--support-width, 42ch); }
+
+.chapter--original .menu { padding: clamp(28px, 6vw, 54px) 0; }
+.chapter--original .menu__shell {
+  grid-template-columns: var(--menu-mobile-columns, minmax(0, 1fr));
+  grid-template-areas: var(--menu-mobile, 'intro' 'tabs' 'dishes' 'visual' 'credits' 'close');
+  gap: var(--menu-gap, 12px);
+  align-items: start;
+}
+
+.chapter--original .menu__intro { display: block; }
+.chapter--original .menu__intro h3 {
+  max-width: var(--menu-title-width, 19ch);
+  margin-bottom: 8px;
+  font-size: var(--menu-title-size, clamp(34px, 9vw, 58px));
+}
+.chapter--original .menu__intro > p:last-child { padding: 0; }
+.chapter--original .menu__visual {
+  height: var(--menu-block);
+  min-height: 0;
+  align-self: stretch;
+}
+
+.chapter--original .menu-tabs {
+  grid-area: tabs;
+  min-width: 0;
+  margin: 0;
+  border-color: var(--rule);
+}
+.chapter--original .menu-tab { font-size: 12px; overflow-wrap: anywhere; }
+.chapter--original .menu-panel { grid-area: dishes; min-width: 0; }
+.chapter--original .menu-item {
+  display: block;
+  min-height: 0;
+  padding: 12px 0;
+  border-color: var(--rule);
+}
+.chapter--original .menu-item:has(.menu-item__number) {
+  display: grid;
+  grid-template-columns: 2ch minmax(0, 1fr);
+}
+.chapter--original .menu-item__name {
+  font: var(--dish-weight, 500) var(--dish-size, clamp(18px, 5.6vw, 25px))/1.15 var(--dish-font, var(--display-font));
+}
+.chapter--original .menu-item__glyph { display: none; }
+.chapter--original .menu__disclaimer { grid-area: credits; margin: 0; }
+.chapter--original .menu__close { justify-content: end; border-color: var(--rule); }
+
+:is(.layout--cinema,.layout--nocturne,.layout--noodle,.layout--cellar,.layout--fire,.layout--roaster,.layout--ember,.layout--pass) {
+  --scheme-hero: var(--dark);
+  --scheme-hero-ink: var(--v-paper);
+}
+:is(.layout--cinema,.layout--nocturne,.layout--cellar,.layout--cantina,.layout--fire,.layout--roaster,.layout--ember,.layout--pass) {
+  --scheme-menu: var(--dark);
+  --scheme-menu-ink: var(--v-paper);
+}
+:is(.layout--poster,.layout--noodle,.layout--checkered,.layout--cantina,.layout--fire,.layout--sticker,.layout--signage) {
+  --display-font: 'Archivo Black', Arial, sans-serif;
+  --display-weight: 400;
+  --dish-font: 'DM Sans', Arial, sans-serif;
+  --dish-weight: 700;
+  --dish-size: clamp(16px, 4.5vw, 22px);
+  --title-size: clamp(30px, 9vw, 58px);
+  --menu-title-size: clamp(29px, 8.1vw, 50px);
+}
+:is(.layout--table,.layout--market,.layout--botanical,.layout--trattoria,.layout--harvest,.layout--fold,.layout--daybreak,.layout--mosaic) {
+  --display-font: 'Fraunces', Georgia, serif;
+}
+
+/* 01 Editorial dining. A cinematic room with a low title and menu end credits. */
+.layout--cinema {
+  --material: #43322d;
+  --hero-mobile: 'header' 'copy';
+  --title-size: clamp(57px, 16vw, 84px);
+  --title-width: 10ch;
+  --menu-mobile: 'visual' 'intro' 'tabs' 'dishes' 'credits' 'close';
+  --menu-block: clamp(150px, 53vw, 310px);
+}
+.layout--cinema .hero__inner {
+  grid-template-rows: auto 1fr;
+  min-height: clamp(490px, calc(100svh - var(--studio-height) - var(--rail-height)), 760px);
+}
+.layout--cinema .hero__stage { position: absolute; inset: 0; z-index: -1; height: auto; }
+.layout--cinema .hero__photo img { object-position: 37% 56%; }
+.layout--cinema .hero__wash {
+  background: linear-gradient(0deg, var(--dark), color-mix(in srgb, var(--dark) 85%, transparent) 32%, #120d091e 70%, #0d0b0bb3);
+}
+.layout--cinema .hero__copy { align-self: end; padding-bottom: 22px; }
+.layout--cinema .menu__visual { margin-inline: calc(-1 * var(--gutter)); border-bottom: 4px double var(--v-bright); }
+.layout--cinema .menu__visual img { object-position: 55% 65%; }
+.layout--cinema .menu-item { border-bottom-style: dotted; letter-spacing: .02em; }
+
+/* 02 Counter service. A square-cornered print with tear-off takeaway tickets. */
+.layout--poster {
+  --material: #ffd34c;
+  --scheme-hero: var(--bright);
+  --hero-mobile: 'header' 'stage' 'copy';
+  --hero-gap: 0px;
+  --stage: clamp(190px, 62vw, 370px);
+  --menu-mobile: 'intro' 'tabs' 'dishes' 'credits' 'visual' 'close';
+}
+.layout--poster .hero__stage { margin-top: 12px; }
+.layout--poster .hero__media { border: 4px solid var(--v-deep); }
+.layout--poster .hero__photo img { object-position: 50% 51%; }
+.layout--poster .hero__copy { padding: 13px 12px; background: var(--v-deep); color: var(--v-paper); }
+.layout--poster .hero__title { text-transform: uppercase; }
+.layout--poster .menu-panel:not([hidden]) {
+  display: grid;
+  gap: 6px;
+  animation: ticket-enter .2s ease-out;
+}
+@keyframes ticket-enter {
+  from { opacity: .65; transform: translateX(-5px); }
+}
+.layout--poster .menu-item {
+  padding: 13px 11px;
+  background: linear-gradient(90deg, var(--bright), var(--light));
+  border-left: 3px dashed var(--v-deep);
+}
+.layout--poster .menu__visual { border-top: 5px solid var(--v-deep); }
+
+/* 03 Café. A tall window seat followed by a notebook with a photo bookmark. */
+.layout--journal {
+  --material: #a2bbca;
+  --hero-mobile: 'header' 'stage' 'copy';
+  --stage: clamp(213px, 65vw, 344px);
+  --menu-mobile: 'intro' 'tabs' 'dishes' 'visual' 'credits' 'close';
+}
+.layout--journal .hero__media { inset: 0 10%; border: 8px solid var(--v-paper); border-radius: 52% 52% 3px 3px; }
+.layout--journal .hero__photo img { object-position: 48% 57%; }
+.layout--journal .hero__copy { padding-left: 14px; border-left: 2px solid var(--v-mid); }
+.layout--journal .menu__shell {
+  padding-left: 17px;
+  border-left: 4px double var(--v-mid);
+  background: repeating-linear-gradient(0deg, transparent 0 29px, var(--rule) 30px, transparent 31px);
+}
+.layout--journal .menu-tabs, .layout--journal .menu-panel { background: var(--light); }
+.layout--journal .menu__visual { width: 67%; justify-self: end; border: 5px solid var(--v-paper); }
+.layout--journal .menu__visual img { object-position: 45% 60%; }
+
+/* 04 Pizzeria. A pizza centered on the tabletop and a radial order card. */
+.layout--table {
+  --material: #cd665b;
+  --scheme-hero: var(--bright);
+  --title-width: 19ch;
+  --hero-gap: 13px;
+  --stage: clamp(212px, 71vw, 378px);
+  --menu-mobile: 'intro' 'visual' 'tabs' 'dishes' 'credits' 'close';
+}
+.layout--table .hero {
+  background: repeating-linear-gradient(90deg, transparent 0 33px, #3b180e0b 33px 66px), radial-gradient(ellipse, var(--v-paper), var(--bright));
+}
+.layout--table .hero__media {
+  width: min(100%, var(--stage));
+  aspect-ratio: 1;
+  inset: 0;
+  margin: auto;
+  border: 8px solid var(--v-paper);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px var(--v-deep), 0 12px 24px #2c0e173a;
+}
+.layout--table .hero__copy, .layout--table .menu__intro { text-align: center; }
+.layout--table :is(.hero__title,.hero__support,.menu__intro > *) { margin-inline: auto; }
+.layout--table .menu__visual {
+  justify-self: center;
+  width: min(55%, 220px);
+  height: auto;
+  aspect-ratio: 1;
+  border: 4px double var(--v-mid);
+  border-radius: 50%;
+}
+.layout--table .menu-tabs { justify-content: center; }
+.layout--table .menu-panel:not([hidden]) { display: flex; flex-wrap: wrap; justify-content: center; gap: 7px; }
+.layout--table .menu-item { padding: 9px 14px; border: 1px solid var(--rule); border-radius: 99px; background: var(--v-paper); }
+
+/* 05 Cocktail bar. Title inside a doorway of light, then a candlelit drinks list. */
+.layout--nocturne {
+  --material: #45336a;
+  --stage: clamp(380px, 115vw, 535px);
+  --hero-mobile: 'header' 'stage';
+  --title-size: clamp(46px, 13vw, 75px);
+  --menu-mobile: 'intro' 'visual' 'tabs' 'dishes' 'credits' 'close';
+}
+.layout--nocturne .hero { background: radial-gradient(ellipse at 50% 44%, var(--v-mid), var(--dark) 66%); }
+.layout--nocturne .hero__media { inset: 0 7%; border: 1px solid var(--v-bright); border-radius: 45% 45% 0 0 / 28% 28% 0 0; }
+.layout--nocturne .hero__photo img { object-position: center 52%; }
+.layout--nocturne .hero__wash { background: linear-gradient(0deg, var(--dark) 3%, #100a136e 50%, transparent 77%); }
+.layout--nocturne .hero__copy { grid-area: stage; align-self: end; padding: 20px 6% 0; text-align: center; }
+.layout--nocturne :is(.hero__title,.hero__support) { margin-inline: auto; }
+.layout--nocturne :is(.hero__title,.menu__intro h3) { font-style: italic; }
+.layout--nocturne .menu__visual { border-radius: 0 60% 0 0 / 0 42% 0 0; }
+.layout--nocturne .menu__visual img { object-position: 48% 67%; }
+.layout--nocturne .menu-item { padding-inline: 10px; border-bottom-style: double; }
+
+/* 06 Bakery. A counter-wide photograph with a flour-paper label and bread shelves. */
+.layout--market {
+  --material: #e1b887;
+  --stage: clamp(213px, 68vw, 410px);
+  --hero-gap: 7px;
+  --menu-mobile: 'intro' 'visual' 'tabs' 'dishes' 'credits' 'close';
+}
+.layout--market .hero__stage { margin-top: 7px; }
+.layout--market .hero__photo img { object-position: center 56%; }
+.layout--market .hero__copy {
+  margin: -39px 9% 0 0;
+  padding: 14px;
+  border-bottom: 2px solid var(--v-mid);
+  background: linear-gradient(135deg, var(--v-paper), var(--light));
+}
+.layout--market .menu__visual { height: clamp(90px, 31vw, 205px); }
+.layout--market .menu__visual img { object-position: center 62%; }
+.layout--market .menu-panel:not([hidden]) { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 126px), 1fr)); gap: 8px; }
+.layout--market .menu-item { padding: 14px; border: 1px solid var(--rule); border-bottom: 4px solid var(--v-mid); background: var(--v-paper); }
+
+/* 07 Noodle house. Chopstick divider, deep bowl crop and narrow receipt. */
+.layout--noodle {
+  --material: #971e30;
+  --hero-mobile: 'header' 'copy' 'stage';
+  --stage: clamp(190px, 58vw, 317px);
+  --menu-mobile-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  --menu-mobile: 'intro intro' 'tabs tabs' 'dishes visual' 'credits credits' 'close close';
+}
+.layout--noodle .hero__copy { padding-inline-start: 13px; border-inline-start: 5px double var(--v-bright); }
+.layout--noodle .hero__media { inset: 0 0 0 12%; border: 4px solid var(--v-accent); border-radius: 48% 48% 48% 48% / 42% 42% 42% 42%; }
+.layout--noodle .hero__photo img { object-position: 49% 62%; }
+.layout--noodle .menu__shell { width: min(100% - 2 * var(--gutter), 650px); }
+.layout--noodle .menu-tabs, .layout--noodle .menu-panel { padding-inline: 11px; background: var(--v-paper); }
+.layout--noodle .menu-tabs { border-top: 5px solid var(--dark); }
+.layout--noodle .menu-item { border-bottom-style: dashed; }
+.layout--noodle .menu__visual { height: auto; min-height: 126px; }
+.layout--noodle .menu__visual img { position: absolute; inset: 0; object-position: 46% 44%; }
+
+/* 08 Seafood. A low coastal horizon, dock rule and wide catch ledger. */
+.layout--tide {
+  --material: #70bdca;
+  --hero-mobile: 'header' 'copy' 'stage';
+  --title-width: 18ch;
+  --menu-mobile: 'visual' 'intro' 'tabs' 'dishes' 'credits' 'close';
+}
+.layout--tide .hero {
+  background: linear-gradient(170deg, var(--v-paper) 10%, var(--light) 58%, var(--bright));
+}
+.layout--tide .hero__copy { padding: 12px 0 4px; }
+.layout--tide .hero__stage { width: auto; margin-inline: calc(-1 * var(--gutter)); }
+.layout--tide .hero__media { border-radius: 0 0 53% 47% / 0 0 18% 15%; }
+.layout--tide .hero__photo img { object-position: 53% 47%; }
+.layout--tide .menu__visual { border-bottom: 6px double var(--v-mid); }
+.layout--tide .menu-item { padding-left: 10px; border-left: 2px solid var(--v-mid); }
+
+/* 09 Wine bistro. A narrow wine portrait, wide italic headline and a cellar list. */
+.layout--cellar {
+  --material: #602847;
+  --hero-mobile-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  --hero-mobile: 'header header' 'stage copy';
+  --stage: clamp(245px, 77vw, 380px);
+  --title-size: clamp(35px, 8.7vw, 66px);
+  --title-wrap: initial;
+  --menu-block: clamp(113px, 40vw, 200px);
+}
+.layout--cellar .hero { background: radial-gradient(ellipse at 15% 76%, var(--v-mid), var(--dark) 70%); }
+.layout--cellar .hero__media { border-block: 1px solid var(--v-bright); }
+.layout--cellar .hero__photo img { object-position: 40% center; }
+.layout--cellar :is(.hero__title,.menu__intro h3) { font-style: italic; }
+.layout--cellar .hero__support { font-size: 14px; }
+.layout--cellar .menu-tabs { border-block: 1px solid var(--rule); }
+.layout--cellar .menu-item { padding-inline: 8px; }
+.layout--cellar .menu-item:nth-child(even) { background: #fff1; }
+.layout--cellar .menu__visual img { object-position: 55% 36%; }
+
+/* 10 Diner. Checker stripes frame a placemat and an itemized register slip. */
+.layout--checkered {
+  --material: #75c9b5;
+  --hero-mobile: 'header' 'copy' 'stage';
+  --hero-gap: 8px;
+  --stage: clamp(177px, 53vw, 288px);
+  --menu-mobile: 'intro' 'tabs' 'dishes' 'visual' 'credits' 'close';
+}
+.layout--checkered .hero__copy { padding: 14px 8px; text-align: center; }
+.layout--checkered :is(.hero__title,.hero__support) { margin-inline: auto; }
+.layout--checkered .hero__stage { border-block: 13px solid transparent; }
+.layout--checkered .hero__stage::before {
+  content: '';
+  position: absolute;
+  inset: -13px 0;
+  background: conic-gradient(var(--v-deep) 25%, var(--light) 0 50%, var(--v-deep) 0 75%, var(--light) 0) 0 0 / 26px 26px;
+}
+.layout--checkered .hero__photo img { object-position: center 55%; }
+.layout--checkered .menu__shell { width: min(100% - 2 * var(--gutter), 610px); }
+.layout--checkered .menu-panel { padding-inline: 14px; border-inline: 1px solid var(--rule); background: var(--v-paper); }
+.layout--checkered .menu-item { border-bottom-style: dashed; }
+.layout--checkered .menu-item__number { font-family: 'IBM Plex Mono', Consolas, monospace; }
+.layout--checkered .menu__visual { height: clamp(100px, 32vw, 204px); }
+
+/* 11 Cantina. Photo folds into a wide painted sign and stepped menu bands. */
+.layout--cantina {
+  --material: #d95231;
+  --scheme-hero: var(--bright);
+  --stage: clamp(196px, 68vw, 400px);
+  --hero-gap: 8px;
+  --menu-mobile: 'intro' 'tabs' 'visual' 'dishes' 'credits' 'close';
+}
+.layout--cantina .hero__media { clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
+.layout--cantina .hero__copy { margin-top: -34px; padding: 13px; background: var(--v-paper); }
+.layout--cantina .hero__title { transform: rotate(-2deg); }
+.layout--cantina .menu-panel:not([hidden]) { display: grid; gap: 5px; }
+.layout--cantina .menu-item { padding: 13px 11px; background: var(--bright); color: var(--v-deep); }
+.layout--cantina .menu-item:nth-child(2n) { margin-inline-start: 6%; background: var(--v-paper); }
+.layout--cantina .menu__visual { height: clamp(105px, 38vw, 210px); }
+
+/* 12 Sushi. Precise caption over a photographic ribbon and clean paired plates. */
+.layout--ink {
+  --material: #acb3d0;
+  --hero-mobile: 'header' 'copy' 'stage';
+  --title-width: 22ch;
+  --stage: clamp(139px, 47vw, 230px);
+  --menu-mobile: 'intro' 'tabs' 'dishes' 'credits' 'visual' 'close';
+  --menu-block: clamp(108px, 36vw, 200px);
+}
+.layout--ink .hero__copy { padding-top: 12px; text-align: right; }
+.layout--ink :is(.hero__title,.hero__support) { margin-inline-start: auto; }
+.layout--ink .hero__media { inset: 0 calc(-1 * var(--gutter)); border-block: 1px solid var(--v-mid); }
+.layout--ink .hero__photo img, .layout--ink .menu__photo img { object-position: center 48%; }
+.layout--ink .menu__intro { border-top: 4px double var(--v-mid); padding-top: 10px; }
+.layout--ink .menu-panel:not([hidden]) { columns: 2 134px; column-gap: 16px; column-rule: 1px solid var(--rule); }
+.layout--ink .menu-item { break-inside: avoid; }
+
+/* 13 Steakhouse. An iron-edged plate cut on a steep angle and a broad grill ledger. */
+.layout--fire {
+  --material: #852d20;
+  --stage: clamp(220px, 68vw, 390px);
+  --menu-mobile: 'visual' 'tabs' 'dishes' 'credits' 'close';
+  --menu-block: clamp(320px, 95vw, 510px);
+}
+.layout--fire .hero__media { clip-path: polygon(15% 0, 100% 0, 100% 83%, 0 100%); }
+.layout--fire .hero__copy { border-top: 4px solid var(--v-accent); padding-top: 10px; }
+.layout--fire .hero__title { text-transform: uppercase; }
+.layout--fire .menu__visual { border-left: 8px solid var(--v-accent); }
+.layout--fire .menu__visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, #180e0df2, transparent 76%);
+}
+.layout--fire .menu__intro {
+  grid-area: visual;
+  align-self: end;
+  z-index: 1;
+  padding: 19px 15px 16px 21px;
+  text-shadow: 0 1px 10px #180e0d, 0 2px 4px #180e0d;
+}
+.layout--fire .menu-item { border-bottom: 3px double var(--rule); }
+.layout--fire .menu__shell { row-gap: 16px; }
+
+/* 14 Dessert studio. An oval presentation plate and a light tasting gallery. */
+.layout--patisserie {
+  --material: #c5a9df;
+  --scheme-hero: var(--light);
+  --stage: clamp(178px, 54vw, 312px);
+  --hero-gap: 10px;
+  --title-size: clamp(44px, 12vw, 76px);
+  --menu-mobile-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  --menu-mobile: 'intro intro' 'tabs tabs' 'visual dishes' 'credits credits' 'close close';
+}
+.layout--patisserie .hero { background: radial-gradient(ellipse at 50% 42%, var(--v-paper), var(--light) 85%); }
+.layout--patisserie .hero__media {
+  border: 1px solid var(--v-mid);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 7px var(--v-paper), 0 10px 24px #190d2333;
+}
+.layout--patisserie .hero__copy { text-align: right; }
+.layout--patisserie :is(.hero__title,.hero__support) { margin-inline-start: auto; }
+.layout--patisserie .hero__title { font-style: italic; }
+.layout--patisserie .menu__visual { height: auto; min-height: 130px; border-radius: 50% 0 0 50%; }
+.layout--patisserie .menu__visual img { position: absolute; inset: 0; object-position: 61% 54%; }
+.layout--patisserie .menu-item { border-bottom-style: dotted; font-style: italic; }
+
+/* 15 Garden kitchen. A sloping green canopy and an open seasonal catalogue. */
+.layout--botanical {
+  --material: #80ae6b;
+  --stage: clamp(185px, 61vw, 350px);
+  --hero-gap: 11px;
+  --menu-mobile: 'intro' 'tabs' 'dishes' 'visual' 'credits' 'close';
+}
+.layout--botanical .hero__stage { background: radial-gradient(ellipse at top right, var(--bright), transparent 77%); }
+.layout--botanical .hero__media { inset: 0 0 0 8%; border-radius: 0 0 0 65% / 0 0 0 43%; }
+.layout--botanical .hero__photo img { object-position: 47% center; }
+.layout--botanical .hero__copy { padding-inline-start: 14px; border-inline-start: 1px solid var(--v-mid); }
+.layout--botanical .menu__visual { border-radius: 0 45% 0 0 / 0 45% 0 0; }
+.layout--botanical .menu-panel:not([hidden]) { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 135px), 1fr)); gap: 9px; }
+.layout--botanical .menu-item { padding: 12px 8px; background: linear-gradient(160deg, var(--v-paper), var(--bright)); border-bottom: 0; }
+.layout--botanical .menu-item:first-child { grid-column: 1 / -1; border-radius: 0 33px 0 0; }
+
+
+/* 16 Trattoria. A tiled dining wall and red-edged family courses. */
+.layout--trattoria {
+  --material: #b15147;
+  --hero-mobile: 'header' 'stage' 'copy';
+  --hero-gap: 0px;
+  --stage: clamp(190px, 61vw, 361px);
+  --menu-mobile: 'intro' 'tabs' 'dishes' 'credits' 'visual' 'close';
+}
+.layout--trattoria .hero {
+  background:
+    repeating-linear-gradient(0deg, transparent 0 33px, #fff6 34px 35px),
+    repeating-linear-gradient(90deg, transparent 0 33px, #fff6 34px 35px),
+    linear-gradient(135deg, var(--light), var(--bright));
+}
+.layout--trattoria .hero__stage { margin-top: 13px; }
+.layout--trattoria .hero__media { border: 7px solid var(--v-paper); }
+.layout--trattoria .hero__copy { background: var(--light); padding: 14px; margin-inline: 8%; }
+.layout--trattoria .menu-tabs { border-bottom: 3px double var(--v-mid); }
+.layout--trattoria .menu-item { padding-inline: 13px; border-left: 4px solid var(--v-accent); }
+.layout--trattoria .menu-item:nth-child(even) { background: var(--v-paper); }
+.layout--trattoria .menu__visual img { object-position: center 51%; }
+
+/* 17 Ice cream. Full-width storefront canopy with a scoop ticket menu. */
+.layout--scoop {
+  --material: #f3b9db;
+  --scheme-hero: var(--bright);
+  --stage: clamp(226px, 67vw, 370px);
+  --hero-gap: 9px;
+  --title-width: 21ch;
+  --menu-mobile: 'intro' 'tabs' 'dishes' 'visual' 'credits' 'close';
+}
+.layout--scoop .hero__stage { width: auto; margin-inline: calc(-1 * var(--gutter)); }
+.layout--scoop .hero__stage::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  inset: 0 0 auto;
+  height: 24px;
+  background: repeating-linear-gradient(90deg, var(--v-paper) 0 28px, var(--v-accent) 28px 56px);
+  border-radius: 0 0 20px 20px;
+}
+.layout--scoop .hero__media { inset: 11px 0 0; }
+.layout--scoop .hero__photo img { object-position: center 42%; }
+.layout--scoop .hero__copy { text-align: center; padding-block: 8px; }
+.layout--scoop :is(.hero__title,.hero__support) { margin-inline: auto; }
+.layout--scoop .menu-tabs { border: 0; }
+.layout--scoop .menu-tab { padding-inline: 11px; border-radius: 10px 10px 0 0; }
+.layout--scoop .menu-tab[aria-selected='true'] { background: var(--dark); color: var(--v-paper); }
+.layout--scoop .menu-panel:not([hidden]) { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 7px; }
+.layout--scoop .menu-item { padding: 9px; border: 1px solid var(--rule); border-radius: 7px; background: var(--bright); }
+.layout--scoop .menu__visual { height: clamp(115px, 37vw, 220px); border-radius: 0 0 45px 45px; }
+
+/* 18 Farm table. A harvest panorama and bulletin board. */
+.layout--harvest {
+  --material: #a0a65d;
+  --stage: clamp(194px, 60vw, 350px);
+  --hero-gap: 10px;
+  --menu-mobile: 'visual' 'intro' 'tabs' 'dishes' 'credits' 'close';
+}
+.layout--harvest .hero__stage { width: auto; margin-inline: calc(-1 * var(--gutter)); }
+.layout--harvest .hero__media { clip-path: polygon(0 0,100% 0,100% 89%,70% 89%,70% 100%,0 100%); }
+.layout--harvest .hero__photo img { object-position: 60% 54%; }
+.layout--harvest .hero__copy { width: min(94%, 640px); border-bottom: 6px solid var(--v-mid); padding-bottom: 15px; }
+.layout--harvest .menu__visual { border: 7px solid var(--v-paper); outline: 1px solid var(--rule); outline-offset: -1px; }
+.layout--harvest .menu-panel:not([hidden]) { display: grid; gap: 8px; }
+.layout--harvest .menu-item { background: linear-gradient(90deg, var(--v-paper), var(--light)); padding: 9px 14px; border: 1px dashed var(--rule); }
+
+/* 19 Dim sum. Pleated foldout with two photographs and folded dish strips. */
+.layout--fold {
+  --material: #d47c60;
+  --hero-mobile: 'header' 'copy' 'stage';
+  --stage: clamp(192px, 62vw, 350px);
+  --hero-gap: 11px;
+  --menu-mobile: 'intro' 'tabs' 'dishes' 'visual' 'credits' 'close';
+}
+.layout--fold .hero__copy { text-align: center; }
+.layout--fold :is(.hero__title,.hero__support) { margin-inline: auto; }
+.layout--fold .hero__stage {
+  background: repeating-linear-gradient(90deg, var(--bright) 0 22px, var(--light) 24px 46px);
+  border: 1px solid var(--rule);
+}
+.layout--fold .hero__media { inset: 9px 7% 9px 28%; border: 5px solid var(--v-paper); }
+.layout--fold .hero__accent { width: 36%; height: 60%; inset: 23% auto auto 4%; border-radius: 0 0 36% 0; }
+.layout--fold .hero__photo img { object-position: center 57%; }
+.layout--fold .menu__visual { border-inline: 12px double var(--v-mid); height: clamp(117px, 43vw, 230px); }
+.layout--fold .menu-item { padding-inline: 10px; background: linear-gradient(90deg,var(--light),var(--v-paper) 20%,var(--light)); }
+
+/* 20 Brunch. An open breakfast album with a binding strip and inset waffle photo. */
+.layout--daybreak {
+  --material: #96c0dd;
+  --stage: clamp(199px, 64vw, 348px);
+  --menu-mobile: 'intro' 'visual' 'tabs' 'dishes' 'credits' 'close';
+}
+.layout--daybreak .hero__media { inset: 0 25% 0 0; border-right: 5px double var(--v-mid); }
+.layout--daybreak .hero__accent { width: 29%; height: 77%; top: 10%; bottom: auto; box-shadow: none; border: 0; }
+.layout--daybreak .hero__photo img { object-position: 46% center; }
+.layout--daybreak .hero__copy { border-left: 5px solid var(--v-mid); padding-left: 13px; }
+.layout--daybreak .menu__visual { height: clamp(120px, 39vw, 210px); }
+.layout--daybreak .menu__visual img { object-position: center 62%; }
+.layout--daybreak .menu-panel { padding-inline: 12px; border-top: 4px double var(--v-mid); background: var(--v-paper); }
+.layout--daybreak .menu-item { border-bottom-style: dotted; }
+
+/* 21 Roastery. An industrial split image with an indexed calibration log. */
+.layout--roaster {
+  --material: #3b6370;
+  --display-font: 'DM Sans', Arial, sans-serif;
+  --display-weight: 700;
+  --title-size: clamp(39px, 10.3vw, 66px);
+  --hero-mobile: 'header' 'copy' 'stage';
+  --stage: clamp(166px, 53vw, 309px);
+  --menu-mobile: 'intro' 'tabs' 'dishes' 'visual' 'credits' 'close';
+}
+.layout--roaster .hero__media { inset: 0 34% 0 0; border: 1px solid var(--v-bright); }
+.layout--roaster .hero__accent { width: 32%; height: 62%; inset: 0 0 auto auto; box-shadow: none; border: 1px solid var(--v-bright); }
+.layout--roaster .hero__stage::after { content: ''; position: absolute; inset: auto 0 0 auto; width: 32%; height: 25%; border-block: 4px double var(--v-bright); }
+.layout--roaster .hero__copy { padding-bottom: 9px; border-bottom: 1px solid var(--rule); }
+.layout--roaster .menu-tabs { border: 0; gap: 2px; }
+.layout--roaster .menu-tab { border: 1px solid var(--rule); padding-inline: 9px; }
+.layout--roaster .menu-tab[aria-selected='true'] { background: var(--v-paper); color: var(--v-deep); }
+.layout--roaster .menu-item__number { font-family: 'IBM Plex Mono', Consolas, monospace; }
+.layout--roaster .menu__visual { border-right: 6px double var(--v-bright); }
+
+/* 22 Oyster bar. A shell-like radial crop with a circular dish inset and tide list. */
+.layout--shell {
+  --material: #8cb4bb;
+  --hero-mobile: 'header' 'copy' 'stage';
+  --hero-gap: 10px;
+  --stage: clamp(191px, 62vw, 385px);
+  --menu-mobile: 'intro' 'tabs' 'visual' 'dishes' 'credits' 'close';
+}
+.layout--shell .hero {
+  background: radial-gradient(ellipse at 75% 70%, var(--bright), var(--light) 70%);
+}
+.layout--shell .hero__copy { padding-top: 12px; text-align: right; }
+.layout--shell :is(.hero__title,.hero__support) { margin-inline-start: auto; }
+.layout--shell .hero__media { inset: 0 0 0 14%; border-radius: 64% 36% 0 0 / 100% 75% 0 0; }
+.layout--shell .hero__accent { inset: auto auto 0 0; width: 40%; height: 66%; border-radius: 50%; }
+.layout--shell .menu__visual { border-radius: 52% 48% 4px 4px / 36% 30% 0 0; }
+.layout--shell .menu-item { border-top: 1px solid var(--rule); border-bottom: 0; padding-inline-start: 9px; }
+.layout--shell .menu-item:nth-child(2n) { margin-inline-start: 15px; }
+
+/* 23 Smokehouse. A full-width smoke band above a low rust-colored headline. */
+.layout--ember {
+  --material: #7b351a;
+  --hero-gap: 0px;
+  --stage: clamp(219px, 65vw, 350px);
+  --title-size: clamp(40px, 13vw, 73px);
+  --display-font: 'Fraunces', Georgia, serif;
+  --menu-mobile: 'intro' 'tabs' 'dishes' 'credits' 'visual' 'close';
+}
+.layout--ember .hero__stage { width: auto; margin: 9px calc(-1 * var(--gutter)) 0; }
+.layout--ember .hero__wash { background: linear-gradient(0deg, var(--dark), transparent 50%); }
+.layout--ember .hero__photo img { object-position: 58% 55%; }
+.layout--ember .hero__accent { z-index: 1; width: 34%; height: 45%; bottom: 8px; right: var(--gutter); border-color: var(--v-bright); }
+.layout--ember .hero__copy { margin-top: -17px; padding-bottom: 7px; }
+.layout--ember .hero__title { color: var(--v-bright); }
+.layout--ember .menu-tabs, .layout--ember .menu-panel { background: var(--v-paper); color: var(--v-deep); padding-inline: 12px; }
+.layout--ember .menu-panel { border-bottom: 5px solid var(--v-accent); }
+.layout--ember .menu-item { border-bottom-style: dashed; }
+
+/* 24 Shared table. A quiet invitation above a long communal table and center-fold menu. */
+.layout--linen {
+  --material: #d8c49a;
+  --hero-mobile: 'header' 'copy' 'stage';
+  --stage: clamp(176px, 58vw, 350px);
+  --title-width: 19ch;
+  --menu-mobile: 'intro' 'visual' 'tabs' 'dishes' 'credits' 'close';
+}
+.layout--linen .hero__copy { text-align: center; }
+.layout--linen :is(.hero__title,.hero__support,.menu__intro > *) { margin-inline: auto; }
+.layout--linen .hero__media { inset: 0 14% 0 0; border: 7px solid var(--v-paper); }
+.layout--linen .hero__accent { height: 55%; width: 28%; border-radius: 0; }
+.layout--linen .hero__photo img { object-position: center 57%; }
+.layout--linen .menu__shell {
+  width: min(100% - 2 * var(--gutter), 840px);
+  text-align: center;
+  padding-inline: clamp(11px, 2vw, 28px);
+  background: linear-gradient(90deg, transparent, var(--v-paper) 48%, var(--light) 50%, var(--v-paper) 52%, transparent);
+}
+.layout--linen .menu-tabs { justify-content: center; }
+.layout--linen .menu__visual {
+  width: 87%;
+  height: clamp(123px, 33vw, 260px);
+  justify-self: center;
+  border: 5px solid var(--v-paper);
+}
+
+/* 25 Tea house. An airy opening with tall vessels and a stepped pouring sequence. */
+.layout--ritual {
+  --material: #8b9c9b;
+  --hero-mobile: 'header' 'copy' 'stage';
+  --stage: clamp(208px, 70vw, 405px);
+  --hero-gap: 12px;
+  --menu-mobile: 'intro' 'tabs' 'dishes' 'visual' 'credits' 'close';
+}
+.layout--ritual .hero__media { inset: 0 0 0 39%; border-radius: 48% 48% 0 0; }
+.layout--ritual .hero__accent { width: 42%; height: 61%; inset: auto auto 11% 0; box-shadow: none; border: 1px solid var(--v-mid); }
+.layout--ritual .hero__copy { border-top: 1px solid var(--rule); padding-top: 13px; }
+.layout--ritual .menu__visual { width: 77%; justify-self: start; height: clamp(125px, 43vw, 265px); border-radius: 0 66% 0 0; }
+.layout--ritual .menu-panel { padding-left: 12px; border-left: 2px solid var(--v-mid); }
+.layout--ritual .menu-item { width: min(100%, calc(70% + var(--offset, 0%))); }
+.layout--ritual .menu-item:nth-child(2) { --offset: 15%; }
+.layout--ritual .menu-item:nth-child(n+3) { --offset: 30%; }
+
+/* 26 Burger stand. Stacked bands and a two-column takeout tray. */
+.layout--sticker {
+  --material: #7bbfe8;
+  --scheme-hero: var(--bright);
+  --hero-gap: 5px;
+  --hero-mobile: 'header' 'copy' 'stage';
+  --stage: clamp(180px, 54vw, 323px);
+  --menu-mobile: 'tabs' 'intro' 'dishes' 'visual' 'credits' 'close';
+}
+.layout--sticker .hero__copy { margin-top: 8px; }
+.layout--sticker .hero__media { inset: 0 9% 0 0; border: 3px solid var(--v-deep); border-radius: 35px 35px 0 0; }
+.layout--sticker .hero__accent { height: 55%; width: 35%; border-radius: 50%; border: 3px solid var(--v-paper); }
+.layout--sticker .hero__copy { background: var(--light); border: 3px solid var(--v-deep); padding: 13px; }
+.layout--sticker .hero__title { text-transform: uppercase; }
+.layout--sticker .menu-tabs { border: 0; }
+.layout--sticker .menu-tab { border: 2px solid var(--v-deep); padding-inline: 12px; }
+.layout--sticker .menu-tab[aria-selected='true'] { background: var(--dark); color: var(--v-paper); border-color: var(--dark); }
+.layout--sticker .menu-panel:not([hidden]) { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 5px; }
+.layout--sticker .menu-item { padding: 12px; border: 1px solid var(--v-deep); background: var(--bright); }
+
+/* 27 Vegetable kitchen. Offset ingredient tiles and a block-printed growers list. */
+.layout--mosaic {
+  --material: #a1c67b;
+  --stage: clamp(188px, 61vw, 335px);
+  --hero-gap: 10px;
+  --menu-mobile: 'visual' 'intro' 'tabs' 'dishes' 'credits' 'close';
+}
+.layout--mosaic .hero__stage { background: linear-gradient(145deg,var(--bright),var(--light)); }
+.layout--mosaic .hero__media { inset: 0 35% 19% 0; }
+.layout--mosaic .hero__accent { inset: auto 0 0 auto; height: 86%; width: 41%; border: 5px solid var(--v-paper); box-shadow: none; }
+.layout--mosaic .hero__photo img { object-position: 46% center; }
+.layout--mosaic .hero__copy { padding-left: 11px; border-left: 5px solid var(--v-mid); }
+.layout--mosaic .menu__visual { clip-path: polygon(0 0, 100% 0, 100% 82%, 55% 82%, 55% 100%, 0 100%); }
+.layout--mosaic .menu-item { padding-left: 11px; border-left: 3px solid var(--v-mid); }
+.layout--mosaic .menu-item:nth-child(even) { margin-left: 9%; background: var(--v-paper); }
+
+/* 28 Food hall. A wayfinding arrow directs attention through a street-market photo wall. */
+.layout--signage {
+  --material: #a4c476;
+  --scheme-hero: var(--bright);
+  --hero-mobile: 'header' 'copy' 'stage';
+  --hero-gap: 7px;
+  --stage: clamp(184px, 60vw, 340px);
+  --menu-mobile: 'intro' 'tabs' 'dishes' 'credits' 'visual' 'close';
+}
+.layout--signage .hero__copy { background: var(--v-deep); color: var(--v-paper); padding: 12px min(20%, 66px) 12px 13px; }
+.layout--signage .hero__copy::after { content: '↘'; position: absolute; top: 12px; right: 9px; color: var(--v-bright); font-size: clamp(28px, 9vw, 58px); line-height: 1; }
+.layout--signage .hero__title { text-transform: uppercase; }
+.layout--signage .hero__media { inset: 0 29% 0 0; }
+.layout--signage .hero__accent { width: 28%; height: 100%; border: 0; box-shadow: none; }
+.layout--signage .menu-tabs { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,96px),1fr)); gap: 3px; border: 0; }
+.layout--signage .menu-tab { background: var(--bright); padding-inline: 8px; }
+.layout--signage .menu-tab[aria-selected='true'] { background: var(--v-deep); color: var(--v-paper); }
+.layout--signage .menu-item { padding-inline: 11px; border-bottom-width: 2px; }
+.layout--signage .menu-item:nth-child(odd) { background: var(--v-paper); }
+
+/* 29 Sweet shop. Display-case panes and a wrapped candy stripe. */
+.layout--bonbon {
+  --material: #cf87ac;
+  --hero-mobile-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  --hero-mobile: 'header header' 'copy stage';
+  --stage: clamp(226px, 71vw, 340px);
+  --title-size: clamp(33px, 9vw, 59px);
+  --hero-gap: 7px;
+  --menu-mobile: 'intro' 'visual' 'tabs' 'dishes' 'credits' 'close';
+}
+.layout--bonbon .hero__copy { padding: 12px 0 13px; }
+.layout--bonbon .hero__stage {
+  border: 6px solid var(--dark);
+  background: repeating-linear-gradient(45deg, var(--light) 0 9px, var(--bright) 9px 18px);
+}
+.layout--bonbon .hero__media { inset: 0 0 33% 0; border-bottom: 4px solid var(--dark); }
+.layout--bonbon .hero__accent { width: 74%; height: 33%; inset: auto 0 0 auto; border: 0; border-left: 4px solid var(--dark); box-shadow: none; }
+.layout--bonbon .menu__visual { height: clamp(115px, 37vw, 220px); border-block: 6px double var(--v-mid); }
+.layout--bonbon .menu-item { border: 0; border-bottom: 1px dotted var(--rule); padding-inline: 11px; background: linear-gradient(90deg,var(--bright),var(--light)); }
+.layout--bonbon .menu-item + .menu-item { margin-top: 5px; }
+
+/* 30 Open kitchen. A steel pass window and a numbered service rail. */
+.layout--pass {
+  --material: #51606a;
+  --display-font: 'DM Sans', Arial, sans-serif;
+  --display-weight: 700;
+  --title-size: clamp(36px, 10.5vw, 62px);
+  --stage: clamp(170px, 54vw, 330px);
+  --hero-gap: 10px;
+  --menu-mobile: 'intro' 'visual' 'tabs' 'dishes' 'credits' 'close';
+}
+.layout--pass .hero__stage { border: 4px solid var(--v-bright); box-shadow: 0 5px 0 var(--v-mid); }
+.layout--pass .hero__media { inset: 0 24% 0 0; }
+.layout--pass .hero__accent { width: 24%; height: 100%; inset: 0 0 auto auto; border: 0; border-left: 3px solid var(--v-bright); box-shadow: none; }
+.layout--pass .hero__copy { padding-block: 10px 4px; }
+.layout--pass .menu__visual { height: clamp(108px, 37vw, 224px); border-block: 4px double var(--v-bright); }
+.layout--pass .menu-item { border-left: 2px solid var(--v-bright); padding-inline: 12px; }
+.layout--pass .menu-item__number { border-bottom: 1px solid var(--v-bright); }
+
+
+/* The wide layouts extend the phone compositions with deliberate reading order. */
+@media (min-width: 900px) {
+  .chapter--original .hero__inner {
+    grid-template-columns: var(--hero-columns, minmax(0, 1fr));
+    grid-template-areas: var(--hero-wide, var(--hero-mobile, 'header' 'stage' 'copy'));
+    gap: var(--wide-hero-gap, clamp(16px, 2.8vw, 42px));
+    padding-block: 14px 40px;
+  }
+
+  .chapter--original .hero__stage { height: var(--stage-wide, clamp(310px, 34vw, 480px)); }
+  .chapter--original .hero__title {
+    font-size: var(--title-wide, clamp(60px, 7.6vw, 106px));
+    letter-spacing: -.043em;
+  }
+  .chapter--original .menu__intro h3 { font-size: var(--menu-title-wide, clamp(42px, 5vw, 72px)); }
+  .chapter--original .menu__visual { height: var(--menu-wide-block, clamp(230px, 28vw, 410px)); }
+  .chapter--original .menu__shell {
+    grid-template-columns: var(--menu-columns, minmax(0, 1fr));
+    grid-template-areas: var(--menu-wide, var(--menu-mobile, 'intro' 'tabs' 'dishes' 'visual' 'credits' 'close'));
+    gap: var(--wide-menu-gap, 15px clamp(25px, 4vw, 63px));
+  }
+  .chapter--original .menu-item__name { font-size: var(--dish-wide, clamp(21px, 2.35vw, 30px)); }
+  :is(.layout--poster,.layout--noodle,.layout--checkered,.layout--cantina,.layout--fire,.layout--sticker,.layout--signage) {
+    --title-wide: clamp(44px, 6vw, 84px);
+    --menu-title-wide: clamp(36px, 4.15vw, 63px);
+    --dish-wide: clamp(17px, 1.62vw, 23px);
+  }
+
+  /* 01: cinematic room and credits band. */
+  .layout--cinema {
+    --title-wide: clamp(90px, 10.1vw, 155px);
+    --menu-wide: 'visual visual' 'intro tabs' 'intro dishes' 'credits credits' 'close close';
+    --menu-columns: minmax(0, .95fr) minmax(0, 1.1fr);
+    --menu-wide-block: clamp(220px, 34vw, 485px);
+  }
+  .layout--cinema .hero__stage { height: auto; }
+  .layout--cinema .hero__photo img { object-position: center 63%; }
+  .layout--cinema .hero__copy { padding-bottom: 22px; }
+  .layout--cinema .hero__wash {
+    background: linear-gradient(0deg, var(--dark), transparent 67%), linear-gradient(90deg, #160e0ec7, transparent 72%), linear-gradient(180deg, #130e0c8a, transparent 32%);
+  }
+  .layout--cinema .menu__intro { align-self: center; }
+
+  /* 02: a wide print and attached black caption block. */
+  .layout--poster {
+    --hero-wide: 'header header' 'stage copy';
+    --hero-columns: minmax(0, 1.52fr) minmax(0, 1fr);
+    --wide-hero-gap: 0px;
+    --stage-wide: clamp(335px, 43vw, 585px);
+    --menu-wide: 'intro visual' 'tabs visual' 'dishes visual' 'credits credits' 'close close';
+    --menu-columns: minmax(0, 1fr) minmax(0, 1.14fr);
+  }
+  .layout--poster .hero__stage { margin-top: 18px; }
+  .layout--poster .hero__copy { align-self: end; padding: clamp(20px, 3vw, 48px); margin-bottom: 26px; }
+  .layout--poster .menu__visual { height: auto; min-height: 250px; }
+  .layout--poster .menu__visual img { position: absolute; inset: 0; }
+
+  /* 03: tall window with a bookmarked notebook. */
+  .layout--journal {
+    --hero-wide: 'header header' 'stage copy';
+    --hero-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    --stage-wide: clamp(370px, 41vw, 560px);
+    --menu-wide: 'intro intro' 'tabs visual' 'dishes visual' 'credits visual' 'close close';
+    --menu-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+    --menu-wide-block: clamp(220px, 27vw, 330px);
+  }
+  .layout--journal .hero__media { inset-inline: 7% 0; border-width: 12px; }
+  .layout--journal .hero__copy { padding-left: clamp(15px, 2.8vw, 40px); }
+  .layout--journal .menu__shell { padding-left: 26px; }
+  .layout--journal .menu__visual { width: 86%; transform: rotate(3deg); }
+
+  /* 04: centered tabletop and a radial order card. */
+  .layout--table {
+    --stage-wide: clamp(290px, 33vw, 415px);
+    --wide-hero-gap: 13px;
+    --title-wide: clamp(62px, 7vw, 98px);
+    --menu-wide: 'intro intro' 'visual tabs' 'visual dishes' 'credits credits' 'close close';
+    --menu-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    --menu-wide-block: auto;
+  }
+  .layout--table .hero__media { width: min(100%, var(--stage-wide)); border-width: 12px; }
+  .layout--table .menu__visual { width: min(75%, 360px); align-self: center; }
+  .layout--table .menu-panel { align-self: start; }
+  .layout--table .menu-item { padding: 13px 19px; }
+
+  /* 05: full-height doorway and an off-center drinks photograph. */
+  .layout--nocturne {
+    --stage-wide: clamp(460px, 48vw, 680px);
+    --wide-hero-gap: 15px;
+    --title-wide: clamp(82px, 9vw, 130px);
+    --menu-wide: 'intro visual' 'tabs visual' 'dishes visual' 'credits visual' 'close close';
+    --menu-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+  }
+  .layout--nocturne .hero__media { inset-inline: 24%; }
+  .layout--nocturne .hero__copy { padding-bottom: 10px; }
+  .layout--nocturne .menu__visual { height: auto; min-height: 340px; }
+  .layout--nocturne .menu__visual img { position: absolute; inset: 0; object-position: 50% 55%; }
+
+  /* 06: bread panorama with a lower-left counter tag and shelves. */
+  .layout--market {
+    --wide-hero-gap: 10px;
+    --stage-wide: clamp(350px, 37vw, 530px);
+    --title-wide: clamp(61px, 6.5vw, 93px);
+    --menu-wide: 'intro visual' 'tabs visual' 'dishes dishes' 'credits credits' 'close close';
+    --menu-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    --menu-wide-block: clamp(155px, 22vw, 285px);
+  }
+  .layout--market .hero__copy { width: min(60%, 675px); margin-top: -95px; padding: 24px; }
+  .layout--market .menu__visual { height: var(--menu-wide-block); }
+  .layout--market .menu-item { padding: 18px 15px; }
+
+  /* 07: red rule and bowl, with a centered receipt rail. */
+  .layout--noodle {
+    --hero-wide: 'header header' 'copy stage';
+    --hero-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    --stage-wide: clamp(335px, 38vw, 555px);
+    --menu-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    --menu-wide: 'intro intro' 'tabs visual' 'dishes visual' 'credits credits' 'close close';
+  }
+  .layout--noodle .hero__copy { padding-left: 25px; }
+  .layout--noodle .hero__media { inset: 0; border-width: 8px; }
+  .layout--noodle .menu__shell { width: min(100% - 2 * var(--gutter), 920px); }
+  .layout--noodle .menu__visual { height: auto; min-height: 220px; }
+
+  /* 08: the coastline runs from edge to edge. */
+  .layout--tide {
+    --wide-hero-gap: 17px;
+    --stage-wide: clamp(310px, 34vw, 460px);
+    --menu-wide: 'visual visual' 'intro intro' 'tabs dishes' 'credits credits' 'close close';
+    --menu-columns: minmax(0, .7fr) minmax(0, 1fr);
+    --menu-wide-block: clamp(180px, 20vw, 295px);
+  }
+  .layout--tide .hero__copy { display: grid; grid-template-columns: 1fr .7fr; align-items: end; gap: 0 42px; }
+  .layout--tide .hero__copy .eyebrow { grid-column: 1 / -1; }
+  .layout--tide .hero__title { margin: 0; }
+  .layout--tide .hero__support { padding-bottom: 7px; }
+  .layout--tide .menu__visual img { object-position: center 55%; }
+
+  /* 09: slender wine portrait and a long cellar shelf beneath the list. */
+  .layout--cellar {
+    --hero-wide: 'header header' 'stage copy';
+    --hero-columns: minmax(0, .68fr) minmax(0, 1.32fr);
+    --stage-wide: clamp(390px, 42vw, 620px);
+    --title-wide: clamp(76px, 10.2vw, 145px);
+    --title-width: 12ch;
+    --menu-wide: 'intro tabs' 'intro dishes' 'visual visual' 'credits credits' 'close close';
+    --menu-columns: minmax(0, 1fr) minmax(0, 1.12fr);
+    --menu-wide-block: clamp(125px, 15vw, 235px);
+  }
+  .layout--cellar .hero__media { inset-inline: 8% 0; }
+  .layout--cellar .hero__support { font-size: 17px; }
+
+  /* 10: a checker-framed horizontal placemat and one narrow receipt. */
+  .layout--checkered {
+    --wide-hero-gap: 8px;
+    --stage-wide: clamp(260px, 28vw, 365px);
+    --title-width: 20ch;
+    --menu-wide-block: clamp(150px, 15vw, 210px);
+  }
+  .layout--checkered .hero__stage { width: min(86%, 1080px); justify-self: center; }
+  .layout--checkered .hero__copy { padding-block: 12px; }
+
+  /* 11: paint sign on the lower right of a sloped room panorama. */
+  .layout--cantina {
+    --wide-hero-gap: 7px;
+    --stage-wide: clamp(320px, 36vw, 470px);
+    --menu-wide: 'intro visual' 'tabs visual' 'dishes dishes' 'credits credits' 'close close';
+    --menu-columns: minmax(0, 1.16fr) minmax(0, 1fr);
+    --menu-wide-block: clamp(165px, 22vw, 300px);
+  }
+  .layout--cantina .hero__copy { width: min(59%, 690px); justify-self: end; margin: -120px 3% 0 0; padding: 26px; }
+  .layout--cantina .menu__visual { height: var(--menu-wide-block); }
+  .layout--cantina .menu-panel:not([hidden]) { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; }
+  .layout--cantina .menu-item:nth-child(2n) { margin: 16px 0 0; }
+
+  /* 12: right-justified headline above a narrow ink ribbon. */
+  .layout--ink {
+    --stage-wide: clamp(170px, 21vw, 290px);
+    --wide-hero-gap: 17px;
+    --menu-wide: 'intro intro' 'tabs tabs' 'dishes dishes' 'credits visual' 'close close';
+    --menu-columns: minmax(0, .45fr) minmax(0, 1fr);
+    --menu-wide-block: clamp(115px, 13vw, 180px);
+  }
+  .layout--ink .hero__media { inset-inline: 0; }
+  .layout--ink .menu-panel:not([hidden]) { columns: 3; column-gap: 24px; }
+  .layout--ink .menu__disclaimer { align-self: end; }
+
+  /* 13: steep plate cut and a title overlay on the menu's grill portrait. */
+  .layout--fire {
+    --hero-wide: 'header header' 'copy stage';
+    --hero-columns: minmax(0, .86fr) minmax(0, 1.14fr);
+    --stage-wide: clamp(375px, 41vw, 560px);
+    --title-wide: clamp(40px, 5.1vw, 75px);
+    --menu-wide: 'visual tabs' 'visual dishes' 'visual credits' 'close close';
+    --menu-columns: minmax(0, 1.25fr) minmax(0, .85fr);
+  }
+  .layout--fire .hero__copy { align-self: end; padding-bottom: 24px; }
+  .layout--fire .menu__visual { height: auto; min-height: 360px; }
+  .layout--fire .menu__visual img { position: absolute; inset: 0; }
+  .layout--fire .menu__intro { padding: 24px; }
+
+  /* 14: oval plate as gallery art, then a smaller lens beside tasting choices. */
+  .layout--patisserie {
+    --hero-wide: 'header header' 'stage copy';
+    --hero-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    --stage-wide: clamp(235px, 30vw, 440px);
+    --menu-wide: 'intro intro' 'visual tabs' 'visual dishes' 'credits dishes' 'close close';
+    --menu-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  }
+  .layout--patisserie .hero__copy { align-self: end; padding-bottom: 13px; }
+  .layout--patisserie .menu__visual { height: auto; min-height: 250px; }
+
+  /* 15: sloping canopy and a one-over-two garden catalogue. */
+  .layout--botanical {
+    --hero-wide: 'header header' 'copy stage';
+    --hero-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+    --stage-wide: clamp(345px, 36vw, 530px);
+    --menu-wide: 'intro intro' 'tabs visual' 'dishes visual' 'credits visual' 'close close';
+    --menu-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .layout--botanical .hero__copy { align-self: end; }
+  .layout--botanical .menu__visual { height: auto; min-height: 315px; }
+  .layout--botanical .menu__visual img { position: absolute; inset: 0; }
+  .layout--botanical .menu-panel:not([hidden]) { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .layout--botanical .menu-item { padding: 17px 13px; }
+
+
+  /* 16: tiled walls, menu in the middle like a folded table note. */
+  .layout--trattoria {
+    --hero-wide: 'header header' 'copy stage';
+    --hero-columns: minmax(0, .72fr) minmax(0, 1.28fr);
+    --stage-wide: clamp(320px, 39vw, 515px);
+    --wide-hero-gap: 12px;
+    --title-wide: clamp(60px, 7.8vw, 104px);
+    --menu-wide: 'intro intro' 'tabs dishes' 'credits dishes' 'visual visual' 'close close';
+    --menu-columns: minmax(0, .65fr) minmax(0, 1fr);
+    --menu-wide-block: clamp(152px, 20vw, 275px);
+  }
+  .layout--trattoria .hero__copy { margin: 0; padding: clamp(18px, 3vw, 42px); border-bottom: 6px solid var(--v-accent); }
+  .layout--trattoria .hero__stage { margin: 0; }
+  .layout--trattoria .hero__media { border-width: 12px; }
+  .layout--trattoria .menu__shell { width: min(100% - 2 * var(--gutter), 1000px); }
+
+  /* 17: a wide scoop-shop awning with an order counter beneath it. */
+  .layout--scoop {
+    --stage-wide: clamp(280px, 32vw, 400px);
+    --wide-hero-gap: 12px;
+    --menu-wide: 'intro tabs' 'visual dishes' 'credits credits' 'close close';
+    --menu-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+    --menu-wide-block: clamp(150px, 19vw, 240px);
+  }
+  .layout--scoop .hero__stage::before { height: 36px; }
+  .layout--scoop .hero__photo img { object-position: center 38%; }
+  .layout--scoop .menu-tabs { align-self: end; }
+  .layout--scoop .menu-item { padding: 14px; }
+
+  /* 18: long harvest panorama and a left bulletin against a portrait of the stall. */
+  .layout--harvest {
+    --wide-hero-gap: 12px;
+    --stage-wide: clamp(320px, 39vw, 500px);
+    --menu-wide: 'visual intro' 'visual tabs' 'visual dishes' 'credits credits' 'close close';
+    --menu-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+  }
+  .layout--harvest .hero__copy { justify-self: start; width: min(79%, 820px); }
+  .layout--harvest .menu__visual { height: auto; min-height: 320px; }
+  .layout--harvest .menu__visual img { position: absolute; inset: 0; }
+
+  /* 19: two steamer photos open as a centered foldout. */
+  .layout--fold {
+    --wide-hero-gap: 13px;
+    --stage-wide: clamp(320px, 34vw, 470px);
+    --title-width: 22ch;
+    --menu-wide: 'intro visual' 'tabs visual' 'dishes dishes' 'credits credits' 'close close';
+    --menu-columns: minmax(0, 1.05fr) minmax(0, 1.15fr);
+    --menu-wide-block: clamp(175px, 19vw, 255px);
+  }
+  .layout--fold .hero__stage { width: min(90%, 1120px); justify-self: center; }
+  .layout--fold .hero__media { inset: 15px 6% 15px 28%; }
+  .layout--fold .hero__accent { width: 35%; }
+  .layout--fold .menu-panel:not([hidden]) {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 4px;
+  }
+  .layout--fold .menu-item { padding: 15px 12px; border-inline: 2px solid var(--rule); }
+
+  /* 20: album binding and a brunch menu set like a recipe card. */
+  .layout--daybreak {
+    --hero-wide: 'header header' 'stage copy';
+    --hero-columns: minmax(0, 1.5fr) minmax(0, .9fr);
+    --stage-wide: clamp(325px, 37vw, 510px);
+    --title-wide: clamp(59px, 6.6vw, 94px);
+    --menu-wide: 'intro intro' 'visual dishes' 'tabs dishes' 'credits credits' 'close close';
+    --menu-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    --menu-wide-block: clamp(180px, 22vw, 300px);
+  }
+  .layout--daybreak .hero__copy { align-self: start; padding: 13px 0 0 17px; border-top: 5px double var(--v-mid); }
+  .layout--daybreak .menu-panel { align-self: stretch; padding: 15px 17px; }
+
+  /* 21: industrial photograph with a sampling log aligned to the left. */
+  .layout--roaster {
+    --hero-wide: 'header header' 'copy stage';
+    --hero-columns: minmax(0, .8fr) minmax(0, 1.3fr);
+    --stage-wide: clamp(345px, 36vw, 505px);
+    --title-wide: clamp(57px, 6.9vw, 94px);
+    --menu-wide: 'visual intro' 'visual tabs' 'dishes dishes' 'credits credits' 'close close';
+    --menu-columns: minmax(0, .9fr) minmax(0, 1.3fr);
+    --menu-wide-block: clamp(162px, 20vw, 265px);
+  }
+  .layout--roaster .hero__copy { align-self: start; padding-top: 22px; }
+  .layout--roaster .menu-panel:not([hidden]) {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-block: 1px solid var(--rule);
+  }
+  .layout--roaster .menu-item { padding-inline: 14px; border-block: 0; border-inline-end: 1px solid var(--rule); }
+
+  /* 22: two shell shapes with a right-aligned tide heading. */
+  .layout--shell {
+    --hero-wide: 'header header' 'copy stage';
+    --hero-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+    --stage-wide: clamp(340px, 38vw, 505px);
+    --menu-wide: 'intro visual' 'tabs visual' 'dishes dishes' 'credits credits' 'close close';
+    --menu-columns: minmax(0, 1fr) minmax(0, .87fr);
+    --menu-wide-block: clamp(170px, 19vw, 270px);
+  }
+  .layout--shell .hero__copy { align-self: end; padding-bottom: 24px; }
+  .layout--shell .menu-panel:not([hidden]) { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .layout--shell .menu-item:nth-child(2n) { margin: 17px 0 0; }
+
+  /* 23: smoke strip across the viewport and pale butcher paper below. */
+  .layout--ember {
+    --wide-hero-gap: 0px;
+    --stage-wide: clamp(337px, 39vw, 510px);
+    --title-wide: clamp(68px, 8.5vw, 119px);
+    --menu-wide: 'intro intro' 'tabs visual' 'dishes visual' 'credits credits' 'close close';
+    --menu-columns: minmax(0, 1fr) minmax(0, 1.33fr);
+  }
+  .layout--ember .hero__copy { display: grid; grid-template-columns: minmax(0,1.4fr) minmax(0,.6fr); align-items: end; gap: 0 24px; margin-top: -26px; }
+  .layout--ember .hero__copy .eyebrow { grid-column: 1 / -1; }
+  .layout--ember .hero__accent { height: 46%; width: 23%; right: 8%; bottom: 18px; }
+  .layout--ember .hero__support { padding-bottom: 13px; }
+  .layout--ember .menu__visual { height: auto; min-height: 240px; }
+  .layout--ember .menu__visual img { position: absolute; inset: 0; }
+
+  /* 24: a quieter dining-room panorama and a center-fold menu. */
+  .layout--linen {
+    --wide-hero-gap: 15px;
+    --stage-wide: clamp(275px, 33vw, 430px);
+    --menu-wide-block: clamp(153px, 19vw, 250px);
+    --menu-wide: 'intro intro' 'tabs tabs' 'visual dishes' 'credits credits' 'close close';
+    --menu-columns: minmax(0, 1fr) minmax(0, 1fr);
+    --wide-menu-gap: 15px 28px;
+  }
+  .layout--linen .hero__stage { width: min(88%, 1110px); justify-self: center; }
+  .layout--linen .hero__media { border-width: 10px; }
+  .layout--linen .hero__accent { height: 58%; width: 26%; }
+  .layout--linen .menu__visual { width: 100%; }
+  .layout--linen .menu-panel { align-self: center; }
+  .layout--linen .menu-item:nth-child(2n) { background: var(--v-paper); }
+
+  /* 25: an open space beside tall vessels and progressively wider menu rows. */
+  .layout--ritual {
+    --hero-wide: 'header header' 'copy stage';
+    --hero-columns: minmax(0, 1fr) minmax(0, 1fr);
+    --stage-wide: clamp(420px, 43vw, 600px);
+    --title-wide: clamp(78px, 9.1vw, 128px);
+    --menu-wide: 'intro intro' 'tabs tabs' 'dishes visual' 'credits visual' 'close close';
+    --menu-columns: minmax(0, 1.2fr) minmax(0, .8fr);
+    --menu-wide-block: clamp(180px, 22vw, 288px);
+  }
+  .layout--ritual .hero__copy { padding: 21px 0 0; }
+  .layout--ritual .hero__media { inset-inline-start: 29%; }
+  .layout--ritual .hero__accent { height: 54%; width: 45%; }
+  .layout--ritual .menu__visual { width: 100%; height: var(--menu-wide-block); }
+
+  /* 26: counter board and stacked burger photos. */
+  .layout--sticker {
+    --hero-wide: 'header header' 'copy stage';
+    --hero-columns: minmax(0, 1fr) minmax(0, 1.43fr);
+    --wide-hero-gap: 12px;
+    --stage-wide: clamp(324px, 36vw, 510px);
+    --menu-wide: 'tabs visual' 'intro visual' 'dishes visual' 'credits credits' 'close close';
+    --menu-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .layout--sticker .hero__copy { padding: clamp(18px, 3vw, 38px); margin: 0; }
+  .layout--sticker .hero__media { border-radius: 56px 56px 0 0; }
+  .layout--sticker .menu__visual { height: auto; min-height: 320px; }
+  .layout--sticker .menu__visual img { position: absolute; inset: 0; }
+  .layout--sticker .menu-item { padding: 16px; }
+
+  /* 27: two offset ingredient blocks with a lower caption and staggered dish labels. */
+  .layout--mosaic {
+    --hero-wide: 'header header' 'stage copy';
+    --hero-columns: minmax(0, 1.55fr) minmax(0, .8fr);
+    --stage-wide: clamp(380px, 41vw, 580px);
+    --title-wide: clamp(55px, 6.7vw, 96px);
+    --menu-wide: 'visual intro' 'visual tabs' 'visual dishes' 'credits dishes' 'close close';
+    --menu-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  }
+  .layout--mosaic .hero__copy { align-self: end; padding-left: 20px; }
+  .layout--mosaic .menu__visual { height: auto; min-height: 310px; }
+  .layout--mosaic .menu__visual img { position: absolute; inset: 0; }
+
+  /* 28: a wayfinding sign forms the left wall of the market photograph. */
+  .layout--signage {
+    --hero-wide: 'header header' 'copy stage';
+    --hero-columns: minmax(0, .91fr) minmax(0, 1.16fr);
+    --wide-hero-gap: 6px;
+    --stage-wide: clamp(350px, 40vw, 550px);
+    --title-wide: clamp(38px, 4.5vw, 63px);
+    --menu-wide: 'intro intro' 'tabs tabs' 'dishes visual' 'credits visual' 'close close';
+    --menu-columns: minmax(0, 1.13fr) minmax(0, 1fr);
+    --menu-wide-block: clamp(175px, 21vw, 320px);
+  }
+  .layout--signage .hero__copy { align-self: stretch; display: grid; align-content: center; padding: 32px clamp(47px, 5vw, 69px) 32px 22px; }
+  .layout--signage .hero__copy::after { right: 15px; top: 20px; }
+  .layout--signage .menu__visual { height: var(--menu-wide-block); }
+
+  /* 29: vertical display case with the smallest treat in the lower pane. */
+  .layout--bonbon {
+    --hero-wide: 'header header' 'stage copy';
+    --hero-columns: minmax(0, 1.55fr) minmax(0, .8fr);
+    --stage-wide: clamp(310px, 36vw, 488px);
+    --title-wide: clamp(58px, 7.1vw, 101px);
+    --menu-wide: 'intro intro' 'tabs visual' 'dishes visual' 'credits visual' 'close close';
+    --menu-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+    --menu-wide-block: clamp(220px, 27vw, 345px);
+  }
+  .layout--bonbon .hero__stage { border-width: 9px; }
+  .layout--bonbon .hero__media { inset: 0 35% 0 0; border: 0; border-right: 7px solid var(--dark); }
+  .layout--bonbon .hero__accent { inset: 0 0 auto auto; width: 35%; height: 68%; border: 0; border-bottom: 7px solid var(--dark); }
+  .layout--bonbon .hero__copy { align-self: end; padding-block: 18px; border-bottom: 1px solid var(--rule); }
+  .layout--bonbon .menu__visual { height: var(--menu-wide-block); }
+  .layout--bonbon .menu-item:nth-child(2n) { margin-inline-start: 22px; }
+
+  /* 30: panoramic steel pass and a numbered service rail. */
+  .layout--pass {
+    --stage-wide: clamp(300px, 33vw, 455px);
+    --wide-hero-gap: 13px;
+    --title-wide: clamp(56px, 6.5vw, 98px);
+    --title-width: 17ch;
+    --menu-wide: 'visual intro' 'visual tabs' 'visual dishes' 'visual credits' 'close close';
+    --menu-columns: minmax(0, 1.3fr) minmax(0, .9fr);
+  }
+  .layout--pass .hero__stage { border-width: 6px; }
+  .layout--pass .hero__copy { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(0,.8fr); gap: 0 35px; align-items: end; }
+  .layout--pass .hero__copy .eyebrow { grid-column: 1 / -1; }
+  .layout--pass .hero__support { padding-bottom: 12px; }
+  .layout--pass .menu__visual { height: auto; min-height: 330px; }
+  .layout--pass .menu__visual img { position: absolute; inset: 0; }
 }

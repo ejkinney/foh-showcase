@@ -76,3 +76,25 @@ Compared the new landing and menu views with the contact sheets of the original 
 | 36 Breakfast club | Oversized sunrise lettering and an angled table photograph, with a pill-shaped menu selector. |
 
 Inspected the six landing and menu views at 390px and 1440px in Chromium. Checked geometry from 320px to 1920px, all 36 entries in the style picker and color overview, menu selection by click and keyboard, reduced-motion menu jumps, focus after choosing a style, and equal heights for the three scrolling copies. A 320 × 568 touch fixture rendered an edited headline, long dish name, and alternate photo from the JSON import.
+
+## Review of all 36 layouts — November 10, 2026
+
+Compared landing and menu screenshots at 390px and 1440px. The original thirty frequently used the same photo-and-copy split, followed by a photo beside a rectangular menu sheet. Their compositions now control the order, alignment, and scale of the photography, text, and menu directly. Each current design signature appears in `content/showcase.json` and in the latest entry of `design-history.json`.
+
+| Closest concepts | How the compositions differ |
+| --- | --- |
+| Dining, Cocktail Bar, Wine Bistro, Listening Bar | Full-room cinema with a low headline, centered doorway with type over the threshold, narrow portrait with wide italics, and a square record sleeve with a vertical track list. |
+| Counter Service, Diner, Burger Stand, Curry Counter | Attached poster and tear-off tickets, checker placemat and narrow register slip, framed takeout sign and two-column tray, and a backlit sign with a category order board. |
+| Café, Bakery, Trattoria, Shared Table, Flatbread House | Arched window and notebook, panorama and counter label, tiled wall and red-edged courses, linen table and narrow center-fold menu, and a woven invitation placed between two dishes. |
+| Pizzeria, Noodle House, Sushi Counter, Dim Sum | Centered circle and radial labels, offset bowl and split receipt, right-aligned headline and narrow photo ribbon, and a centered foldout with two steamer photographs. |
+| Seafood, Oyster Bar | Edge-to-edge coastline and a dock ledger alongside a raised shell shape with a circular inset and scalloped menu image. |
+| Steakhouse, Smokehouse, Open Kitchen | Steep crop and a title over the menu photograph, a full-width smoke band with a light butcher-paper list, and a steel pass with a numbered service rail. |
+| Garden Kitchen, Farm Table, Vegetable Kitchen, Market Dispatch | Sloping canopy and seasonal catalogue, stepped harvest panorama and field-note bulletin, staggered ingredient tiles and dish strips, and a newspaper spread with columnar dishes. |
+| Dessert Studio, Ice Cream Shop, Sweet Shop, Chocolate Atelier | Oval plate and a smaller tasting lens, full-width striped awning and scoop tickets, a striped display case with separate title and wrapped rows, and a boxed lid with individually divided tasting wells. |
+| Brunch, Breakfast Club | A bound photo album and recipe card alongside a sunrise composition with an angled social-table image and pill-shaped menu selector. |
+| Cantina, Food Hall | Sloped room panorama with a low sign and stepped dishes alongside a market photo wall with directional signage and a full-width category board. |
+| Roastery, Tea House | Industrial photo pair with an indexed calibration log alongside tall vessels and a quiet sequence of progressively wider menu rows. |
+
+The review also replaced the photos that had been shared across concepts. All 36 now have a different lead image. Two sections of a single concept can still use the same photograph with a different crop.
+
+Captured all 72 views at both 390px and 1440px. Chromium checks covered nine widths from 320px to 1920px, including both sides of the wide-layout breakpoint. Every concept passed style-picker focus, menu-jump alignment, category switching by click and keyboard, and text overflow checks. The checks also covered the color overview, a long restaurant name, the three scroll copies, and a 320 × 568 touch fixture with edited JSON copy and photography.

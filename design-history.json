@@ -348,5 +348,192 @@
         "designSignature": "A radiating sunrise leads into a diagonal social-table photograph, with an oversized typographic invitation above it on mobile and across its upper edge on desktop. The rounded menu selector and food-first menu entry use a different rhythm from Brunch’s panorama and postcard."
       }
     ]
+  },
+  {
+    "date": "2026-11-10",
+    "sourceVersion": 9,
+    "kind": "all-layout-distinctness-review",
+    "scenes": [
+      {
+        "id": "dining",
+        "layout": "cinema",
+        "designSignature": "Full-room photography fills the opening with a low, left-anchored title. The menu opens with a wide room still and ends with an editorial credits band."
+      },
+      {
+        "id": "counter",
+        "layout": "poster",
+        "designSignature": "A square-cornered sandwich print carries an attached black caption. Numbered tear-off tickets and a narrow perforation identify the menu."
+      },
+      {
+        "id": "cafe",
+        "layout": "journal",
+        "designSignature": "An arched café window leads into a title beside a thin rule. A lined notebook with a vertical binding and a photo bookmark carries the menu."
+      },
+      {
+        "id": "pizza",
+        "layout": "table",
+        "designSignature": "A centered pizza sits on a striped tabletop above the invitation. A smaller circular image and rounded order labels carry that radial composition into the menu."
+      },
+      {
+        "id": "bar",
+        "layout": "nocturne",
+        "designSignature": "An illuminated doorway contains the centered evening invitation. The dark drinks menu has double rules and an off-center photograph with a curved corner."
+      },
+      {
+        "id": "bakery",
+        "layout": "market",
+        "designSignature": "A wide bread counter carries a flour-paper label over its lower left edge. The menu puts the dishes on individual shelf labels under the photo."
+      },
+      {
+        "id": "noodle",
+        "layout": "noodle",
+        "designSignature": "A chopstick rule leads into an offset bowl photograph. The narrow receipt menu puts numbered lines and a tall image next to each other."
+      },
+      {
+        "id": "seafood",
+        "layout": "tide",
+        "designSignature": "A low, curved horizon fills the width below the headline. The seafood menu opens with a wide catch photograph and double dock rules."
+      },
+      {
+        "id": "wine",
+        "layout": "cellar",
+        "designSignature": "A slender wine photograph sits beside a wide italic headline, even on phones. The dark cellar list is followed by a low shelf of glassware."
+      },
+      {
+        "id": "diner",
+        "layout": "checkered",
+        "designSignature": "Checker bands wrap the breakfast placemat. The menu is a narrow, numbered register slip with a short photo below it."
+      },
+      {
+        "id": "taco",
+        "layout": "cantina",
+        "designSignature": "A sloped room panorama meets a sign that overlaps its lower edge. Contrasting dish strips step down the dark menu."
+      },
+      {
+        "id": "sushi",
+        "layout": "ink",
+        "designSignature": "A right-aligned invitation leads into a slim sashimi ribbon. The menu uses columns of unnumbered dishes and a photograph at its lower edge."
+      },
+      {
+        "id": "steak",
+        "layout": "fire",
+        "designSignature": "A steep, angular crop frames the steak. The menu title overlaps the grilled dish photograph, with the ledger alongside or below it."
+      },
+      {
+        "id": "dessert",
+        "layout": "patisserie",
+        "designSignature": "An oval dessert plate is followed by a right-aligned italic caption. A smaller curved lens sits beside the tasting choices."
+      },
+      {
+        "id": "garden",
+        "layout": "botanical",
+        "designSignature": "A sloping green canopy frames the dish. The menu reads as a seasonal catalogue with one wide label above smaller cells."
+      },
+      {
+        "id": "pasta",
+        "layout": "trattoria",
+        "designSignature": "A tiled wall surrounds an inset plate photograph and dinner invitation. A warm red rule ties the folded family menu together."
+      },
+      {
+        "id": "icecream",
+        "layout": "scoop",
+        "designSignature": "A storefront awning spans a full-width cone photograph. Rounded scoop tickets are arranged across a two-column counter."
+      },
+      {
+        "id": "farm",
+        "layout": "harvest",
+        "designSignature": "A harvest panorama has a stepped lower edge. The menu puts a stall portrait beside a bulletin of dashed field notes."
+      },
+      {
+        "id": "dimsum",
+        "layout": "fold",
+        "designSignature": "A pleated foldout carries two steamer photographs under a centered headline. The menu has individually folded dish strips."
+      },
+      {
+        "id": "brunch",
+        "layout": "daybreak",
+        "designSignature": "A binding rule separates a breakfast spread from a tall inset waffle photograph. The menu presents a recipe card alongside the waffle photo."
+      },
+      {
+        "id": "roastery",
+        "layout": "roaster",
+        "designSignature": "A measured, industrial photo pair sits beside bold sans-serif type. Numbered samples run across the menu like a calibration log."
+      },
+      {
+        "id": "oyster",
+        "layout": "shell",
+        "designSignature": "A right-aligned invitation frames an asymmetric shell crop with a round inset. The menu uses a scalloped image and stepped rules."
+      },
+      {
+        "id": "smokehouse",
+        "layout": "ember",
+        "designSignature": "A smoke photograph spans the page above a low rust-colored headline and a grill detail. A light butcher-paper list contrasts with the dark pit photograph."
+      },
+      {
+        "id": "shared",
+        "layout": "linen",
+        "designSignature": "A centered invitation looks over a linen-covered table with a bread inset. A narrow center-fold menu puts its photo and dish list side by side on wide screens."
+      },
+      {
+        "id": "tea",
+        "layout": "ritual",
+        "designSignature": "Quiet typography and a fine rule introduce tall vessels and a square tea detail. The menu rows widen in sequence, like steps in the pour."
+      },
+      {
+        "id": "burger",
+        "layout": "sticker",
+        "designSignature": "A framed takeout sign leads into layered burger photos. The menu opens on category buttons and puts dishes in a two-column tray."
+      },
+      {
+        "id": "vegetable",
+        "layout": "mosaic",
+        "designSignature": "Staggered rectangles pair an ingredient close-up with a finished vegetable burger. Block-printed menu rows step across the page."
+      },
+      {
+        "id": "foodhall",
+        "layout": "signage",
+        "designSignature": "A wayfinding arrow lives in a dark sign adjacent to the street-market photo wall. Full-width tabs and alternating strips organize the menu."
+      },
+      {
+        "id": "sweetshop",
+        "layout": "bonbon",
+        "designSignature": "A striped sweet-shop display case pairs two rectangular pastry panes with an independent title. The menu uses individually wrapped bands."
+      },
+      {
+        "id": "openkitchen",
+        "layout": "pass",
+        "designSignature": "A wide steel pass frames a working kitchen and a narrow prep photo. A numbered rail organizes the menu beside a chef-station photograph."
+      },
+      {
+        "id": "market-dispatch",
+        "layout": "broadsheet",
+        "designSignature": "A centered newspaper headline sits above an edge-aligned market photo spread, with the introduction below the photography. Menu items read in broadsheet columns followed by an ingredient photograph. Street and produce photography replace the signboard-and-inset treatment of Food Hall and the clipping motif of Farm Table."
+      },
+      {
+        "id": "listening-bar",
+        "layout": "record-sleeve",
+        "designSignature": "A bar photograph becomes square sleeve art with a visible grooved record. The menu recrops the bottles as a shelf beside the vertical category selector and numbered track list. This square sleeve and navigation differ from the Cocktail Bar doorway and curved drinks photograph."
+      },
+      {
+        "id": "curry-counter",
+        "layout": "order-board",
+        "designSignature": "A backlit sign leads straight into a rectangular curry panorama. The menu opens on a flat counter order board with large category switches, then closes with a photograph at the table. It uses a different order and geometry from Noodle House’s round bowl sign and order slip."
+      },
+      {
+        "id": "flatbread-house",
+        "layout": "table-runner",
+        "designSignature": "Two full-width table photographs bookend a woven invitation on mobile. On desktop the invitation forms a horizontal runner laid between the dishes. The menu follows a shared-plate grid, distinct from Shared Table’s small bread inset and quiet menu sheet."
+      },
+      {
+        "id": "chocolate-atelier",
+        "layout": "tasting-box",
+        "designSignature": "The introduction is the lid of a rigid confectionery box with two edge-aligned chocolate compartments. The menu turns dish names into separate wells in a tray. The square grid and compartmentalized reading rhythm differ from the rounded display windows and ruled menus of the dessert and sweet-shop concepts."
+      },
+      {
+        "id": "breakfast-club",
+        "layout": "sunburst",
+        "designSignature": "A radiating sunrise leads into a diagonal social-table photograph, with an oversized typographic invitation above it on mobile and across its upper edge on desktop. The rounded menu selector and food-first menu entry use a different rhythm from Brunch’s panorama and postcard."
+      }
+    ]
   }
 ]
